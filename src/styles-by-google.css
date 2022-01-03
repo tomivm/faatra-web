@@ -1,0 +1,51 @@
+:root {
+  --column-width: minmax(0, 3fr);
+}
+.container {
+  display: grid;
+  /* grid-auto-rows: minmax(2em, auto); */
+  /* grid-auto-columns: 100px 200px; */
+
+  /* grid-template-columns:
+    [main-start aside-start] 1fr
+    [aside-end content-start] 2fr
+    [content-end main-end]; a two column layout */
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "..... navbar navbar navbar"
+    "sidebar content content content"
+    "sidebar footer footer footer";
+
+  gap: 10px;
+  background-color: blue;
+  padding: 1em;
+  /* max-width: 90%;
+  min-height: 100vh; */
+}
+
+.item {
+  background-color: antiquewhite;
+}
+
+.navbar {
+  grid-area: navbar;
+  /* grid-column: main-start / main-end; */
+}
+
+header {
+  grid-area: header;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  /* grid-column: aside-start / aside-end; */
+}
+
+.content {
+  grid-area: content;
+}
+
+.footer {
+  grid-area: footer;
+  /* grid-column: main-start / main-end; */
+}
