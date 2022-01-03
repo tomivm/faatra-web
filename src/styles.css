@@ -237,6 +237,10 @@ p {
 }
 
 @media (max-width: 740px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+  }
   .header-logo-container {
     padding-bottom: 0;
   }
@@ -244,6 +248,10 @@ p {
   .header-logo-container > img {
     height: calc(var(--header-height) - 150px);
     width: auto;
+  }
+
+  .header-text-container {
+    max-width: 90%;
   }
 
   .header-text-container > h1 {
