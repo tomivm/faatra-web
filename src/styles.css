@@ -423,8 +423,8 @@ h1 {
   }
 }
 
-/* SNITH */
-.item.snith {
+/* SNIT */
+.item.snit {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -435,7 +435,7 @@ h1 {
   color: var(--white-color);
 }
 
-.snith h2 {
+.snit h2 {
   padding-left: 2em;
   padding-right: 2em;
   font-weight: 400;
