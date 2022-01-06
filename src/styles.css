@@ -108,6 +108,10 @@ input:focus {
   grid-row: 1;
   z-index: 1;
 }
+.mobile-navbar-backdrop {
+  padding-bottom: 0;
+}
+
 .navbar-container-lg {
   --navbar-bg-color: black;
   width: 100%;
@@ -117,8 +121,6 @@ input:focus {
 
   display: flex;
   justify-content: center;
-  /* font-variant: small-caps; */
-  /* background-color: var(--navbar-bg-color); */
   background: -prefix-linear-gradient(
     top,
     var(--navbar-bg-color),
@@ -171,7 +173,7 @@ input:focus {
   .item.navbar {
     justify-content: flex-start;
   }
-  .navbar-bg {
+  .mobile-navbar-backdrop {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 0; /* Sit on top */
@@ -652,6 +654,11 @@ input:focus {
 }
 
 /* form-contact */
+
+.contact-form-container {
+  padding-top: 3.5em;
+  padding-bottom: 6.5em;
+}
 
 .contact-form-items-container {
   width: 100%;
