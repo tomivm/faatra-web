@@ -47,7 +47,8 @@ a {
 }
 
 input,
-textarea {
+textarea,
+select {
   --border-radius: 0.2em;
   border-style: none;
   border-radius: var(--border-radius);
@@ -657,6 +658,7 @@ input:focus {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: var(--column-gap);
+  grid-auto-flow: column;
 }
 
 .contact-form-item {
@@ -668,7 +670,8 @@ input:focus {
 .contact-form-item h2 {
   font-weight: var(--font-weight-medium);
   margin-bottom: 0.3em;
-  margin-top: 2em;
+  /* Uncomment to adjust to original desing*/
+  /*margin-top: 2em;*/
 }
 
 .contact-form-item [type="radio"] {
