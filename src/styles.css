@@ -15,7 +15,7 @@
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   /* grid */
-  --text-whidth: 68ch;
+  --text-whidth: 80ch;
   --side-img-widht: 300.6px;
   --max-content-widht: calc(var(--text-whidth) + var(--side-img-widht));
   --column-gap: 32px;
@@ -103,6 +103,37 @@ input:focus {
   width: 100%;
 }
 
+.primary-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.primary-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5em;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+.btn-sm {
+  width: auto;
+  height: 2em;
+  font-size: 1.7em;
+  font-weight: 700;
+  padding: 0 0.2em 0 0.2em;
+}
+
+.btn-lg {
+  width: 15ch;
+  height: 2em;
+  font-size: 1.7em;
+  font-weight: 700;
+  margin-top: 1em;
+}
+
 /* NAVBAR */
 .navbar {
   grid-row: 1;
@@ -169,10 +200,14 @@ input:focus {
 }
 
 @media (max-width: 980px) {
-  /* content:url("http://path/to/imagen.jpg"); */
+  .item:first-child {
+    margin-top: 2.6em;
+  }
+
   .item.navbar {
     justify-content: flex-start;
   }
+
   .mobile-navbar-backdrop {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -185,6 +220,7 @@ input:focus {
     background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
   }
+
   .navbar-container-lg {
     flex-direction: column;
     width: unset;
@@ -208,6 +244,7 @@ input:focus {
     border-top-right-radius: 0.5em;
     border-bottom-right-radius: 0.5em;
   }
+
   .navbar-container-open {
     width: auto;
     min-width: 20ch;
@@ -218,19 +255,23 @@ input:focus {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
+
   .navbar-menu-icon {
     display: flex;
     padding: 1em;
   }
+
   .navbar-menu-icon > img {
     --menu-icon-size: 3ch;
     height: var(--menu-icon-size);
     width: var(--menu-icon-size);
   }
+
   .navbar-item {
     display: none;
     margin-right: 5em;
   }
+
   .show-navbar-item {
     display: block;
   }
@@ -245,6 +286,7 @@ input:focus {
   background-position: center;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.596)),
     url("./images/tallerHeader.jpg");
+  background-size: cover;
   --header-height: 400px;
 }
 
@@ -361,24 +403,8 @@ input:focus {
 
 .read-more-btn-container {
   grid-column: about-us-text-start / about-us-text-end;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
 }
 
-.read-more-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 15ch;
-  height: 2em;
-  border-radius: 0.5em;
-  background-color: #ff7300;
-  color: var(--white-color);
-  font-size: 1.7em;
-  font-weight: 700;
-  margin-top: 1em;
-}
 @media (max-width: 980px) {
   .about-us-container {
     display: grid;
@@ -752,5 +778,150 @@ input:focus {
 
   .coments textarea {
     height: 6em;
+  }
+}
+
+/* CAPACITACIÓN */
+.training-form-items-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--column-gap);
+  grid-template-rows: 1fr 1fr 1fr;
+  row-gap: var(--column-gap);
+  padding-top: 1.7em;
+}
+
+.training-form-items-container > * {
+  color: white;
+  padding: var(--default-padding);
+  border-radius: 0.7em;
+  height: auto;
+}
+
+.training-form-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.training-form-item img {
+  height: auto;
+  width: 30%;
+}
+.training-form-item h2 {
+  margin-top: 1.3em;
+  margin-bottom: 0;
+}
+
+.full-columns {
+  grid-column: 1 / -1;
+}
+
+.full-columns img {
+  height: auto;
+  width: 15%;
+}
+
+.inclusion-bg {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.76)),
+    url("./images/capacitacion/calculadora-y-hojas.jpg");
+  background-size: cover;
+}
+
+.formation-bg {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.76)),
+    url("./images/capacitacion/calculadora-y-hojas.jpg");
+  background-size: cover;
+}
+
+.improvement-bg {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.76)),
+    url("./images/capacitacion/calculadora-y-hojas.jpg");
+  background-size: cover;
+}
+
+.management-bg {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.76)),
+    url("./images/capacitacion/calculadora-y-hojas.jpg");
+  background-size: cover;
+}
+
+.presentations-bg {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.76)),
+    url("./images/capacitacion/calculadora-y-hojas.jpg");
+  background-size: cover;
+}
+
+.training-form-item:hover {
+  background: linear-gradient(var(--primary-color), #853d02c7);
+}
+
+.training-form-item > * {
+  transition: transform 0.7s;
+}
+
+.training-form-item:hover > * {
+  transform: scale(1.15);
+}
+
+@media (max-width: 595px) {
+  .training-form-items-container {
+    grid-template-columns: 1fr;
+    row-gap: calc(var(--column-gap) / 2);
+  }
+
+  .training-form-item img {
+    height: auto;
+    width: 30%;
+  }
+
+  .training-form-item:last-child img {
+    height: auto;
+    width: 30%;
+  }
+}
+
+/* ITEM LISTS */
+.training-list-item {
+  color: var(--white-color);
+  display: grid;
+  grid-template-rows: min-content 1fr minmax(2em, min-content);
+  row-gap: 0.5em;
+  padding: 1.6em;
+  aspect-ratio: 461 / 296;
+}
+
+.training-list-item h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.training-list-item-tittle-container {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  column-gap: 1em;
+  align-items: center;
+}
+
+.training-list-item-description {
+  grid-row: 3 / 4;
+  background-color: #002b3791;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  overflow: auto;
+}
+
+.training-list-item-description p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (max-width: 745px) {
+  .training-list .training-form-items-container {
+    grid-template-columns: 1fr;
+    row-gap: calc(var(--column-gap) / 2);
   }
 }
