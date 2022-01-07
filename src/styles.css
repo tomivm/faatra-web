@@ -682,6 +682,7 @@ input:focus {
 /* form-contact */
 
 .contact-form-container {
+  color: var(--secondary-color);
   padding-top: 3.5em;
   padding-bottom: 6.5em;
 }
@@ -782,6 +783,9 @@ input:focus {
 }
 
 /* CAPACITACIÓN */
+.training-form-container {
+  color: var(--secondary-color);
+}
 .training-form-items-container {
   width: 100%;
   display: grid;
