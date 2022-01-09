@@ -1,8 +1,8 @@
 const mockTrainingItem = {
   id: 1,
   provincia: "Córdoba",
-  camara: "defotos",
-  especialidad: "cultivo",
+  camara: "Camara1",
+  especialidad: "Electrónica",
   url: "https://www.facebook.com",
   title: "Capacitación de inyección directa de gasolina",
   description:
@@ -10,7 +10,7 @@ const mockTrainingItem = {
   backgroundImageURL: "./images/capacitacion/calculadora-y-hojas.jpg",
 };
 
-const mockTrainingList = Array(29)
+const mockTrainingList = Array(90)
   .fill()
   .map(() => mockTrainingItem);
 
@@ -53,18 +53,15 @@ const trainingListActualPage = getTrainingListActualPage(
 
 window.onload = init;
 
-//-----------------------------------------------------------------
-
-const applyFilters = ({ selectedProvince }) => {
-  filteredTrainingList = trainingList.filter(
-    (item) => item.provincia === selectedProvince
-  );
-  console.log("filteredTrainingList", filteredTrainingList);
-};
-
 function addSelectsOptions() {
   const fillSelect = (selectId, options) => {
     const selectContainer = document.getElementById(selectId);
+
+    const nullOption = document.createElement("option");
+    nullOption.value = null;
+    const nullOptionTextNode = document.createTextNode("todas");
+    nullOption.appendChild(nullOptionTextNode);
+    selectContainer.appendChild(nullOption);
 
     options.map((value) => {
       const option = document.createElement("option");
@@ -82,6 +79,27 @@ function addSelectsOptions() {
 }
 
 function handleSelectChange() {
+  const applyFilters = ({
+    selectedProvince,
+    selectedChamber,
+    selectedSpecialty,
+  }) => {
+    const filteredList = trainingList.filter(
+      (item) =>
+        (item.provincia === selectedProvince || selectedProvince === "null") &&
+        (item.camara === selectedChamber || selectedChamber === "null") &&
+        (item.especialidad === selectedSpecialty ||
+          selectedSpecialty === "null")
+    );
+    return filteredList;
+  };
+
+  const refreshPage = () => {
+    trainingPageState.actualPage = 1;
+    trainingPageState.totalPages = getPages(filteredTrainingList);
+    changePage(trainingPageState);
+  };
+
   const updateValue = (selectId) => {
     const select = document.getElementById(selectId);
     return select.options[select.selectedIndex].value;
@@ -91,11 +109,13 @@ function handleSelectChange() {
   const selectedChamber = updateValue(CHAMBER_ID);
   const selectedSpecialty = updateValue(SPECIALTY_ID);
 
-  applyFilters({ selectedProvince });
-  //ToDO migrate page state to change page
-  trainingPageState.actualPage = 1;
-  trainingPageState.totalPages = getPages(filteredTrainingList);
-  changePage(trainingPageState);
+  filteredTrainingList = applyFilters({
+    selectedProvince,
+    selectedChamber,
+    selectedSpecialty,
+  });
+
+  refreshPage();
 }
 
 function changePage({ actualPage, totalPages }) {

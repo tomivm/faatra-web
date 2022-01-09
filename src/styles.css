@@ -974,6 +974,7 @@ input:focus {
 
 .pages-nav {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-content: center;
   padding-top: 2em;
