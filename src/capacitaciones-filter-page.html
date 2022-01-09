@@ -59,27 +59,18 @@
           <h1>Capacitaciones</h1> 
           <div class="trainings-select-container">
             <div > 
-              <label for="provincia"><h2>Provincia</h2></label>
-              <select name="provincia">
-                <option value="value1">Cordoba</option>
-                <option value="value2" selected>Rosario</option>
-                <option value="value3">Value 3</option>
+              <label for="provincia"><h2>Provincia:</h2></label>
+              <select id="province-select" name="provincia" onchange="handleSelectChange()">
               </select>
             </div>  
             <div> 
-              <label for="camara"><h2>Camara</h2></label>
-              <select name="camara">
-                <option value="value1">Cordoba</option>
-                <option value="value2" selected>Rosario</option>
-                <option value="value3">Value 3</option>
+              <label for="camara"><h2>Camara:</h2></label>
+              <select id="chamber-select" name="camara" onchange="handleSelectChange()">
               </select>
             </div> 
             <div> 
-              <label for="especialidades"><h2>Especialidades</h2></label>
-              <select name="especialidades">
-                <option value="value1">Cordoba</option>
-                <option value="value2" selected>Rosario</option>
-                <option value="value3">Value 3</option>
+              <label for="especialidades"><h2>Especialidades:</h2></label>
+              <select id="specialty-select" name="especialidades" onchange="handleSelectChange()">
               </select>
             </div> 
           </div>

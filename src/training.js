@@ -1,5 +1,8 @@
 const mockTrainingItem = {
   id: 1,
+  provincia: "Córdoba",
+  camara: "defotos",
+  especialidad: "cultivo",
   url: "https://www.facebook.com",
   title: "Capacitación de inyección directa de gasolina",
   description:
@@ -15,9 +18,15 @@ const mockTrainingList = Array(29)
 
 const trainingList = mockTrainingList;
 
-const filteredTrainingList = trainingList;
+const provinceOptions = ["Córdoba", "Rosario", "Tierra Del Fuego", "Salta"];
+const chambersOptions = ["Camara1", "Camara2", "Camara3"];
+const specialtiesOptions = ["Mecanica", "Electrónica", "Pintura"];
 
-// const actualPage = 1;
+const PROVINCE_ID = "province-select";
+const CHAMBER_ID = "chamber-select";
+const SPECIALTY_ID = "specialty-select";
+
+let filteredTrainingList = trainingList;
 
 function getPages(filteredTrainingList) {
   const PAGE_MAX_ITEMS = 6;
@@ -36,9 +45,6 @@ const trainingPageState = {
   actualPage: 1,
   totalPages: getPages(filteredTrainingList),
 };
-// const TotalPages = getPages(filteredTrainingList);
-
-console.log("paginas", trainingPageState.totalPages);
 
 const trainingListActualPage = getTrainingListActualPage(
   trainingPageState.actualPage,
@@ -48,6 +54,49 @@ const trainingListActualPage = getTrainingListActualPage(
 window.onload = init;
 
 //-----------------------------------------------------------------
+
+const applyFilters = ({ selectedProvince }) => {
+  filteredTrainingList = trainingList.filter(
+    (item) => item.provincia === selectedProvince
+  );
+  console.log("filteredTrainingList", filteredTrainingList);
+};
+
+function addSelectsOptions() {
+  const fillSelect = (selectId, options) => {
+    const selectContainer = document.getElementById(selectId);
+
+    options.map((value) => {
+      const option = document.createElement("option");
+      option.value = value;
+      const optionTextNode = document.createTextNode(value);
+      option.appendChild(optionTextNode);
+
+      selectContainer.appendChild(option);
+    });
+  };
+
+  fillSelect(PROVINCE_ID, provinceOptions);
+  fillSelect(CHAMBER_ID, chambersOptions);
+  fillSelect(SPECIALTY_ID, specialtiesOptions);
+}
+
+function handleSelectChange() {
+  const updateValue = (selectId) => {
+    const select = document.getElementById(selectId);
+    return select.options[select.selectedIndex].value;
+  };
+
+  const selectedProvince = updateValue(PROVINCE_ID);
+  const selectedChamber = updateValue(CHAMBER_ID);
+  const selectedSpecialty = updateValue(SPECIALTY_ID);
+
+  applyFilters({ selectedProvince });
+  //ToDO migrate page state to change page
+  trainingPageState.actualPage = 1;
+  trainingPageState.totalPages = getPages(filteredTrainingList);
+  changePage(trainingPageState);
+}
 
 function changePage({ actualPage, totalPages }) {
   const trainingListActualPage = getTrainingListActualPage(
@@ -141,8 +190,6 @@ function changePage({ actualPage, totalPages }) {
       navButton.onclick = handlePageClick;
       if (number === actualPage) navButton.classList.add("page-selected");
       return navButton;
-      // <div class="page-btn page-selected">1</div>
-      //       <div class="page-btn">2</div>
     };
 
     pagesNavigator.innerHTML = "";
@@ -158,5 +205,6 @@ function changePage({ actualPage, totalPages }) {
 }
 
 function init() {
+  addSelectsOptions();
   changePage(trainingPageState);
 }
