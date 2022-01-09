@@ -46,6 +46,10 @@ a {
   all: unset;
 }
 
+button {
+  all: unset;
+}
+
 input,
 textarea,
 select {
@@ -136,6 +140,15 @@ input:focus {
 
 .bg-img-cover {
   background-size: cover;
+}
+
+.scale-hover {
+  transition: transform 0.7s;
+}
+
+.scale-hover:hover {
+  background: linear-gradient(var(--primary-color), #dd67069c);
+  transform: scale(1.15);
 }
 
 /* NAVBAR */
@@ -893,6 +906,24 @@ input:focus {
 }
 
 /* ITEM LISTS */
+
+.trainings-select-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.trainings-select-container > * {
+  padding-right: 4em;
+}
+
+.trainings-select-container select {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  font-size: medium;
+  font-weight: var(--font-weight-semibold);
+}
+
 .training-list-item {
   color: var(--white-color);
   display: grid;
@@ -932,4 +963,25 @@ input:focus {
     grid-template-columns: 1fr;
     row-gap: calc(var(--column-gap) / 2);
   }
+}
+
+.pages-nav {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding-top: 2em;
+}
+
+.pages-nav > * {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 0.7em;
+  margin: 0.5em;
+  font-size: medium;
+  font-weight: var(--font-weight-medium);
+  border-radius: 0.2em;
+}
+
+.pages-nav > .page-selected {
+  background-color: var(--secondary-color);
 }

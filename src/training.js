@@ -7,7 +7,7 @@ const mockTrainingItem = {
   backgroundImageURL: "./images/capacitacion/calculadora-y-hojas.jpg",
 };
 
-const mockTrainingList = Array(9)
+const mockTrainingList = Array(29)
   .fill()
   .map(() => mockTrainingItem);
 
@@ -17,7 +17,7 @@ const trainingList = mockTrainingList;
 
 const filteredTrainingList = trainingList;
 
-const actualPage = 1;
+// const actualPage = 1;
 
 function getPages(filteredTrainingList) {
   const PAGE_MAX_ITEMS = 6;
@@ -32,10 +32,16 @@ const getTrainingListActualPage = (actualPage, filteredTrainingList) => {
   );
 };
 
-const TotalPages = getPages(filteredTrainingList);
+const trainingPageState = {
+  actualPage: 1,
+  totalPages: getPages(filteredTrainingList),
+};
+// const TotalPages = getPages(filteredTrainingList);
+
+console.log("paginas", trainingPageState.totalPages);
 
 const trainingListActualPage = getTrainingListActualPage(
-  actualPage,
+  trainingPageState.actualPage,
   filteredTrainingList
 );
 
@@ -43,17 +49,13 @@ window.onload = init;
 
 //-----------------------------------------------------------------
 
-function changePage(pageNumber) {
+function changePage({ actualPage, totalPages }) {
   const trainingListActualPage = getTrainingListActualPage(
-    pageNumber,
+    actualPage,
     filteredTrainingList
   );
 
-  const showActualPage = (trainingListActualPage) => {
-    const trainingItemsContainer = document.getElementById(
-      "training-form-items-id"
-    );
-
+  const renderActualPage = (trainingListActualPage) => {
     const createTrainingItem = ({
       title,
       description,
@@ -106,6 +108,10 @@ function changePage(pageNumber) {
       return trainingItem;
     };
 
+    const trainingItemsContainer = document.getElementById(
+      "training-form-items-id"
+    );
+
     trainingItemsContainer.innerHTML = "";
 
     trainingListActualPage.map((trainingItem) => {
@@ -115,9 +121,42 @@ function changePage(pageNumber) {
     });
   };
 
-  showActualPage(trainingListActualPage);
+  const renderPagesNavigator = ({ actualPage, totalPages }) => {
+    const pagesNavigator = document.getElementById("pages-nav-id");
+
+    const createPageNavButton = (number) => {
+      const navButton = document.createElement("div");
+      const symbol = document.createTextNode(number);
+      const handlePageClick = () => {
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
+        changePage({ actualPage: number, totalPages });
+      };
+      navButton.appendChild(symbol);
+      navButton.classList.add("page-btn");
+      navButton.classList.add("scale-hover");
+      navButton.onclick = handlePageClick;
+      if (number === actualPage) navButton.classList.add("page-selected");
+      return navButton;
+      // <div class="page-btn page-selected">1</div>
+      //       <div class="page-btn">2</div>
+    };
+
+    pagesNavigator.innerHTML = "";
+
+    for (let i = 1; i <= totalPages; i++) {
+      const navButton = createPageNavButton(i);
+      pagesNavigator.appendChild(navButton);
+    }
+  };
+
+  renderActualPage(trainingListActualPage);
+  renderPagesNavigator({ actualPage, totalPages });
 }
 
 function init() {
-  changePage(1);
+  changePage(trainingPageState);
 }
