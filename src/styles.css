@@ -759,7 +759,7 @@ input:focus {
 .want-info-checkbox-container > * {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
   padding: 1em;
 }
 
@@ -791,7 +791,7 @@ input:focus {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: var(--column-gap);
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
   row-gap: var(--column-gap);
   padding-top: 1.7em;
 }
