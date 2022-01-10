@@ -1000,3 +1000,102 @@ input:focus {
     row-gap: calc(var(--column-gap) / 2);
   }
 }
+/* CAPACITACION FULL */
+.training-full-container {
+  --training-text-width: calc(var(--text-whidth) - 30ch);
+  --training-side-width: calc(var(--side-img-widht) + 30ch);
+  display: grid;
+  grid-template-columns:
+    [training-full-description] minmax(
+      calc(var(--text-whidth) - 30ch),
+      var(--text-whidth)
+    )
+    [training-full-description-end training-full-side]
+    minmax(calc(var(--side-img-widht) - 15ch), var(--side-img-widht))
+    [training-full-side-end];
+  column-gap: var(--column-gap);
+}
+
+.training-full-text-container {
+  color: var(--secondary-color);
+  font-weight: var(--font-weight-medium);
+}
+
+.training-full-text-container p {
+  font-size: 1.4em;
+}
+
+.training-full-side-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.training-full-side-container > * {
+  border-radius: 1em;
+}
+
+#training-image {
+  background-image: url("./images/capacitacion/calculadora-y-hojas.jpg");
+  aspect-ratio: 461 / 296;
+}
+
+.training-full-blue-info {
+  background-color: #002b37;
+  color: var(--white-color);
+  display: grid;
+  padding: 1em;
+  grid-template-rows: auto 1fr 1fr 1fr 1fr;
+  margin-top: 2em;
+}
+
+.training-full-blue-info > * {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
+}
+
+.training-full-blue-info > :nth-child(2n) {
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-width: 0.2em;
+  border-color: #086f8b;
+}
+
+.training-full-blue-info h2 {
+  font-size: 2em;
+  margin: 0;
+}
+
+.training-full-blue-info p {
+  font-size: 1.35em;
+  margin: 0.2em;
+}
+
+.training-dates-container {
+  display: grid;
+  grid-template-columns: max-content minmax(min-content, 100%);
+  justify-content: flex-start;
+  column-gap: 1em;
+}
+
+.training-until-date {
+  display: flex;
+  border-radius: 1em;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  font-weight: bolder;
+  align-items: center;
+  text-align: center;
+}
+
+.register-btn-container {
+  grid-row-end: 4;
+  align-items: flex-end;
+}
+
+.btn-full-width {
+  width: 100%;
+  font-size: 2.2em;
+}
