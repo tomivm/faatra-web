@@ -3,14 +3,14 @@ const mockTrainingItem = {
   provincia: "Córdoba",
   camara: "Camara1",
   especialidad: "Electrónica",
-  url: "https://www.facebook.com",
+  url: "./capacitacion-full.html",
   title: "Capacitación de inyección directa de gasolina",
   description:
     "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt hic atque dicta illo natus dolore cupiditate exercitationem dolorum recusandae, unde voluptatum sequi animi expedita voluptas porro omnis repellendus. Ab suscipit doloribus porro libero assumenda deleniti tenetur quisquam asperiores, dignissimos quibusdam?",
   backgroundImageURL: "./images/capacitacion/calculadora-y-hojas.jpg",
 };
 
-const mockTrainingList = Array(90)
+const mockTrainingList = Array(28)
   .fill()
   .map(() => mockTrainingItem);
 
@@ -132,7 +132,11 @@ function changePage({ actualPage, totalPages }) {
       backgroundImageURL,
     }) => {
       const trainingItem = document.createElement("a");
-      trainingItem.classList.add("training-list-item", "bg-img-cover");
+      trainingItem.classList.add(
+        "training-list-item",
+        "bg-img-cover",
+        "scale-hover"
+      );
 
       const createTitleContainer = () => {
         const titleContainer = document.createElement("div");

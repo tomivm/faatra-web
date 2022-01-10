@@ -111,6 +111,7 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .primary-btn {
@@ -120,6 +121,13 @@ input:focus {
   border-radius: 0.5em;
   background-color: var(--primary-color);
   color: var(--white-color);
+  transition: transform 0.5s;
+  text-align: center;
+}
+
+.primary-btn:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.1);
 }
 
 .btn-sm {
@@ -138,6 +146,10 @@ input:focus {
   margin-top: 1em;
 }
 
+.btn-p-right-left {
+  padding: 0 1em 0 1em;
+}
+
 .bg-img-cover {
   background-size: cover;
 }
@@ -149,6 +161,40 @@ input:focus {
 .scale-hover:hover {
   background: linear-gradient(var(--primary-color), #dd67069c);
   transform: scale(1.15);
+}
+
+.full-container {
+  /* --training-text-width: calc(var(--text-whidth) - 30ch);
+  --training-side-width: calc(var(--side-img-widht) + 30ch); */
+  display: grid;
+  grid-template-columns:
+    [full-description] minmax(
+      calc(var(--text-whidth) - 30ch),
+      var(--text-whidth)
+    )
+    [full-description-end full-side]
+    minmax(calc(var(--side-img-widht) - 15ch), var(--side-img-widht))
+    [training-full-side-end];
+  column-gap: var(--column-gap);
+}
+
+.full-text-container {
+  color: var(--secondary-color);
+  font-weight: var(--font-weight-medium);
+}
+
+.full-text-container p {
+  font-size: 1.4em;
+  text-align: justify;
+  text-justify: inter-word;
+  font-weight: 300;
+}
+
+@media (max-width: 890px) {
+  .full-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
 
 /* NAVBAR */
@@ -909,23 +955,17 @@ input:focus {
 
 .trainings-select-container {
   display: flex;
-  /* column-gap: 2em; */
   justify-content: flex-start;
   flex-wrap: wrap;
   margin-top: 1.5em;
-  /* grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr)); */
 }
 
 .trainings-select-container > * {
-  /* display: grid;
-  grid-template-columns: auto auto; */
   display: flex;
   column-gap: 1em;
   padding-right: 2em;
   align-items: center;
   width: auto;
-  /* justify-content: flex-start; */
-  /* flex-basis: 100%; */
 }
 
 .trainings-select-container select {
@@ -950,6 +990,10 @@ input:focus {
 .training-list-item h2 {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.training-list-item.scale-hover:hover {
+  transform: scale(1.05);
 }
 
 .training-list-item-tittle-container {
@@ -1001,30 +1045,6 @@ input:focus {
   }
 }
 /* CAPACITACION FULL */
-.training-full-container {
-  --training-text-width: calc(var(--text-whidth) - 30ch);
-  --training-side-width: calc(var(--side-img-widht) + 30ch);
-  display: grid;
-  grid-template-columns:
-    [training-full-description] minmax(
-      calc(var(--text-whidth) - 30ch),
-      var(--text-whidth)
-    )
-    [training-full-description-end training-full-side]
-    minmax(calc(var(--side-img-widht) - 15ch), var(--side-img-widht))
-    [training-full-side-end];
-  column-gap: var(--column-gap);
-}
-
-.training-full-text-container {
-  color: var(--secondary-color);
-  font-weight: var(--font-weight-medium);
-}
-
-.training-full-text-container p {
-  font-size: 1.4em;
-}
-
 .training-full-side-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -1082,6 +1102,7 @@ input:focus {
 
 .training-until-date {
   display: flex;
+  justify-content: center;
   border-radius: 1em;
   background-color: var(--primary-color);
   color: var(--white-color);
@@ -1098,4 +1119,40 @@ input:focus {
 .btn-full-width {
   width: 100%;
   font-size: 2.2em;
+}
+
+/* ABOUT US FULL */
+.about-full-buttons-container {
+  margin-top: 2em;
+  display: flex;
+}
+
+.about-full-buttons-container .primary-btn {
+  margin: 0.4em;
+}
+
+.about-full-side-container {
+  display: grid;
+  align-items: center;
+}
+
+#about-full-first-image {
+  background-image: url("./images/quienes-somos/quienes-somos-full-side.png");
+  aspect-ratio: 370 / 360;
+}
+#about-full-second-image {
+  background-image: url("./images/quienes-somos/quienes-somos-full-side.png");
+  aspect-ratio: 370 / 360;
+}
+
+@media (max-width: 890px) {
+  .about-full-side-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 1005px) {
+  .about-full-buttons-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
