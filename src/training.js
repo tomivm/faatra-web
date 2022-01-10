@@ -10,7 +10,7 @@ const mockTrainingItem = {
   backgroundImageURL: "./images/capacitacion/calculadora-y-hojas.jpg",
 };
 
-const mockTrainingList = Array(28)
+const mockTrainingList = Array(27)
   .fill()
   .map(() => mockTrainingItem);
 
@@ -201,12 +201,12 @@ function changePage({ actualPage, totalPages }) {
       const navButton = document.createElement("div");
       const symbol = document.createTextNode(number);
       const handlePageClick = () => {
+        changePage({ actualPage: number, totalPages });
         window.scroll({
           top: 0,
           left: 0,
           behavior: "smooth",
         });
-        changePage({ actualPage: number, totalPages });
       };
       navButton.appendChild(symbol);
       navButton.classList.add("page-btn");
