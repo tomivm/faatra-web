@@ -197,6 +197,23 @@ input:focus {
   }
 }
 
+.form-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.form-item h2 {
+  font-weight: var(--font-weight-medium);
+  margin-bottom: 0.3em;
+  /* Uncomment to adjust to original desing*/
+  /*margin-top: 2em;*/
+}
+
+.form-item [type="radio"] {
+  width: auto;
+}
+
 /* NAVBAR */
 .navbar {
   grid-row: 1;
@@ -758,23 +775,6 @@ input:focus {
   grid-auto-flow: column;
 }
 
-.contact-form-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.contact-form-item h2 {
-  font-weight: var(--font-weight-medium);
-  margin-bottom: 0.3em;
-  /* Uncomment to adjust to original desing*/
-  /*margin-top: 2em;*/
-}
-
-.contact-form-item [type="radio"] {
-  width: auto;
-}
-
 .coments {
   grid-row: 2 / 4;
   grid-column-start: 2;
@@ -1119,6 +1119,39 @@ input:focus {
 .btn-full-width {
   width: 100%;
   font-size: 2.2em;
+}
+
+/* inscripcion Modal */
+.modal-bg {
+  position: fixed;
+  z-index: 0; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: none; /* Enable scroll if needed */
+  background-color: rgb(192, 191, 191); /* Fallback color */
+  background-color: rgba(255, 255, 255, 0.63); /* Black w/ opacity */
+}
+
+.modal-form {
+  margin: 15% auto; /* 15% from the top and centered */
+  width: 100%; /* Could be more or less, depending on screen size */
+  height: auto;
+  border-radius: 1em;
+  color: var(--white-color);
+  background-color: #3d3d3dec;
+}
+
+.modal-form h1 {
+  margin: 20px 20px 0 20px;
+}
+
+.incription-form-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--column-gap);
+  margin: 0 20px 20px 20px;
 }
 
 /* ABOUT US FULL */

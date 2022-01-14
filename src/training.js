@@ -10,12 +10,24 @@ const mockTrainingItem = {
   backgroundImageURL: "./images/capacitacion/calculadora-y-hojas.jpg",
 };
 
+const mockTrainingItemDifferent = {
+  id: 1,
+  provincia: "Córdoba",
+  camara: "Camara2",
+  especialidad: "Electrónica",
+  url: "./capacitacion-full.html",
+  title: "Capacitación de restauracion",
+  description:
+    "tus dolore cupiditate exercitationem dolorum ecusandae, unde voluptatum sequi animi expedita voluptas porro omnis repellendus. Ab suscipit doloribus porro libero assumenda deleniti tenetur quisquam asperiores, dignissimos quibusdam?",
+  backgroundImageURL: "./images/capacitacion/calculadora-y-hojas.jpg",
+};
+
 const mockTrainingList = Array(27)
   .fill()
   .map(() => mockTrainingItem);
 
 //----------------------------------------------------------------------
-
+mockTrainingList.push(mockTrainingItemDifferent);
 const trainingList = mockTrainingList;
 
 const provinceOptions = ["Córdoba", "Rosario", "Tierra Del Fuego", "Salta"];
