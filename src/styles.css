@@ -214,6 +214,11 @@ input:focus {
   width: auto;
 }
 
+.disable-scroll {
+  height: 100%;
+  overflow: hidden;
+}
+
 /* NAVBAR */
 .navbar {
   grid-row: 1;
@@ -1129,7 +1134,7 @@ input:focus {
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  overflow: none; /* Enable scroll if needed */
+  overflow: auto; /* Enable scroll if needed */
   background-color: rgb(192, 191, 191); /* Fallback color */
   background-color: rgba(255, 255, 255, 0.63); /* Black w/ opacity */
 }
@@ -1152,6 +1157,13 @@ input:focus {
   grid-template-columns: 1fr 1fr;
   column-gap: var(--column-gap);
   margin: 0 20px 20px 20px;
+}
+
+@media (max-width: 595px) {
+  .incription-form-container {
+    grid-template-columns: 1fr;
+    row-gap: calc(var(--column-gap) / 2);
+  }
 }
 
 /* ABOUT US FULL */
