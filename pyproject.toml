@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "faatra-web"
+version = "0.1.0"
+description = ""
+authors = ["lautaro <lm.bringas98@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^4.0.1"
+django-jazzmin = "^2.4.9"
+django-admin-ordering = "^0.14.2"
+django-solo = "^2.0.0"
+
+[tool.poetry.dev-dependencies]
+black = "^21.12b0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
