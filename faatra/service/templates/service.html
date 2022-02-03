@@ -1,0 +1,6 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<h1>{{service.title}}</h1>
+
+<div>{{service.content.html|safe}}</div>
+{% endblock content %}

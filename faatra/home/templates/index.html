@@ -6,7 +6,7 @@
 <div class="item header full-bleed">
 <div class="header-container">
     <div class="header-logo-container">
-    <img src="{% static 'images/Logo FAATRA color.png' %}" alt="" height="2008"
+    <img src="{% static 'images//Logo FAATRA color.png' %}" alt="" height="2008"
     width="1417" >
     </div>
     <div class="header-text-container">
@@ -38,7 +38,7 @@
         </p>
     </div>
     <div class="about-us-item">
-        <img src="./images/quienes-somos/vision.svg" alt="" />
+        <img src="{% static 'images/quienes-somos/vision.svg' %}" alt="" />
         <p>
         <span style="font-weight: bolder">VISIÓN:</span> Nam faccullique
         voluptatiam sit quas et quiat volesti totat. Eprate eaqui
@@ -47,7 +47,7 @@
         </p>
     </div>
     <div class="about-us-item">
-        <img src="./images/quienes-somos/valores.svg" alt="" />
+        <img src="{% static 'images/quienes-somos/valores.svg' %}" alt="" />
         <p>
         <span style="font-weight: bolder">VALORES:</span> llique
         voluptatiam sit quas et quiat voles- ti totat. Eprate eaqui
@@ -58,7 +58,7 @@
     </div>
     <div class="about-us-img-container">
     <img
-        src="./images/quienes-somos/caraenaipe.png"
+        src="{% static 'images/quienes-somos/caraenaipe.png' %}"
         alt=""
         width="366px"
         height="450px"
@@ -76,7 +76,7 @@
     <div class="blue-bg-items-container">
     <div class="blue-bg-item">
         <img
-        src="./images/quienes-somos/gremial.svg"
+        src="{% static 'images/quienes-somos/gremial.svg' %}"
         alt="gremial-logo"
         height="150"
         width="150"
@@ -87,7 +87,7 @@
     </div>
     <div class="blue-bg-item">
         <img
-        src="./images/quienes-somos/capacitación.svg"
+        src="{% static 'images/quienes-somos/capacitación.svg' %}"
         alt="gremial-logo"
         height="150"
         width="150"
@@ -98,7 +98,7 @@
     </div>
     <div class="blue-bg-item">
         <img
-        src="./images/quienes-somos/info.svg"
+        src="{% static 'images/quienes-somos/info.svg' %}"
         alt="gremial-logo"
         height="150"
         width="150"
@@ -123,12 +123,31 @@
 <!-- Nuestros servicios -->
 <div class="item services full-background">
 <div class="blue-bg-container container">
+
     <div class="blue-bg-title"><h1>Nuestros servicios</h1></div>
     <div class="blue-bg-items-container padding-top-btn divider-none">
+    {% for service in services %}
+    <a href="{% url 'service-detail' service.url %}" >
     <div class="blue-bg-item">
         <img
         class="svg-to-primary-color"
-        src="./images/nuestros-servicios/asesoria.svg"
+        src="{{service.image.url}}"
+        alt="gremial-logo"
+        height="100"
+        width="100"
+        />
+        <div class="blue-bg-item-text-container">
+        <h2>{{service.title}}</h2>
+        <p>{{service.description}}</p>
+        </div>
+    </div>
+    </a>
+    {% endfor %}
+
+    <div class="blue-bg-item">
+        <img
+        class="svg-to-primary-color"
+        src="{% static 'images/nuestros-servicios/asesoria.svg' %}"
         alt="gremial-logo"
         height="100"
         width="100"
@@ -141,7 +160,7 @@
     <div class="blue-bg-item">
         <img
         class="svg-to-primary-color"
-        src="./images/nuestros-servicios/costo-hora.svg"
+        src="{% static 'images/nuestros-servicios/costo-hora.svg' %}"
         alt="gremial-logo"
         height="100"
         width="100"
@@ -154,7 +173,7 @@
     <div class="blue-bg-item">
         <img
         class="svg-to-primary-color"
-        src="./images/nuestros-servicios/convenios.svg"
+        src="{% static 'images/nuestros-servicios/convenios.svg' %}"
         alt="gremial-logo"
         height="100"
         width="100"
@@ -167,7 +186,7 @@
     <div class="blue-bg-item">
         <img
         class="svg-to-primary-color"
-        src="./images/nuestros-servicios/escalas.svg"
+        src="{% static 'images/nuestros-servicios/escalas.svg' %}"
         alt="gremial-logo"
         height="100"
         width="100"
@@ -187,7 +206,7 @@
     <div class="convenants-item">
         <div class="circle-shape">
         <img
-            src="./images/convenios/escudo-nacional.svg"
+            src="{% static 'images/convenios/escudo-nacional.svg' %}"
             alt="gremial-logo"
             height="90"
             width="90"
@@ -198,7 +217,7 @@
     <div class="convenants-item">
         <div class="circle-shape">
         <img
-            src="./images/convenios/formacion.svg"
+            src="{% static 'images/convenios/formacion.svg' %}"
             alt="gremial-logo"
             height="90"
             width="90"
@@ -209,7 +228,7 @@
     <div class="convenants-item">
         <div class="circle-shape">
         <img
-            src="./images/convenios/escudo-nacional.svg"
+            src="{% static 'images/convenios/escudo-nacional.svg' %}"
             alt="gremial-logo"
             height="90"
             width="90"
@@ -220,7 +239,7 @@
     <div class="convenants-item">
         <div class="circle-shape">
         <img
-            src="./images/convenios/smata.svg"
+            src="{% static 'images/convenios/smata.svg' %}"
             alt="gremial-logo"
             height="90"
             width="90"
@@ -231,7 +250,7 @@
     <div class="convenants-item">
         <div class="circle-shape">
         <img
-            src="./images/convenios/inet.svg"
+            src="{% static 'images/convenios/inet.svg' %}"
             alt="gremial-logo"
             height="90"
             width="90"
