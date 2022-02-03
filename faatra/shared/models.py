@@ -1,4 +1,4 @@
-from statistics import mode
+import datetime
 from django.db import models
 from django_quill.fields import QuillField
 from django.utils.text import slugify
@@ -14,7 +14,9 @@ class BaseTextModel(models.Model):
         upload_to="media/", verbose_name="Imagen", blank=True, null=True
     )
     created_date = models.DateTimeField(
-        verbose_name="Fecha de creación", auto_created=True
+        verbose_name="Fecha de creación",
+        auto_created=True,
+        default=datetime.datetime.now,
     )
     last_modification_date = models.DateTimeField(
         verbose_name="Fecha de la ultima modificación", auto_now_add=True

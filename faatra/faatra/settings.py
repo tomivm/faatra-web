@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "shared",
     "home",
     "service",
+    "saloon",
     "admin_ordering",
     "jazzmin",
     "django.contrib.admin",

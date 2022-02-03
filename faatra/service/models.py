@@ -1,4 +1,3 @@
-from pyexpat import model
 from django.db import models
 
 from shared.models import BaseTextModel

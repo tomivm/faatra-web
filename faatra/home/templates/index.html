@@ -129,6 +129,7 @@
     {% for service in services %}
     <a href="{% url 'service-detail' service.url %}" >
     <div class="blue-bg-item">
+        {% if service.image %}
         <img
         class="svg-to-primary-color"
         src="{{service.image.url}}"
@@ -136,6 +137,7 @@
         height="100"
         width="100"
         />
+        {% endif %}
         <div class="blue-bg-item-text-container">
         <h2>{{service.title}}</h2>
         <p>{{service.description}}</p>
