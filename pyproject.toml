@@ -12,6 +12,7 @@ django-admin-ordering = "^0.14.2"
 django-solo = "^2.0.0"
 django-quill-editor = "^0.1.37"
 Pillow = "^9.0.0"
+django-import-export = "^2.7.1"
 
 [tool.poetry.dev-dependencies]
 black = "^21.12b0"

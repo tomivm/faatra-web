@@ -1,0 +1,41 @@
+from django.db import models
+from training.models import InformativeOffer
+from saloon.models import Saloon
+
+from shared.models import BaseTextModel
+
+
+# Create your models here.
+
+
+class Video(models.Model):
+    title = models.CharField(verbose_name="Titulo", max_length=256)
+    video = models.CharField(verbose_name="video", max_length=256)
+    is_available = models.BooleanField(verbose_name="Habilitado", default=False)
+
+    class Meta:
+        verbose_name = "Video"
+        verbose_name_plural = "Videos"
+
+    def __str__(self):
+        return f"{self.title}"
+
+
+class New(BaseTextModel):
+    saloon = models.ForeignKey(
+        Saloon, verbose_name="Camara", on_delete=models.CASCADE, blank=True, null=True
+    )
+    course = models.ForeignKey(
+        InformativeOffer,
+        verbose_name="Curso",
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+    )
+
+    class Meta:
+        verbose_name = "Novedades"
+        verbose_name_plural = "Novedades"
+
+    def __str__(self):
+        return f"{self.title}"

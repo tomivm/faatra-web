@@ -1,27 +1,20 @@
 from django.contrib import admin
 
-from saloon.models import Saloon, Link, ImportantAgreement
+from .models import New, Video
 
 # Register your models here.
-@admin.register(Saloon)
-class SaloonAdmin(admin.ModelAdmin):
+
+
+@admin.register(New)
+class NewAdmin(admin.ModelAdmin):
     list_display = ("title", "created_date", "last_modification_date", "is_available")
     fields = (
         "title",
-        "complete_name",
         "content",
-        "icon",
         "image",
-        "address",
-        "maps",
-        "city",
-        "hours",
-        "phone",
-        "web",
-        "email",
-        "facebook",
+        "saloon",
+        "course",
         "is_available",
-        "reference",
         "created_date",
         "last_modification_date",
     )
@@ -31,11 +24,6 @@ class SaloonAdmin(admin.ModelAdmin):
     list_filter = ("is_available", "created_date")
 
 
-@admin.register(Link)
-class LinkAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(ImportantAgreement)
-class ImportantAgreementAdmin(admin.ModelAdmin):
+@admin.register(Video)
+class VideoAdmin(admin.ModelAdmin):
     pass

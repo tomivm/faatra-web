@@ -8,7 +8,9 @@ from django.utils.text import slugify
 
 class BaseTextModel(models.Model):
     title = models.CharField(verbose_name="Titulo", max_length=256)
-    description = models.CharField(verbose_name="resumen", max_length=256)
+    description = models.CharField(
+        verbose_name="resumen", max_length=256, blank=True, null=True
+    )
     content = QuillField()
     image = models.ImageField(
         upload_to="media/", verbose_name="Imagen", blank=True, null=True

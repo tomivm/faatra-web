@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     "home",
     "service",
     "saloon",
+    "training",
+    "news",
     "admin_ordering",
     "jazzmin",
     "django.contrib.admin",
