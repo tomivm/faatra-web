@@ -31,3 +31,28 @@ function openMenu() {
     // return (item.style.display = "none");
   });
 }
+
+function openInscriptForm() {
+  const isOpenClass = () => {
+    const open = () => {
+      body.classList.add("disable-scroll");
+      modalForm.classList.add("modal-form");
+      modalBackground.style.display = "grid";
+    };
+
+    const close = () => {
+      modalForm.classList.remove("modal-form");
+      modalBackground.style.display = "none";
+      body.classList.remove("disable-scroll");
+    };
+
+    const body = document.body;
+    const modalForm = document.getElementById("inscription-form");
+    const modalBackground = document.getElementById("inscription-form-bg");
+
+    if (modalForm.classList.contains("modal-form")) return close();
+    return open();
+  };
+
+  isOpenClass();
+}

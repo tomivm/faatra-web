@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="styles.css" />
     <script type="text/javascript" src="index.js"></script>
   </head>
-  <body class="disable-scroll">  <!-- disable scroll if modal is open -->
+  <body>  <!-- disable scroll if modal is open -->
     <div class="container">
       <!-- NAVBAR -->
       <div class="item navbar full-bleed">
@@ -118,14 +118,14 @@
                     </div>
                 </div>
                 <div class="primary-btn-container register-btn-container">
-                    <button class="primary-btn btn-lg btn-full-width">Inscribirme</button>
+                    <button onclick="openInscriptForm()" class="primary-btn btn-lg btn-full-width">Inscribirme</button>
                 </div>
             </div>
         </div>
       </div>    
-  
-        <div class="full-bleed modal-bg container">
-          <div class="modal-form">
+      
+        <div id="inscription-form-bg" class="full-bleed modal-bg container" onclick="openInscriptForm()">
+          <div id="inscription-form" class="modal-form" onclick="event.stopPropagation()">
             <h1>Formulario de inscripcion</h1>
             <div class="incription-form-container">
               <div class="form-item">
@@ -165,9 +165,11 @@
                 <input type="text" name="customer_name" id="customer_name" required>
               </div>
             </div>  
+            <div class="primary-btn-container">
+              <a href="" class="primary-btn btn-lg inscript-btn">Inscribirme</a>
+            </div>
           </div>
-        </div>
-      
+        </div>  
       <!-- /CAPACITACION FULL -->
       <div class="item footer full-background gray-bg">
         <div class="footer-container container">

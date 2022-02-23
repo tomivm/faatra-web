@@ -1140,7 +1140,7 @@ input:focus {
 .modal-form {
   margin: 15% auto; /* 15% from the top and centered */
   width: 100%; /* Could be more or less, depending on screen size */
-  height: auto;
+  height: fit-content;
   border-radius: 1em;
   color: var(--white-color);
   background-color: #3d3d3dec;
@@ -1157,7 +1157,12 @@ input:focus {
   margin: 0 20px 20px 20px;
 }
 
-@media (max-width: 595px) {
+.modal-form .inscript-btn {
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 820px) {
   .incription-form-container {
     grid-template-columns: 1fr;
     row-gap: calc(var(--column-gap) / 2);
