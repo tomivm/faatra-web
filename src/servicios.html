@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FAATRA</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- check width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,500;0,700;1,100&display=swap"
+      rel="stylesheet"
+    />
+    <!-- styles -->
+    <link rel="stylesheet" href="styles.css" />
+    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="services.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- NAVBAR -->
+      <div class="item navbar full-bleed">
+        <div id="nav-background" onclick="openMenu()" class="mobile-navbar-backdrop"></div>
+        <div id="navbar-container" tabindex="0" class="navbar-container-lg">
+          <div tabindex="0" onclick="openMenu()" class="navbar-menu-icon">
+            <img src="./images/Navbar/menu-logo.png" alt="" />
+          </div>
+          <div class="navbar-item">
+            <a href="./index.html" class="nav-button-area">Inicio </a>
+          </div>
+          <div class="navbar-item">
+            <a href="./quienes-somos.html" tabindex="0" class="nav-button-area" >¿Quienes somos?</a>
+          </div>
+          <div class="navbar-item">
+            <a href="./capacitacion.html" tabindex="0" class="nav-button-area">Capacitacion</a>
+          </div>
+          <div class="navbar-item">
+            <a href="./contacto.html" tabindex="0" class="nav-button-area">Servicios</a>
+          </div>
+          <div class="navbar-item">
+            <a href="./contacto.html" tabindex="0" class="nav-button-area">Cámaras</a>
+          </div>
+          <div class="navbar-item">
+            <a href="./contacto.html" tabindex="0" class="nav-button-area">Noticias</a>
+          </div>
+          <div class="navbar-item">
+            <a href="./contacto.html" tabindex="0" class="nav-button-area">Enlaces</a>
+          </div>
+        </div>
+      </div>
+      <!-- /NAVBAR -->
+      <!-- SERVICIOS -->
+      <div class="item services">
+        <div class="blue-bg-container"> 
+          <div class="blue-bg-title"><h1>Nuestros servicios</h1></div>
+
+          <!-- NEW CARROUSEL -->
+          <div>
+          <ul class="gallery divider-none selectable">
+            <li>
+              <button  tabindex="0" autofocus class="blue-bg-item" onclick="serviceClick(0)">
+                <img
+                    class="svg-to-primary-color"
+                    src="./images/nuestros-servicios/asesoria.svg"
+                    alt="gremial-logo"
+                    height="100"
+                    width="100"
+                />
+                <div class="blue-bg-item-text-container">
+                    <h2>Asesoría</h2>
+                    <p>La “consulta” es gratuita para todos los talleristas.</p>
+                </div>
+                <div class="services-arrow"></div>
+              </button>
+            </li>
+            <li>
+              <button class="blue-bg-item" onclick="serviceClick(1)">
+                  <img
+                      class="svg-to-primary-color"
+                      src="./images/nuestros-servicios/costo-hora.svg"
+                      alt="gremial-logo"
+                      height="100"
+                      width="100"
+                  />
+                  <div class="blue-bg-item-text-container">
+                      <h2>Costo hora</h2>
+                      <p>por la subcomisíon de carrocería y pintura.</p>
+                  </div>
+                  <div class="services-arrow"></div>
+                </button>
+            </li>
+            <li>
+              <button class="blue-bg-item" onclick="serviceClick(2)">
+                <img
+                    class="svg-to-primary-color"
+                    src="./images/nuestros-servicios/convenios.svg"
+                    alt="gremial-logo"
+                    height="100"
+                    width="100"
+                />
+                <div class="blue-bg-item-text-container">
+                    <h2>Convenios</h2>
+                    <p>Convenios colectivos alcanzados.</p>
+                </div>
+                <div class="services-arrow"></div>
+              </button>
+            </li>
+            <li>
+              <button class="blue-bg-item" onclick="serviceClick(3)">
+                <img
+                    class="svg-to-primary-color"
+                    src="./images/nuestros-servicios/escalas.svg"
+                    alt="gremial-logo"
+                    height="100"
+                    width="100"
+                />
+                <div class="blue-bg-item-text-container">
+                    <h2>Escalas</h2>
+                    <p>Nueva escala salarial SMATA - FAATRA</p>
+                </div>
+                <div class="services-arrow"></div>
+              </button>
+            </li>
+            <li>
+              <button class="blue-bg-item" onclick="serviceClick(3)">
+                <img
+                    class="svg-to-primary-color"
+                    src="./images/nuestros-servicios/escalas.svg"
+                    alt="gremial-logo"
+                    height="100"
+                    width="100"
+                />
+                <div class="blue-bg-item-text-container">
+                    <h2>Escalas</h2>
+                    <p>Nueva escala salarial SMATA - FAATRA</p>
+                </div>
+                <div class="services-arrow"></div>
+              </button>
+            </li>
+            <li>
+              <button  tabindex="0" autofocus class="blue-bg-item" onclick="serviceClick(0)">
+                <img
+                    class="svg-to-primary-color"
+                    src="./images/nuestros-servicios/asesoria.svg"
+                    alt="gremial-logo"
+                    height="100"
+                    width="100"
+                />
+                <div class="blue-bg-item-text-container">
+                    <h2>Asesoría</h2>
+                    <p>La “consulta” es gratuita para todos los talleristas.</p>
+                </div>
+                <div class="services-arrow"></div>
+              </button>
+            </li>
+          </ul>
+          </div>
+            <div id="service-full" class="service-description-container blue-bg">
+                <h2 id="service-tittle">Asesoría</h2>
+                <p id="service-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus amet labore illum repellendus nemo et, soluta doloremque repudiandae, veniam omnis maiores quo deserunt magni odit tenetur facere, iste harum officia administracion@faatra.org.ar<br/>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <div id="service-manangers" class="service-manangers-container">
+                    <!-- <div class="service-mananger">
+                        <img src="./images/mananger-pic.jpeg" class="mananger-pic"></img>
+                        <p id="mananger-position">Asesor Paritaria</p>
+                        <p id="mananger-name">DR. MARTÍN BRUNENGO</p>
+                    </div>
+                    <div class="service-mananger">
+                        <img src="./images/mananger-pic.jpeg" class="mananger-pic"></img>
+                        <p id="mananger-position">Asesor contable</p>
+                        <p id="mananger-name">BENGOECHEA BRACCO Y
+                          ASOCIADOS</p>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+      </div>
+      
+      <!-- /SERVICIOS -->
+      <!-- FOOTER -->
+      <div class="item footer full-background gray-bg">
+        <div class="footer-container container">
+          <div class="footer-items-container">
+            <div class="footer-item">
+              <img
+                src="./images/footer/horario.svg"
+                alt="gremial-logo"
+                height="50"
+                width="50"
+              />
+              <p>La Paz 1864 </br>Rosario, Santa Fe</p>
+            </div>
+            <div class="footer-item">
+              <img
+                src="./images/footer/telefono.svg"
+                alt="gremial-logo"
+                height="50"
+                width="50"
+              />
+              <p>54 341 481 0047 / </br>482-3603</p>
+            </div>
+            <div class="footer-item">
+              <img
+                src="./images/footer/mail.svg"
+                alt="gremial-logo"
+                height="50"
+                width="50"
+              />
+              <p>
+                consultas@faatra.org.ar </br
+                >www.faatra.org.a
+              </p>
+            </div>
+            <div class="footer-item">
+              <img
+                src="./images/footer/horario.svg"
+                alt="gremial-logo"
+                height="50"
+                width="50"
+              />
+              <p>
+                De Lunes a Viernes </br>de 08:00 - 17:00 hs
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item media-footer">
+        <div class="media-footer-container">
+          <div class="media-footer-items-container">
+          <div class="media-footer-item">
+            <img
+              class="svg-to-primary-color"
+              src="./images/footer/linkedin.svg"
+              alt="gremial-logo"
+              height="60"
+              width="60"
+            />
+          </div>
+          <div class="media-footer-item">
+            <img
+              class="svg-to-primary-color"
+              src="./images/footer/youtube.svg"
+              alt="gremial-logo"
+              height="60"
+              width="60"
+            />
+          </div>
+          <div class="media-footer-item">
+            <img
+              class="svg-to-primary-color"
+              src="./images/footer/instagram.svg"
+              alt="gremial-logo"
+              height="60"
+              width="60"
+            />
+          </div>
+          <div class="media-footer-item">
+            <img
+              class="svg-to-primary-color"
+              src="./images/footer/twitter.svg"
+              alt="gremial-logo"
+              height="60"
+              width="60"
+            />
+          </div>
+          <div class="media-footer-item">
+            <img
+              class="svg-to-primary-color"
+              src="./images/footer/facebook.svg"
+              alt="gremial-logo"
+              height="60"
+              width="60"
+            />
+          </div>
+          <div class="media-footer-item">
+            <img
+              class="svg-to-primary-color"
+              src="./images/footer/wpp.svg"
+              alt="gremial-logo"
+              height="60"
+              width="60"
+            />
+          </div>
+        
+        
+        
+          </div>
+          <div class="media-footer-text">
+            <p>Federación Argentina de Asociación de Talleres de Reparación de Automotores y Afines</br>
+              © 2020. Todos los derechos reservados. Desarrollo:</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
