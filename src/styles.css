@@ -192,6 +192,11 @@ input:focus {
   font-weight: 300;
 }
 
+.full-text-container span {
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
 @media (max-width: 890px) {
   .full-container {
     display: grid;
@@ -1316,4 +1321,165 @@ input:focus {
   border-radius: 3px;
   height: max-content;
   max-width: max-content;
+}
+
+/* CAMARAS */
+
+.chambers {
+  flex-direction: column;
+}
+
+.chambers-list {
+  padding-top: 0;
+}
+
+.chambers-list ul {
+  list-style: none;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+}
+
+.chambers-list li {
+  margin: 2.3em 1em 1em 1em;
+}
+
+.chambers-list img {
+  object-fit: contain;
+}
+
+/* camaras tooltip  https://www.w3schools.com/css/css_tooltip.asp */
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  font-size: 1.3em;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  bottom: 105%;
+  left: 50%;
+  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--primary-color) transparent transparent transparent;
+}
+
+/* Camaras full */
+
+.chamber-full-container {
+  /* --training-text-width: calc(var(--text-whidth) - 30ch);
+  --training-side-width: calc(var(--side-img-widht) + 30ch); */
+  display: grid;
+  grid-template-columns:
+    [full-description]
+    calc(var(--text-whidth) - 15ch)
+    [full-description-end full-side]
+    minmax(var(--side-img-widht), max-content)
+    [training-full-side-end];
+  column-gap: var(--column-gap);
+}
+
+@media (max-width: 890px) {
+  .chamber-full-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .associate-btn {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.chamber-full-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-items: center;
+  align-items: center;
+}
+
+.chamber-full-img {
+  object-fit: contain;
+  max-width: 100%;
+  height: auto;
+  padding: 1em 0 1em;
+}
+
+.chambers-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.chambers-links a {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+  height: max-content;
+  background-color: var(--primary-color);
+  border-radius: 2em;
+  transition: transform 0.5s;
+}
+
+.chambers-links a:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.1);
+}
+
+.chambers-links img {
+  margin: 1.5em;
+}
+
+.chambers-links h2 {
+  color: var(--white-color);
+  margin-top: 0;
+}
+
+.to-chambers-btn {
+  align-self: flex-end;
+  align-content: center;
+  font-size: smaller;
+}
+
+.to-chambers-btn a {
+  margin-bottom: 0;
+}
+
+@media (max-width: 890px) {
+  .to-chambers-btn {
+    display: none;
+  }
 }

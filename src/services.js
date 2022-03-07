@@ -61,6 +61,7 @@ const servicesArrayMock = [
 window.onload = init;
 
 const renderServiceContent = (id = 0) => {
+  if (!document.getElementById("service-full")) return;
   const tittle = document.getElementById("service-tittle");
   const description = document.getElementById("service-description");
   const manangersContainer = document.getElementById("service-manangers");
@@ -124,26 +125,27 @@ const slider = document.querySelector(".gallery");
 let isDown = false;
 let startX;
 let scrollLeft;
-
-slider.addEventListener("mousedown", (e) => {
-  isDown = true;
-  slider.classList.add("active");
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
-});
-slider.addEventListener("mouseleave", (_) => {
-  isDown = false;
-  slider.classList.remove("active");
-});
-slider.addEventListener("mouseup", (_) => {
-  isDown = false;
-  slider.classList.remove("active");
-});
-slider.addEventListener("mousemove", (e) => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - slider.offsetLeft;
-  const SCROLL_SPEED = 3;
-  const walk = (x - startX) * SCROLL_SPEED;
-  slider.scrollLeft = scrollLeft - walk;
-});
+if (slider) {
+  slider.addEventListener("mousedown", (e) => {
+    isDown = true;
+    slider.classList.add("active");
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+  slider.addEventListener("mouseleave", (_) => {
+    isDown = false;
+    slider.classList.remove("active");
+  });
+  slider.addEventListener("mouseup", (_) => {
+    isDown = false;
+    slider.classList.remove("active");
+  });
+  slider.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const SCROLL_SPEED = 3;
+    const walk = (x - startX) * SCROLL_SPEED;
+    slider.scrollLeft = scrollLeft - walk;
+  });
+}
