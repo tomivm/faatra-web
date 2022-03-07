@@ -1483,3 +1483,39 @@ input:focus {
     display: none;
   }
 }
+
+/* Noticias */
+.news-items-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 1em;
+}
+
+.new-item {
+  background-color: var(--secondary-color);
+  display: flex;
+  align-content: center;
+  border-radius: 2em;
+  margin: 1em 0 1em;
+}
+
+.new-item img {
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  height: 12em;
+  padding: 1em;
+}
+
+.new-text-container {
+  color: var(--white-color);
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.new-text-container p {
+  margin-bottom: 0;
+}
