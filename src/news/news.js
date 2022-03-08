@@ -3,8 +3,8 @@ const mockNewItem = {
   title: "REUNIÓN FORMATIVA - 10 oct. 2021",
   description:
     "Los boletines de prensa ofrecen una forma increíble de informar a los clientes sobre nuestros nuevos productos y servicios, eventos, premios y mucho más.",
-  imageSrc: "./images/quienes-somos/quienes-somos-full-side.png",
-  url: "./capacitacion-full.html",
+  imageSrc: "./../images/quienes-somos/quienes-somos-full-side.png",
+  url: "./../trainings/capacitacion-full.html",
 };
 
 const mockNewsList = Array(15)

@@ -1505,7 +1505,8 @@ input:focus {
   border-radius: 50%;
   object-fit: cover;
   height: 12em;
-  padding: 1em;
+  margin: 1em;
+  border: 0.4em solid var(--white-color);
 }
 
 .new-text-container {

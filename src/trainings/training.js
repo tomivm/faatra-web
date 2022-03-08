@@ -7,7 +7,7 @@ const mockTrainingItem = {
   title: "Capacitación de inyección directa de gasolina",
   description:
     "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt hic atque dicta illo natus dolore cupiditate exercitationem dolorum recusandae, unde voluptatum sequi animi expedita voluptas porro omnis repellendus. Ab suscipit doloribus porro libero assumenda deleniti tenetur quisquam asperiores, dignissimos quibusdam?",
-  backgroundImageURL: "./images/capacitacion/calculadora-y-hojas.jpg",
+  backgroundImageURL: "./../images/capacitacion/calculadora-y-hojas.jpg",
 };
 
 const mockTrainingItemDifferent = {
@@ -19,7 +19,7 @@ const mockTrainingItemDifferent = {
   title: "Capacitación de restauracion",
   description:
     "tus dolore cupiditate exercitationem dolorum ecusandae, unde voluptatum sequi animi expedita voluptas porro omnis repellendus. Ab suscipit doloribus porro libero assumenda deleniti tenetur quisquam asperiores, dignissimos quibusdam?",
-  backgroundImageURL: "./images/capacitacion/calculadora-y-hojas.jpg",
+  backgroundImageURL: "./../images/capacitacion/calculadora-y-hojas.jpg",
 };
 
 const mockTrainingList = Array(27)

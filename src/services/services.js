@@ -8,12 +8,12 @@ const servicesArrayMock = [
       {
         cargo: "Asesor Paritaria",
         nombre: "DR. MARTÍN BRUNENGO",
-        fotoSrc: "./images/mananger-pic.jpeg",
+        fotoSrc: "./../images/mananger-pic.jpeg",
       },
       {
         cargo: "Asesor contable",
         nombre: "BENGOECHEA BRACCO Y ASOCIADOS",
-        fotoSrc: "./images/mananger-pic.jpeg",
+        fotoSrc: "./../images/mananger-pic.jpeg",
       },
     ],
   },
@@ -26,7 +26,7 @@ const servicesArrayMock = [
       {
         cargo: "Asesor Paritaria",
         nombre: "DR. MARTÍN BRUNENGO",
-        fotoSrc: "./images/mananger-pic.jpeg",
+        fotoSrc: "./../images/mananger-pic.jpeg",
       },
     ],
   },
@@ -39,7 +39,7 @@ const servicesArrayMock = [
       {
         cargo: "Asesor Paritaria",
         nombre: "DR. MARTÍN BRUNENGO",
-        fotoSrc: "./images/mananger-pic.jpeg",
+        fotoSrc: "./../images/mananger-pic.jpeg",
       },
     ],
   },
@@ -52,7 +52,7 @@ const servicesArrayMock = [
       {
         cargo: "Asesor Paritaria",
         nombre: "DR. MARTÍN BRUNENGO",
-        fotoSrc: "./images/mananger-pic.jpeg",
+        fotoSrc: "./../images/mananger-pic.jpeg",
       },
     ],
   },
