@@ -15,6 +15,7 @@
   <!-- styles -->
   <link rel="stylesheet" href="styles.css" />
   <script type="text/javascript" src="index.js"></script>
+  <script type="text/javascript" src="carrousel.js"></script>
 </head>
 
 <body>
@@ -51,17 +52,48 @@
     </div>
     <!-- /NAVBAR -->
     <!-- HEADER -->
-    <div class="item header full-bleed">
-      <div class="header-container">
-        <div class="header-logo-container">
-          <img src="./images/Logo FAATRA color.png" alt="" height="2008" width="1417">
+    <div class="header full-bleed">
+      <div class="slideshow-container fade">
+        <!-- Full images with numbers and message Info -->
+        <div class="Containers">
+          <img src="images/tallerHeader.jpg" style="width:100%">
+          <div class="Info header-container">
+            <div class="header-logo-container">
+              <img src="./images/Logo FAATRA color.png" alt="" height="2008" width="1417">
+            </div>
+            <div class="header-text-container">
+              <h1>F.A.A.T.R.A</h1>
+              <h2>Federación Argentina de Asociación de</br>
+                Talleres de Reparación de Automotores y Afines</h2>
+            </div>
+          </div>
         </div>
-        <div class="header-text-container">
-          <h1>F.A.A.T.R.A</h1>
-          <h2>Federación Argentina de Asociación de</br>
-            Talleres de Reparación de Automotores y Afines</h2>
+
+        <div class="Containers">
+          <div class="MessageInfo">2 / 3</div>
+          <img src="images/header2.jpg" style="width:100%">
+          <div class="Info">Second Caption</div>
         </div>
+
+        <div class="Containers">
+          <div class="MessageInfo">3 / 3</div>
+          <img src="images/header3.jpg" style="width:100%">
+          <div class="Info">Third Caption</div>
+        </div>
+
+        <!-- Back and forward buttons -->
+        <a class="Back" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="forward" onclick="plusSlides(1)">&#10095;</a>
       </div>
+      <br>
+
+      <!-- The circles/dots -->
+      <div style="text-align:center">
+        <span class="dots" onclick="currentSlide(1)"></span>
+        <span class="dots" onclick="currentSlide(2)"></span>
+        <span class="dots" onclick="currentSlide(3)"></span>
+      </div>
+
     </div>
     <!-- Quienes somos -->
     <div class="item about-us">
