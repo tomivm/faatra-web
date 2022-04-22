@@ -602,6 +602,14 @@ input:focus {
   min-height: 15vh;
 }
 
+.blue-bg-item.primary-btn {
+  background-color: var(--secondary-color);
+}
+
+.blue-bg-item.primary-btn:hover {
+  background-color: rgba(128, 128, 128, 0.788);
+}
+
 @media (max-width: 495px) {
   .home-services .blue-bg-items-container {
     flex-direction: column;
@@ -675,6 +683,17 @@ input:focus {
   padding-left: 2em;
   padding-right: 2em;
   font-weight: 400;
+}
+.snit .btn-lg {
+  margin-top: 0;
+  border-radius: 5px;
+  background-color: var(--white-color);
+  color: var(--secondary-color);
+}
+
+.snit .btn-lg:hover {
+  background-color: var(--secondary-color);
+  color: var(--white-color);
 }
 
 /* services */
