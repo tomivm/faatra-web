@@ -59,8 +59,8 @@
         </div>
 
         <!-- NEW CARROUSEL -->
-        <div>
-          <ul class="gallery divider-none selectable">
+        <div id="gallery-container">
+          <ul id="gallery" class="gallery divider-none selectable">
             <li>
               <button tabindex="0" autofocus class="blue-bg-item" onclick="serviceClick(0)">
                 <img class="svg-to-primary-color" src="./../images/nuestros-servicios/asesoria.svg" alt="gremial-logo"
@@ -128,6 +128,10 @@
               </button>
             </li>
           </ul>
+
+          <button id="slideLeft" class="disabled noselect" type="button">&#10094;</button>
+          <button id="slideRight" class="noselect" type="button">&#10095;</button>
+
         </div>
         <div id="service-full" class="service-description-container blue-bg">
           <h2 id="service-tittle">Asesoría</h2>

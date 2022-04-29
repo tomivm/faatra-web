@@ -80,7 +80,6 @@ const renderServiceContent = (id = 0) => {
 
   manangersContainer.innerHTML = "";
   servicesArrayMock[id].encargados.map((encargado) => {
-    console.log("map");
     const manangerItem = document.createElement("div");
     manangerItem.classList.add("service-mananger");
 
@@ -112,11 +111,12 @@ const renderServiceContent = (id = 0) => {
 
 function serviceClick(id) {
   renderServiceContent(id);
-  element.scrollIntoView();
+  // element.scrollIntoView();
   // scrollToContent();
 }
 
 function init() {
+  prepareArrowsForScroll();
   renderServiceContent(0);
 }
 
@@ -149,3 +149,48 @@ if (slider) {
     slider.scrollLeft = scrollLeft - walk;
   });
 }
+
+prepareArrowsForScroll = () => {
+  const buttonRight = document.getElementById("slideRight");
+  const buttonLeft = document.getElementById("slideLeft");
+  const galleryContainer = document.getElementById("gallery");
+  const galleryItemDefault = document.getElementsByClassName("blue-bg-item")[0];
+
+  const galleryItemDefaultPadding = window
+    .getComputedStyle(galleryItemDefault, null)
+    .getPropertyValue("padding");
+
+  const galleryItemDefaultWidth =
+    galleryItemDefault.clientWidth + parseInt(galleryItemDefaultPadding, 10);
+  console.log("galleryItemDefaultWidth", galleryItemDefaultPadding);
+
+  const isScrolleable =
+    galleryContainer.scrollWidth - galleryContainer.clientWidth <= 0
+      ? false
+      : true;
+
+  if (!isScrolleable) {
+    buttonRight.classList.add("disabled");
+    buttonLeft.classList.add("disabled");
+  }
+
+  buttonRight.onclick = function () {
+    const scrollLeft = (galleryContainer.scrollLeft += galleryItemDefaultWidth);
+    buttonLeft.classList.remove("disabled");
+
+    const scrollRight =
+      galleryContainer.scrollWidth - galleryContainer.clientWidth;
+    if (scrollLeft >= scrollRight) {
+      buttonRight.classList.add("disabled");
+    }
+  };
+
+  buttonLeft.onclick = function () {
+    const scrollRemaining = (galleryContainer.scrollLeft -=
+      galleryItemDefaultWidth);
+    buttonRight.classList.remove("disabled");
+    if (scrollRemaining <= 0) {
+      buttonLeft.classList.add("disabled");
+    }
+  };
+};
