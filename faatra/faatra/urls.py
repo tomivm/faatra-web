@@ -29,6 +29,7 @@ urlpatterns = (
         path("servicios", include("service.urls")),
         path("enlace", include("links.urls")),
         path("noticia", include("news.urls")),
+        path("camaras", include("saloon.urls")),
     ]
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

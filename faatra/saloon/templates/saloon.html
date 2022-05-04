@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<div class="item chambers">
+  <div>
+    <h1>Camaras FAATRA:</h1>
+  </div>
+  <div class="chambers-list">
+    <ul id="chambers-items-container">
+      {% for s in saloon %}
+      <li class="chambers-list-item tooltip">
+        <a href="./camara-full.html"
+          ><img
+            src="{{s.icon.url}}"
+            alt="{{s.title}}"
+            width="150"
+            height="150"
+          /><span class="tooltiptext">{{s.title}}</span></a
+        >
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% endblock content %}
