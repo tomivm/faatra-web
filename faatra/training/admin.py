@@ -5,6 +5,8 @@ from django.contrib import admin
 
 from .models import DateRealization, InformativeOffer, Topic, OfferCategory
 
+from import_export.admin import ExportActionMixin
+
 
 @admin.register(OfferCategory)
 class OfferCategoryAdmin(admin.ModelAdmin):
@@ -22,7 +24,7 @@ class DateRealizationInline(admin.TabularInline):
 
 # Register your models here.
 @admin.register(InformativeOffer)
-class InformativeOfferAdmin(admin.ModelAdmin):
+class InformativeOfferAdmin(ExportActionMixin, admin.ModelAdmin):
     list_display = ("title", "created_date", "last_modification_date", "is_available")
     inlines = [DateRealizationInline]
     fields = (

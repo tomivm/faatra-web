@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<div class="item training-list">
+  <div>
+    <h1>Noticias</h1>
+    <div id="news-items-container" class="news-items-container">
+
+    {% for new in news%}
+      <a class="new-item" href="./../trainings/capacitacion-full.html"
+        ><img src={{new.image.url}} />
+        <div class="new-text-container">
+          <h1>{{new.title}}</h1>
+          <p>
+            {{new.content.html | safe}}
+          </p>
+        </div></a
+        {% endfor %}
+      >
+    </div>
+    <div id="pages-nav-id" class="pages-nav"></div>
+  </div>
+</div>
+
+{% endblock content %}

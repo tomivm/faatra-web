@@ -2,9 +2,11 @@ from django.contrib import admin
 
 from saloon.models import Saloon, Link, ImportantAgreement
 
+from import_export.admin import ExportActionMixin
+
 # Register your models here.
 @admin.register(Saloon)
-class SaloonAdmin(admin.ModelAdmin):
+class SaloonAdmin(ExportActionMixin, admin.ModelAdmin):
     list_display = ("title", "created_date", "last_modification_date", "is_available")
     fields = (
         "title",
@@ -29,11 +31,6 @@ class SaloonAdmin(admin.ModelAdmin):
     list_editable = ("is_available",)
     search_fields = ("title",)
     list_filter = ("is_available", "created_date")
-
-
-@admin.register(Link)
-class LinkAdmin(admin.ModelAdmin):
-    pass
 
 
 @admin.register(ImportantAgreement)

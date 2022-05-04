@@ -1,21 +1,50 @@
 {% extends 'base.html' %} {% block content %}
 {% load static %}
 
+<div class="header full-bleed">
+    <div class="slideshow-container fade">
+    <!-- Full images with numbers and message Info -->
+    <div class="Containers">
+        <img src= "{% static 'images/tallerHeader.jpg' %}"  style="width:100%">
+        <div class="Info header-container">
+        <div class="header-logo-container">
+            <img src="{% static 'images/Logo FAATRA color.png' %}" alt="" height="2008" width="1417">
+        </div>
+        <div class="header-text-container">
+            <h1>F.A.A.T.R.A</h1>
+            <h2>Federación Argentina de Asociación de</br>
+            Talleres de Reparación de Automotores y Afines</h2>
+        </div>
+        </div>
+    </div>
 
-<!-- HEADER -->
-<div class="item header full-bleed">
-<div class="header-container">
-    <div class="header-logo-container">
-    <img src="{% static 'images//Logo FAATRA color.png' %}" alt="" height="2008"
-    width="1417" >
+    <div class="Containers">
+        <div class="MessageInfo">2 / 3</div>
+        <img src= "{% static 'images/header2.jpg' %}" style="width:100%">
+        <div class="Info">Second Caption</div>
     </div>
-    <div class="header-text-container">
-    <h1>F.A.A.T.R.A</h1>
-    <h2>Federación Argentina de Asociación de</br>
-        Talleres de Reparación de Automotores y Afines</h2>
+
+    <div class="Containers">
+        <div class="MessageInfo">3 / 3</div>
+        <img src="{% static 'images/header3.jpg' %}"  style="width:100%">
+        <div class="Info">Third Caption</div>
     </div>
+
+    <!-- Back and forward buttons -->
+    <a class="Back" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="forward" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+
+    <!-- The circles/dots -->
+    <div style="text-align:center">
+    <span class="dots" onclick="currentSlide(1)"></span>
+    <span class="dots" onclick="currentSlide(2)"></span>
+    <span class="dots" onclick="currentSlide(3)"></span>
+    </div>
+
 </div>
-</div>
+
 <!-- Quienes somos -->
 <div class="item about-us">
 <div class="about-us-container">
@@ -121,86 +150,37 @@
 </div>
 </div>
 <!-- Nuestros servicios -->
-<div class="item services full-background">
-<div class="blue-bg-container container">
 
-    <div class="blue-bg-title"><h1>Nuestros servicios</h1></div>
-    <div class="blue-bg-items-container padding-top-btn divider-none">
-    {% for service in services %}
-    <a href="{% url 'service-detail' service.url %}" >
-    <div class="blue-bg-item">
-        {% if service.image %}
-        <img
-        class="svg-to-primary-color"
-        src="{{service.icon.url}}"
-        alt="gremial-logo"
-        height="100"
-        width="100"
-        />
-        {% endif %}
-        <div class="blue-bg-item-text-container">
-        <h2>{{service.title}}</h2>
-        <p>{{service.description}}</p>
+    <div class="item services blue-bg full-background home-services">
+      <div class="blue-bg-container container">
+        <div class="blue-bg-title">
+          <h1>Nuestros servicios</h1>
         </div>
-    </div>
-    </a>
-    {% endfor %}
-
-    <div class="blue-bg-item">
-        <img
-        class="svg-to-primary-color"
-        src="{% static 'images/nuestros-servicios/asesoria.svg' %}"
-        alt="gremial-logo"
-        height="100"
-        width="100"
-        />
-        <div class="blue-bg-item-text-container">
-        <h2>Asesoría</h2>
-        <p>La “consulta” es gratuita para todos los talleristas.</p>
+        <div class="blue-bg-items-container padding-top-btn divider-none">
+         {% for service in services %}
+        <a href="{% url 'service-detail' service.url %}" >
+        <div class="blue-bg-item">
+            {% if service.image %}
+            <img
+            class="svg-to-primary-color"
+            src="{{service.icon.url}}"
+            alt="gremial-logo"
+            height="100"
+            width="100"
+            />
+            {% endif %}
+            <div class="blue-bg-item-text-container">
+            <h2>{{service.title}}</h2>
+            <p>{{service.description}}</p>
+            </div>
         </div>
-    </div>
-    <div class="blue-bg-item">
-        <img
-        class="svg-to-primary-color"
-        src="{% static 'images/nuestros-servicios/costo-hora.svg' %}"
-        alt="gremial-logo"
-        height="100"
-        width="100"
-        />
-        <div class="blue-bg-item-text-container">
-        <h2>Costo hora</h2>
-        <p>por la subcomisíon de carrocería y pintura.</p>
+        </a>
+        {% endfor %}
+        
         </div>
+        <a href="./services/servicios.html" class="primary-btn btn-lg more-services-btn">Ver mas</a>
+      </div>
     </div>
-    <div class="blue-bg-item">
-        <img
-        class="svg-to-primary-color"
-        src="{% static 'images/nuestros-servicios/convenios.svg' %}"
-        alt="gremial-logo"
-        height="100"
-        width="100"
-        />
-        <div class="blue-bg-item-text-container">
-        <h2>Convenios</h2>
-        <p>Convenios colectivos alcanzados.</p>
-        </div>
-    </div>
-    <div class="blue-bg-item">
-        <img
-        class="svg-to-primary-color"
-        src="{% static 'images/nuestros-servicios/escalas.svg' %}"
-        alt="gremial-logo"
-        height="100"
-        width="100"
-        />
-        <div class="blue-bg-item-text-container">
-        <h2>Escalas</h2>
-        <p>Nueva escala salarial SMATA - FAATRA</p>
-        </div>
-    </div>
-    </div>
-</div>
-</div>
 <div class="item covenants">
 <div>
     <h1>Convenios</h1>

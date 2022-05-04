@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<div class="item chambers">
+  <div>
+    <h1>Servicios:</h1>
+  </div>
+  <div class="chambers-list">
+    <ul id="links-items-container">
+      {% for link in links%}
+      <li class="chambers-list-item tooltip">
+        <a target="_blank" href="{{link.url}}"
+          ><img
+            src="{{link.icon.url}}"
+            alt="{{link.name}}"
+            width="150"
+            height="150"
+          /><span class="tooltiptext">{{link.name}}</span></a
+        >
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock content %}

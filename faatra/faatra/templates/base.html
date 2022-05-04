@@ -17,6 +17,7 @@
     <!-- styles -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}"  />
     <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/carrousel.js' %}"></script>
   </head>
   <body>
     <div class="container">
@@ -25,7 +26,7 @@
         <div id="nav-background" onclick="openMenu()" class="navbar-bg"></div>
         <div id="navbar-container" tabindex="0" class="navbar-container-lg">
           <div tabindex="0" onclick="openMenu()" class="navbar-menu-icon">
-            <img src= "{% static 'images/Navbar/menu-logo.png' %}" alt="" />
+            <img src="{% static 'images/Navbar/menu-logo.png' %}" alt="" />
           </div>
           <div class="navbar-item">
             <a href="/" class="nav-button-area">Inicio </a>
@@ -43,10 +44,10 @@
             <a href="./contacto.html" tabindex="0" class="nav-button-area">Cámaras</a>
           </div>
           <div class="navbar-item">
-            <a href="./contacto.html" tabindex="0" class="nav-button-area">Noticias</a>
+            <a href="noticia" tabindex="0" class="nav-button-area">Noticias</a>
           </div>
           <div class="navbar-item">
-            <a href="./contacto.html" tabindex="0" class="nav-button-area">Enlaces</a>
+            <a href="enlace" tabindex="0" class="nav-button-area">Enlaces</a>
           </div>
         </div>
       </div>

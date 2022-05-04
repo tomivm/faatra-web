@@ -3,7 +3,7 @@
   --sm: 495px;
   --md: 980px;
   /* color */
-  --primary-color: #ff7300;
+  --primary-color: #007bff;
   --secondary-color: #002b37;
   --gray-color: #4d4d4d;
   --white-color: #ffffff;
@@ -161,7 +161,7 @@ input:focus {
 }
 
 .scale-hover:hover {
-  background: linear-gradient(var(--primary-color), #dd67069c);
+  background: linear-gradient(var(--primary-color), #007bff);
   transform: scale(1.15);
 }
 
@@ -965,7 +965,7 @@ input:focus {
 }
 
 .training-form-item:hover {
-  background: linear-gradient(var(--primary-color), #853d02c7);
+  background: linear-gradient(var(--primary-color), #007bff);
 }
 
 .training-form-item > * {

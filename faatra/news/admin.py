@@ -1,12 +1,13 @@
 from django.contrib import admin
 
+from import_export.admin import ExportActionMixin
 from .models import New, Video
 
 # Register your models here.
 
 
 @admin.register(New)
-class NewAdmin(admin.ModelAdmin):
+class NewAdmin(ExportActionMixin, admin.ModelAdmin):
     list_display = ("title", "created_date", "last_modification_date", "is_available")
     fields = (
         "title",
