@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {% block content %} {% load static %} 
+
+<div class="item training-full">
+      <div class="chamber-full-container">
+        <div class="full-text-container">
+          <img src="{{saloon.icon.url}}" alt="" height="130" width="130" style="object-fit: contain;">
+          <h1>{{saloon.title}}</h1>
+          <div>
+          {{saloon.content.html|safe}}
+          </div>
+          <p>
+            <span>Dirección:</span> {{saloon.address |default_if_none:"--"  }}</br>
+            <span>CIUDAD:</span> {{saloon.city|default_if_none:"--"  }}</br>
+            <span>HORARIO:</span> {{saloon.hours|default_if_none:"--"  }}</br>
+            <span>TELÉFONO:</span> {{saloon.phone|default_if_none:"--"  }}</br>
+            <span>E:-MAIL</span>{{saloon.email|default_if_none:"--"  }}</br>
+            <span>WEB:</span> {{saloon.web|default_if_none:"--"  }}</br>
+            <span>FACEBOOK:</span>{{saloon.facebook|default_if_none:"--"  }}</br>
+            <span>Google Maps:</span>{{saloon.maps|default_if_none:"--"  }}</br>
+          </p>
+          <div class="associate-btn">
+            <button onclick="openInscriptForm()" class="primary-btn btn-lg ">Asociate</button>
+          </div>
+        </div>
+        <div class="chamber-full-side">
+          <div class="to-chambers-btn">
+            <a href="/camaras" class="primary-btn btn-lg ">Volver a cámaras</a>
+          </div>
+          <img src="{{saloon.image.url}}" width="470" height="470" class="chamber-full-img"></img>
+          <div class="chambers-links">
+            <a href="/noticia"><img src="{% static 'images/corneta.svg' %}" alt="" width="100" height="100">
+              <h2>Novedades</h2>
+            </a>
+            <a href="/cursos"><img src="{% static 'images/corneta.svg' %}" alt="" width="100" height="100">
+              <h2>Cursos</h2>
+            </a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+   
+
+
+{% endblock content %}

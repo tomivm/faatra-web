@@ -8,7 +8,7 @@
     <ul id="chambers-items-container">
       {% for s in saloon %}
       <li class="chambers-list-item tooltip">
-        <a href="./camara-full.html"
+        <a href="{% url 'saloon-detail' s.url %}"
           ><img
             src="{{s.icon.url}}"
             alt="{{s.title}}"

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.views.generic.detail import DetailView
 
 from django.shortcuts import render
 
@@ -11,3 +11,19 @@ def saloon_home(request):
     saloon = Saloon.objects.all()
     context["saloon"] = saloon
     return render(request, "saloon.html", context)
+
+
+class SaloonDetailView(DetailView):
+    """Detail service."""
+
+    template_name = "saloon-detail.html"
+    model = Saloon
+    context_object_name = "saloon"
+    slug_field = "url"
+    slug_url_kwarg = "url"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        extra_context = get_context()
+        context.update(extra_context)
+        return context
