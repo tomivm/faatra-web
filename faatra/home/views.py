@@ -16,3 +16,10 @@ def index(request):
     services = Service.objects.all()
     context["services"] = services
     return render(request, "index.html", context)
+
+
+def who_we_are(request):
+    context = get_context()
+    services = Service.objects.all()
+    context["services"] = services
+    return render(request, "who_we_are.html", context)
