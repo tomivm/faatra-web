@@ -147,6 +147,9 @@
     FAATRA, destinados al servicio de la comunidad de talleristas sobre
     los cuales se ofrecen servicios interactivos de valor añadido.
     </h2>
+    <div class="primary-btn-container read-more-btn-container">
+        <a href="/quienes-somos" class="primary-btn btn-lg">Ingresar</a>
+    </div>
 </div>
 </div>
 <!-- Nuestros servicios -->
@@ -157,7 +160,7 @@
           <h1>Nuestros servicios</h1>
         </div>
         <div class="blue-bg-items-container padding-top-btn divider-none">
-         {% for service in services %}
+        {% for service in services %}
         <a href="{% url 'service-detail' service.url %}" >
         <div class="blue-bg-item">
             {% if service.image %}
@@ -178,7 +181,7 @@
         {% endfor %}
         
         </div>
-        <a href="./services/servicios.html" class="primary-btn btn-lg more-services-btn">Ver mas</a>
+        <a href="/servicios" class="primary-btn btn-lg more-services-btn">Ver mas</a>
       </div>
     </div>
 <div class="item covenants">

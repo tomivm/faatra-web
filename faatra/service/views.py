@@ -21,3 +21,10 @@ class ServiceDetailView(DetailView):
         extra_context = get_context()
         context.update(extra_context)
         return context
+
+
+def service_index(request):
+    context = get_context()
+    services = Service.objects.all()
+    context["services"] = services
+    return render(request, "services.html", context)

@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}"  />
     <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/carrousel.js' %}"></script>
+    {% block scriptjs %}
+    {% endblock scriptjs %}
   </head>
   <body>
     <div class="container">
@@ -38,7 +40,7 @@
             <a href="./capacitacion.html" tabindex="0" class="nav-button-area">Capacitacion</a>
           </div>
           <div class="navbar-item">
-            <a href="./contacto.html" tabindex="0" class="nav-button-area">Servicios</a>
+            <a href="/servicios" tabindex="0" class="nav-button-area">Servicios</a>
           </div>
           <div class="navbar-item">
             <a href="/camaras" tabindex="0" class="nav-button-area">Cámaras</a>

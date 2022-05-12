@@ -1,0 +1,78 @@
+{% extends 'base.html' %} {% load static %} {% block scriptjs %}
+
+<script>
+  const servicesArrayMock = [
+  {% for service in services%}
+  {
+    id: {{ forloop.counter0 }},
+    servicio: "{{service.title}}",
+    descripcion: "{{service.content.html | safe }}",
+    encargados: [],
+  },
+  {% endfor %}
+  ]
+</script>
+
+<script type="text/javascript" src="{% static 'js/services.js' %}"></script>
+{% endblock scriptjs %} {% block content %}
+
+<div class="item services">
+  <div class="blue-bg-container">
+    <div class="blue-bg-title">
+      <h1>Nuestros servicios</h1>
+    </div>
+
+    <!-- NEW CARROUSEL -->
+    <div id="gallery-container">
+      <ul id="gallery" class="gallery divider-none selectable">
+        {% for service in services %}
+        <li>
+          <button
+            tabindex="{{ forloop.counter0 }}"
+            autofocus
+            class="blue-bg-item"
+            onclick="serviceClick({{ forloop.counter0 }})"
+          >
+            <img
+              class="svg-to-primary-color"
+              src="{{service.icon.url}}"
+              alt="gremial-logo"
+              height="100"
+              width="100"
+            />
+            <div class="blue-bg-item-text-container">
+              <h2>{{service.title}}</h2>
+              <p>{{service.description}}</p>
+            </div>
+            <div class="services-arrow"></div>
+          </button>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <button id="slideLeft" class="disabled noselect" type="button">
+        &#10094;
+      </button>
+      <button id="slideRight" class="noselect" type="button">&#10095;</button>
+    </div>
+    <div id="service-full" class="service-description-container blue-bg">
+      <h2 id="service-tittle"></h2>
+      <p id="service-description"></p>
+      <div id="service-manangers" class="service-manangers-container">
+        <!-- <div class="service-mananger">
+                        <img src="./images/mananger-pic.jpeg" class="mananger-pic"></img>
+                        <p id="mananger-position">Asesor Paritaria</p>
+                        <p id="mananger-name">DR. MARTÍN BRUNENGO</p>
+                    </div>
+                    <div class="service-mananger">
+                        <img src="./images/mananger-pic.jpeg" class="mananger-pic"></img>
+                        <p id="mananger-position">Asesor contable</p>
+                        <p id="mananger-name">BENGOECHEA BRACCO Y
+                          ASOCIADOS</p>
+                    </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

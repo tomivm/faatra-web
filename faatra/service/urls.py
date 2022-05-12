@@ -8,4 +8,9 @@ urlpatterns = [
         views.ServiceDetailView.as_view(),
         name="service-detail",
     ),
+    path(
+        "/",
+        views.service_index,
+        name="services",
+    ),
 ]
