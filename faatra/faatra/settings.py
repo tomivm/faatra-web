@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     "saloon",
     "training",
     "news",
+    "incriptions",
+    "links",
+    "partnership",
     "admin_ordering",
     "jazzmin",
     "django.contrib.admin",
@@ -161,3 +164,14 @@ QUILL_CONFIGS = {
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
+
+
+DEFAULT_FROM_EMAIL = "app.baratito@gmail.com"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "app.baratito@gmail.com"
+
+EMAIL_HOST_PASSWORD = ""
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
