@@ -24,6 +24,8 @@ class SocialMediaConfiguration(SingletonModel):
     instagram = models.TextField(verbose_name="Link a instagram", max_length=1024)
     facebook = models.TextField(verbose_name="Link a facebook", max_length=1024)
     linkedin = models.TextField(verbose_name="Link a linkedin", max_length=1024)
+    snit_description = models.TextField(verbose_name="Descripcion de SNIT", max_length=1024)
+    snit_url = models.TextField(verbose_name="Link a SNIT", max_length=1024)
 
     def __str__(self):
         return "Faatra redes sociales configuraciónes"
