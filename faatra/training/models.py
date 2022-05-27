@@ -9,7 +9,7 @@ from shared.models import BaseTextModel
 
 class OfferCategory(models.Model):
     title = models.CharField(verbose_name="Titulo", max_length=256)
-    icon = models.ImageField(
+    icon = models.FileField(
         upload_to="media/", verbose_name="Imagen", blank=True, null=True
     )
     is_available = models.BooleanField(verbose_name="Habilitado", default=False)

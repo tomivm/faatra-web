@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+
+<div class="item training">
+    <div class="training-form-container">
+    <h1>Capacitaciones</h1>
+    <div class="training-form-items-container">
+        {% for c in categories %}
+        <a href="" class="training-form-item inclusion-bg">
+        <img src="{{c.icon.url}}" alt="" height="50" width="50">
+        <h2>{{c.title}}</h2>
+        </a>
+        {% endfor %}
+    </div>
+    </div>
+</div>
+{% endblock content %}
