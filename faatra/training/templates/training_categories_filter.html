@@ -1,0 +1,94 @@
+{% extends 'base.html' %} 
+{% block scriptjs %}
+
+<script>
+ function handleSelectChange(e, query_name){
+    const params = new URLSearchParams(location.search); 
+    let p = {
+        camara: params.get("camara"),
+        especialidad: params.get("especialidad"),
+        provincia: params.get("provincia")
+    }
+    p[query_name] = e.target.value
+    const u = new URLSearchParams(p).toString();
+    window.location.href = "http://" + window.location.host + window.location.pathname + '?' + u;
+ }
+</script>
+{% endblock scriptjs %}
+
+{% block content %} {% load static %}
+
+    <div class="item training-list">
+      <div class="training-form-container">
+        <h1>Capacitaciones</h1>
+        <div class="trainings-select-container">
+          <div>
+            <label for="provincia">
+              <h2>Provincia:</h2>
+            </label>
+            <select id="province-select" name="provincia" onchange="handleSelectChange(event, 'provincia')">
+                <option value="null">todas</option>
+                {% for citi in cities %}
+                    {% if request.GET.provincia == citi %}
+                      <option selected value="{{citi}}">{{citi}}</option>
+                    {% else %}
+                      <option value="{{citi}}">{{citi}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+          </div>
+          <div>
+            <label for="camara">
+              <h2>Camara:</h2>
+              
+            </label>
+            <select id="chamber-select" name="camara" onchange="handleSelectChange(event, 'camara')">
+                <option value="null">todas</option>
+                {% for s in saloon %}
+                    {% if request.GET.camara == s.id|stringformat:"i" %}
+                      <option selected value="{{s.id}}">{{s.title}}</option>
+                    {% else %}
+                      <option value="{{s.id}}">{{s.title}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+          </div>
+          <div>
+            <label for="especialidades">
+              <h2>Especialidades:</h2>
+            </label>
+            <select id="specialty-select" name="especialidades" onchange="handleSelectChange(event, 'especialidad')">
+                <option value="null">todas</option>
+                {% for t in topic %}
+                    {% if request.GET.especialidad == t.id|stringformat:"i" %}
+                      <option selected value="{{t.id}}">{{t.title}}</option>
+                    {% else %}
+                      <option value="{{t.id}}">{{t.title}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div id="training-form-items-id" class="training-form-items-container">
+            {% for traning in tranings %}
+                <a class="training-list-item bg-img-cover scale-hover" href="{% url 'traning-detail' traning.url %}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.76)), url(&quot;{{traning.image.url}}&quot;);">
+                    <div class="training-list-item-tittle-container">
+                        <h2>{{traning.title}}</h2>
+                        <div class="primary-btn-container">
+                            <button class="primary-btn btn-sm more-info-btn">+ info</button>
+                        </div>
+                    </div>
+                    <div class="training-list-item-description">
+                        <p>{{traning.description}}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        <div id="pages-nav-id" class="pages-nav">
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}
+
+

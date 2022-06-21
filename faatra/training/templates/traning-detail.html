@@ -1,0 +1,109 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<div class="item training-full">
+<div class="full-container">
+<div class="full-text-container">
+    {{ training.content.html|safe}}
+</div>
+<div class="training-full-side-container">
+    <div id="training-image"  style="background-image: url(&quot;{{training.image.url}}&quot;);" class="bg-img-cover"></div>
+    <div class="training-full-blue-info">
+    <div class="training-dates-container">
+        <div>
+        <h2>Fechas</h2>
+        <p>22/11/2021 - 20 hs</br>
+            23/11/2021 - 20 hs</br>
+            24/11/2021 - 20 hs</p>
+        </div>
+        <div class="training-until-date">
+        <p>Inscripcion hasta el 10/11</p>
+        </div>
+    </div>
+    <div class="training-blue-info-item">
+        <h2>Duración</h2>
+        <p>{{training.duration}}</p>
+    </div>
+    <div class="training-blue-info-item">
+        <h2>Modalidad</h2>
+        <p>100% virtual por Zoom</p>
+    </div>
+    <div class="training-blue-info-item">
+        <h2>Organiza</h2>
+        <p>AMUPTRA</p>
+    </div>
+    <div class="training-blue-info-item">
+        <h2>Instructor a cargo</h2>
+        <p>Agustín Achu</p>
+    </div>
+    </div>
+    <div class="primary-btn-container register-btn-container">
+    <button onclick="openInscriptForm()" class="primary-btn btn-lg btn-full-width">Inscribirme</button>
+    </div>
+</div>
+</div>
+</div>
+
+<div id="inscription-form-bg" class="full-bleed modal-bg container" style="display: none;"
+onclick="openInscriptForm()">
+<div id="inscription-form" class="" onclick="event.stopPropagation()">
+<h1>Formulario de inscripcion</h1>
+<div class="incription-form-container">
+    <div class="form-item">
+    <label for="customer_name">
+        <h2>Nombre completo</h2>
+    </label>
+    <input type="text" name="customer_name" id="customer_name" required>
+    </div>
+    <div class="form-item">
+    <label for="customer_name">
+        <h2>Correo electrónico</h2>
+    </label>
+    <input type="text" name="customer_name" id="customer_name" required>
+    </div>
+
+    <div class="form-item">
+    <label for="customer_name">
+        <h2>telefono</h2>
+    </label>
+    <input type="text" name="customer_name" id="customer_name" required>
+    </div>
+
+    <div class="form-item">
+    <label for="customer_name">
+        <h2>Dato</h2>
+    </label>
+    <input type="text" name="customer_name" id="customer_name" required>
+    </div>
+    <div class="form-item">
+    <label for="customer_name">
+        <h2>Nombre completo</h2>
+    </label>
+    <input type="text" name="customer_name" id="customer_name" required>
+    </div>
+    <div class="form-item">
+    <label for="customer_name">
+        <h2>Correo electrónico</h2>
+    </label>
+    <input type="text" name="customer_name" id="customer_name" required>
+    </div>
+
+    <div class="form-item">
+    <label for="customer_name">
+        <h2>telefono</h2>
+    </label>
+    <input type="text" name="customer_name" id="customer_name" required>
+    </div>
+
+    <div class="form-item">
+    <label for="customer_name">
+        <h2>Dato</h2>
+    </label>
+    <input type="text" name="customer_name" id="customer_name" required>
+    </div>
+</div>
+<div class="primary-btn-container">
+    <a href="" class="primary-btn btn-lg inscript-btn">Inscribirme</a>
+</div>
+</div>
+</div>
+{% endblock content %}

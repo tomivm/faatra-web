@@ -1,0 +1,6 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<h1>{{new.title}}</h1>
+
+<div>{{new.content.html|safe}}</div>
+{% endblock content %}

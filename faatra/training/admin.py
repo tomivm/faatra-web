@@ -29,6 +29,7 @@ class InformativeOfferAdmin(ExportActionMixin, admin.ModelAdmin):
     inlines = [DateRealizationInline]
     fields = (
         "title",
+        "description",
         "content",
         "email_info",
         "image",

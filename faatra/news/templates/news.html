@@ -6,7 +6,7 @@
     <div id="news-items-container" class="news-items-container">
 
     {% for new in news%}
-      <a class="new-item" href="./../trainings/capacitacion-full.html"
+      <a class="new-item" href="{% url 'new-detail' new.url %}"
         ><img src={{new.image.url}} />
         <div class="new-text-container">
           <h1>{{new.title}}</h1>
