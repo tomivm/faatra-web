@@ -46,6 +46,7 @@ class InformativeOffer(BaseTextModel):
     enable_inscription = models.BooleanField("Habilitar inscripción", default=False)
     exhausted = models.BooleanField("Agotado", default=False)
     cancelled = models.BooleanField("Cancelado", default=False)
+    due_date = models.DateField("Fecha cuando se cierra la inscripcion")
 
     class Meta:
         verbose_name = "Oferta formativa"
@@ -61,7 +62,7 @@ class DateRealization(models.Model):
     )
     hours = models.CharField(verbose_name="Hora", max_length=256)
     offer = models.ForeignKey(
-        InformativeOffer, verbose_name="Oferta formativa", on_delete=models.CASCADE
+        InformativeOffer, verbose_name="Oferta formativa", on_delete=models.CASCADE, related_name="dates"
     )
 
     class Meta:
