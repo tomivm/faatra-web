@@ -11,10 +11,9 @@ services:
       - redis:redis
     volumes:
       - web-django:/usr/src/app
-      - web-static:/usr/src/app/static
+      - web-static:/static
+      - web-media:/media
     env_file: .env
-    environment:
-      DEBUG: 'true'
     command: /usr/local/bin/gunicorn faatra.wsgi:application -w 2 -b :8000
 
   nginx:
@@ -24,6 +23,7 @@ services:
       - "80:80"
     volumes:
       - web-static:/www/static
+      - web-media:/www/media
     links:
       - web:web
 
@@ -32,6 +32,8 @@ services:
     image: postgres:latest
     ports:
       - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: 'postgres'
     volumes:
       - pgdata:/var/lib/postgresql/data/
 
@@ -46,5 +48,6 @@ services:
 volumes:
   web-django:
   web-static:
+  web-media:
   pgdata:
   redisdata:
