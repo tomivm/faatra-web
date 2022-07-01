@@ -32,6 +32,7 @@ class New(BaseTextModel):
         blank=True,
         null=True,
     )
+    use_in_home = models.BooleanField("Usar en la pagina principal", default=False)
 
     class Meta:
         verbose_name = "Novedades"

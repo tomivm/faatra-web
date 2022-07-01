@@ -47,6 +47,7 @@ class InformativeOffer(BaseTextModel):
     exhausted = models.BooleanField("Agotado", default=False)
     cancelled = models.BooleanField("Cancelado", default=False)
     due_date = models.DateField("Fecha cuando se cierra la inscripcion")
+    use_in_home = models.BooleanField("Usar en la pagina principal", default=False)
 
     class Meta:
         verbose_name = "Oferta formativa"

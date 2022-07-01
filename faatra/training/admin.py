@@ -42,8 +42,11 @@ class InformativeOfferAdmin(ExportActionMixin, admin.ModelAdmin):
         "exhausted",
         "cancelled",
         "is_available",
+        "due_date",
+        "use_in_home",
         "created_date",
         "last_modification_date",
+        
     )
     readonly_fields = ["created_date", "last_modification_date"]
     list_editable = ("is_available",)

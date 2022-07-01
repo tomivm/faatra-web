@@ -18,17 +18,43 @@
         </div>
     </div>
 
+    {% if new %}
     <div class="Containers">
-        <div class="MessageInfo">2 / 3</div>
-        <img src= "{% static 'images/header2.jpg' %}" style="width:100%">
-        <div class="Info">Second Caption</div>
-    </div>
+        {% if new.image %}
+            <img src="{{new.image.url}}"  style="width:100%">
+        {% endif %}
+        <div class="Info header-container">
+        <div class="header-logo-container">
+            <img src="{% static 'images/Logo FAATRA color.png' %}" alt="" height="2008" width="1417">
+        </div>
+        <a href="{% url 'new-detail' new.url %}">
 
-    <div class="Containers">
-        <div class="MessageInfo">3 / 3</div>
-        <img src="{% static 'images/header3.jpg' %}"  style="width:100%">
-        <div class="Info">Third Caption</div>
+        <div class="header-text-container">
+            <h2>{{new.title}}</h2>
+            <h3>{{new.description}}</h3>
+        </div>
+        </a>
+        </div>
     </div>
+    {% endif %}
+   {% if training %}
+    <div class="Containers">
+        {% if training.image %}
+            <img src="{{training.image.url}}"  style="width:100%">
+        {% endif %}
+        <div class="Info header-container">
+        <div class="header-logo-container">
+            <img src="{% static 'images/Logo FAATRA color.png' %}" alt="" height="2008" width="1417">
+        </div>    
+        <a href="{% url 'traning-detail' training.url %}">
+            <div class="header-text-container">
+                <h2>{{training.title}}</h2>
+                <h3>{{training.description}}</h3>
+            </div>
+        </a>
+        </div>
+    </div>
+    {% endif %}
 
     <!-- Back and forward buttons -->
     <a class="Back" onclick="plusSlides(-1)">&#10094;</a>
@@ -39,8 +65,12 @@
     <!-- The circles/dots -->
     <div style="text-align:center">
     <span class="dots" onclick="currentSlide(1)"></span>
-    <span class="dots" onclick="currentSlide(2)"></span>
-    <span class="dots" onclick="currentSlide(3)"></span>
+    {% if new %}
+        <span class="dots" onclick="currentSlide(2)"></span>
+    {% endif %}
+    {% if training %}
+        <span class="dots" onclick="currentSlide(3)"></span>
+    {% endif %}
     </div>
 
 </div>
@@ -51,50 +81,22 @@
     <div class="about-us-text">
     <div class="about-us-text-header">
         <h1>¿Quíenes Somos?</h1>
-        <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        Ducimus dolor voluptatibus quibusdam. Cupiditate, maxime ipsa!
-        Facilis nisi mollitia accusantium, earum minus est quibus Lorem
-        ipsum dolor sit
-        </p>
-    </div>
-    <div class="about-us-item">
-        <img src="{% static 'images/quienes-somos/mision.svg' %}"  alt="" />
-        <p>
-        <span style="font-weight: bolder">MISIÓN:</span> voluptatiam sit
-        quas et quiat volesti totat. Eprate eaqui conseque eostias et et
-        volest, qui acepe Aquam atiatur? Quis quas endem nonserum
-        </p>
-    </div>
-    <div class="about-us-item">
-        <img src="{% static 'images/quienes-somos/vision.svg' %}" alt="" />
-        <p>
-        <span style="font-weight: bolder">VISIÓN:</span> Nam faccullique
-        voluptatiam sit quas et quiat volesti totat. Eprate eaqui
-        conseque eostias et et volest, qui acepe Aquam atiatur? Quis
-        quas endem nonserum
-        </p>
-    </div>
-    <div class="about-us-item">
-        <img src="{% static 'images/quienes-somos/valores.svg' %}" alt="" />
-        <p>
-        <span style="font-weight: bolder">VALORES:</span> llique
-        voluptatiam sit quas et quiat voles- ti totat. Eprate eaqui
-        conseque eostias et et volest, qui acepe Aquam atiatur? Quis
-        quas endem nonserum
-        </p>
+         {{who_we_are.description}}
     </div>
     </div>
     <div class="about-us-img-container">
-    <img
-        src="{% static 'images/quienes-somos/caraenaipe.png' %}"
+    {% if who_we_are.image %}
+      <img
+        src="{{who_we_are.image.url}}"
         alt=""
         width="366px"
         height="450px"
     />
+      {%endif%}
+    
     </div>
     <div class="primary-btn-container read-more-btn-container">
-    <a href="./quienes-somos.html" class="primary-btn btn-lg">Leer más</a>
+    <a href="quienes-somos" class="primary-btn btn-lg">Leer más</a>
     </div>
 </div>
 </div>

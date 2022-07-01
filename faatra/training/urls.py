@@ -13,6 +13,11 @@ urlpatterns = [
         views.training_list,
         name="training-list",
     ),
+    path(
+        "/process-inscription",
+        views.process_inscription,
+        name="process-inscription",
+    ),
      path(
         "/<slug:url>",
         views.TrainingDetailView.as_view(),

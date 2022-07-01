@@ -210,7 +210,7 @@ input:focus {
   justify-content: flex-start;
 }
 
-.form-item h2 {
+.form-item label {
   font-weight: var(--font-weight-medium);
   margin-bottom: 0.3em;
   /* Uncomment to adjust to original desing*/

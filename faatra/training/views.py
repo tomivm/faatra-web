@@ -2,8 +2,9 @@
 from saloon.models import Saloon
 from shared.utils import get_context
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from django.views.generic.detail import DetailView
-
+from incriptions.forms import IncriptionForm
 
 from .models import InformativeOffer, OfferCategory, Topic
 
@@ -57,4 +58,12 @@ class TrainingDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         extra_context = get_context()
         context.update(extra_context)
+        context["form"] = IncriptionForm()
         return context
+
+
+def process_inscription(request):
+    form = IncriptionForm(request.POST)
+    form.is_valid()
+    form.save()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))

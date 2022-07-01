@@ -1,4 +1,5 @@
 from django.db import models
+from shared.models import BaseTextModel
 
 # Create your models here.
 from solo.models import SingletonModel
@@ -32,3 +33,13 @@ class SocialMediaConfiguration(SingletonModel):
 
     class Meta:
         verbose_name = "Faatra redes sociales configuraciónes"
+
+
+class WhoWeAre(SingletonModel, BaseTextModel):
+
+    class Meta:
+        verbose_name = "Quienes somos"
+        verbose_name_plural = "Quienes somos"
+
+    def __str__(self) -> str:
+        return self.title

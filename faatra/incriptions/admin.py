@@ -17,7 +17,7 @@ class EmployeeConditionAdmin(admin.ModelAdmin):
 
 @admin.register(Incription)
 class IncriptionAdmin(ExportActionMixin, admin.ModelAdmin):
-    list_display = ("fullname", "email", "created_date", "is_confirmed")
+    list_display = ("fullname", "email", "created_date", "course", "is_confirmed")
     list_editable = ("is_confirmed",)
     fields = (
         "fullname",

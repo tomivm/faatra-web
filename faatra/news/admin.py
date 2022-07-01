@@ -16,8 +16,10 @@ class NewAdmin(ExportActionMixin, admin.ModelAdmin):
         "saloon",
         "course",
         "is_available",
+        "use_in_home",
         "created_date",
         "last_modification_date",
+        
     )
     readonly_fields = ["created_date", "last_modification_date"]
     list_editable = ("is_available",)

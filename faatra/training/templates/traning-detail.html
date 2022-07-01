@@ -45,62 +45,44 @@ onclick="openInscriptForm()">
 <div id="inscription-form" class="" onclick="event.stopPropagation()">
 <h1>Formulario de inscripcion</h1>
 <div class="incription-form-container">
-    <div class="form-item">
-    <label for="customer_name">
-        <h2>Nombre completo</h2>
-    </label>
-    <input type="text" name="customer_name" id="customer_name" required>
-    </div>
-    <div class="form-item">
-    <label for="customer_name">
-        <h2>Correo electrónico</h2>
-    </label>
-    <input type="text" name="customer_name" id="customer_name" required>
-    </div>
-
-    <div class="form-item">
-    <label for="customer_name">
-        <h2>telefono</h2>
-    </label>
-    <input type="text" name="customer_name" id="customer_name" required>
-    </div>
-
-    <div class="form-item">
-    <label for="customer_name">
-        <h2>Dato</h2>
-    </label>
-    <input type="text" name="customer_name" id="customer_name" required>
-    </div>
-    <div class="form-item">
-    <label for="customer_name">
-        <h2>Nombre completo</h2>
-    </label>
-    <input type="text" name="customer_name" id="customer_name" required>
-    </div>
-    <div class="form-item">
-    <label for="customer_name">
-        <h2>Correo electrónico</h2>
-    </label>
-    <input type="text" name="customer_name" id="customer_name" required>
-    </div>
-
-    <div class="form-item">
-    <label for="customer_name">
-        <h2>telefono</h2>
-    </label>
-    <input type="text" name="customer_name" id="customer_name" required>
-    </div>
-
-    <div class="form-item">
-    <label for="customer_name">
-        <h2>Dato</h2>
-    </label>
-    <input type="text" name="customer_name" id="customer_name" required>
-    </div>
-</div>
-<div class="primary-btn-container">
-    <a href="" class="primary-btn btn-lg inscript-btn">Inscribirme</a>
+    <form class="incription-form-container" action="/capacitaciones/process-inscription" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-item">
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+            </div>
+        {% endfor %}
+        <input class="primary-btn-container primary-btn btn-lg inscript-btn" type="submit" value="Inscribirme">
+    </form>
 </div>
 </div>
 </div>
+
+<script>
+function openInscriptForm() {
+  const isOpenClass = () => {
+    const open = () => {
+      body.classList.add("disable-scroll");
+      modalForm.classList.add("modal-form");
+      modalBackground.style.display = "grid";
+    };
+
+    const close = () => {
+      modalForm.classList.remove("modal-form");
+      modalBackground.style.display = "none";
+      body.classList.remove("disable-scroll");
+    };
+
+    const body = document.body;
+    const modalForm = document.getElementById("inscription-form");
+    const modalBackground = document.getElementById("inscription-form-bg");
+
+    if (modalForm.classList.contains("modal-form")) return close();
+    return open();
+  };
+
+  isOpenClass();
+}
+</script>
 {% endblock content %}

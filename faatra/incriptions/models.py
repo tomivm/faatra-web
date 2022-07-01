@@ -38,9 +38,6 @@ class Incription(models.Model):
         max_length=512,
         on_delete=models.CASCADE,
     )
-    saloon = models.ForeignKey(
-        Saloon, verbose_name="Camara", max_length=512, on_delete=models.CASCADE
-    )
     comment = models.TextField("Comentarios", blank=True, null=True)
     is_confirmed = models.BooleanField("Confirmado", default=False)
 
