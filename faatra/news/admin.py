@@ -11,6 +11,7 @@ class NewAdmin(ExportActionMixin, admin.ModelAdmin):
     list_display = ("title", "created_date", "last_modification_date", "is_available")
     fields = (
         "title",
+        "description",
         "content",
         "image",
         "saloon",
