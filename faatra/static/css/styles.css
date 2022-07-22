@@ -707,8 +707,7 @@ input:focus {
 }
 
 .svg-to-primary-color {
-  filter: invert(47%) sepia(45%) saturate(1678%) hue-rotate(358deg)
-    brightness(100%) contrast(107%);
+  filter: invert(37%) sepia(84%) saturate(4280%) hue-rotate(200deg) brightness(102%) contrast(106%);
 }
 
 /* CONVENIOS */
