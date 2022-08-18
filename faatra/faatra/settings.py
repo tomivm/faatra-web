@@ -169,7 +169,7 @@ QUILL_CONFIGS = {
                     "strike",
                     "blockquote",
                 ],
-                ["code-block", "link"],
+                ["code-block", "link", "image"],
                 ["clean"],
             ],
         },
