@@ -71,7 +71,9 @@
         </div>
         <div id="training-form-items-id" class="training-form-items-container">
             {% for traning in tranings %}
+            {% if traning.image %}
                 <a class="training-list-item bg-img-cover scale-hover" href="{% url 'traning-detail' traning.url %}" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.76)), url(&quot;{{traning.image.url}}&quot;);">
+            {% endif %}
                     <div class="training-list-item-tittle-container">
                         <h2>{{traning.title}}</h2>
                         <div class="primary-btn-container">

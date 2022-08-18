@@ -9,7 +9,7 @@ from django.core.mail import send_mail
 
 
 class EmployeeCondition(models.Model):
-    name = models.CharField("Nombre y appelido", max_length=512)
+    name = models.CharField("Nombre", max_length=512)
 
     class Meta:
         verbose_name = "Cond. Laboral"
