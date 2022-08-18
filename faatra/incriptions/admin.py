@@ -31,7 +31,6 @@ class IncriptionAdmin(ExportActionMixin, admin.ModelAdmin):
         "county",
         "course",
         "employee_condition",
-        "saloon",
         "comment",
         "is_confirmed",
         "created_date",
