@@ -9,14 +9,14 @@
           {{saloon.content.html|safe}}
           </div>
           <p>
-            <span>Dirección:</span> {{saloon.address |default_if_none:"--"  }}</br>
+            <span>DIRECCIÓN:</span> {{saloon.address |default_if_none:"--"  }}</br>
             <span>CIUDAD:</span> {{saloon.city|default_if_none:"--"  }}</br>
             <span>HORARIO:</span> {{saloon.hours|default_if_none:"--"  }}</br>
             <span>TELÉFONO:</span> {{saloon.phone|default_if_none:"--"  }}</br>
-            <span>E:-MAIL</span>{{saloon.email|default_if_none:"--"  }}</br>
+            <span>E-MAIL:</span> {{saloon.email|default_if_none:"--"  }}</br>
             <span>WEB:</span> {{saloon.web|default_if_none:"--"  }}</br>
-            <span>FACEBOOK:</span>{{saloon.facebook|default_if_none:"--"  }}</br>
-            <span>Google Maps:</span>{{saloon.maps|default_if_none:"--"  }}</br>
+            <span>FACEBOOK:</span> {{saloon.facebook|default_if_none:"--"  }}</br>
+            <span>GOOGLE MAPS:</span> {{saloon.maps|default_if_none:"--"  }}</br>
           </p>
           <div class="associate-btn">
             <button onclick="openInscriptForm()" class="primary-btn btn-lg ">Asociate</button>
@@ -33,7 +33,7 @@
             <a href="/noticia"><img src="{% static 'images/corneta.svg' %}" alt="" width="100" height="100">
               <h2>Novedades</h2>
             </a>
-            <a href="/cursos"><img src="{% static 'images/corneta.svg' %}" alt="" width="100" height="100">
+            <a href="/capacitaciones"><img src="{% static 'images/corneta.svg' %}" alt="" width="100" height="100">
               <h2>Cursos</h2>
             </a>
           </div>
