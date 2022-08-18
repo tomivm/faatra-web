@@ -8,13 +8,16 @@
     <ul id="chambers-items-container">
       {% for s in saloon %}
       <li class="chambers-list-item tooltip">
-        <a href="{% url 'saloon-detail' s.url %}"
-          ><img
+        <a href="{% url 'saloon-detail' s.url %}">
+          {% if s.icon %}
+          <img
             src="{{s.icon.url}}"
             alt="{{s.title}}"
             width="150"
             height="150"
-          /><span class="tooltiptext">{{s.title}}</span></a
+          />
+          {% endif %}
+          <span class="tooltiptext">{{s.title}}</span></a
         >
       </li>
       {% endfor %}

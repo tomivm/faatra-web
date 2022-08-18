@@ -6,6 +6,11 @@ from django.utils.text import slugify
 # Create your models here.
 
 
+class BaseTextManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(is_available=True).order_by("-created_date")
+
+
 class BaseTextModel(models.Model):
     title = models.CharField(verbose_name="Titulo", max_length=256)
     description = models.CharField(
@@ -26,11 +31,13 @@ class BaseTextModel(models.Model):
     is_available = models.BooleanField(verbose_name="Habilitado", default=False)
     url = models.SlugField(max_length=256, unique=True)
 
+    objects = BaseTextManager()
     class Meta:
         abstract = True
         verbose_name = "BaseTextModel"
         verbose_name_plural = "BaseTextModel"
 
     def save(self, *args, **kwargs):
-        self.url = slugify(self.title)
+        if not self.url:
+            self.url = slugify(self.title)
         super().save()

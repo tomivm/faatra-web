@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.core.paginator import Paginator
 from django.views.generic.detail import DetailView
 
 # Create your views here.
@@ -13,7 +13,11 @@ from .models import New
 def index(request):
     context = get_context()
     news = New.objects.all()
-    context["news"] = news
+    paginator = Paginator(news, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context["news"] = page_obj
+    context["numbers"] = range(page_obj.paginator.num_pages)
     return render(request, "news.html", context)
 
 
