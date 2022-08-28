@@ -1,8 +1,10 @@
+from pyexpat import model
 from django.db import models
 
 from shared.models import BaseTextModel
 
 # Create your models here.
+
 
 
 class Service(BaseTextModel):
@@ -14,3 +16,13 @@ class Service(BaseTextModel):
 
     def __str__(self) -> str:
         return self.title
+
+
+
+class Files(models.Model):
+    document = models.FileField(upload_to='doc/')
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "Archivo"
+        verbose_name_plural = "Archivos"

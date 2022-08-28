@@ -1,9 +1,15 @@
+from pyexpat import model
 from django.contrib import admin
 
 # Register your models here.
-from .models import Service
+from .models import Service, Files
 
 from import_export.admin import ExportActionMixin
+
+
+class FilesAdmin(admin.TabularInline):
+    model = Files
+
 
 
 @admin.register(Service)
@@ -23,3 +29,4 @@ class ServiceAdmin(ExportActionMixin, admin.ModelAdmin):
     list_editable = ("is_available",)
     search_fields = ("title",)
     list_filter = ("is_available", "created_date")
+    inlines = [FilesAdmin]
