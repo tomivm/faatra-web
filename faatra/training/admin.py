@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from django.contrib import admin
 
-from .models import DateRealization, InformativeOffer, Topic, OfferCategory
+from .models import DateRealization, InformativeOffer, Topic, OfferCategory, Mode
 
 from import_export.admin import ExportActionMixin
 
@@ -15,6 +15,10 @@ class OfferCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Topic)
 class TopicAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Mode)
+class ModeAdmin(admin.ModelAdmin):
     pass
 
 
@@ -40,13 +44,13 @@ class InformativeOfferAdmin(ExportActionMixin, admin.ModelAdmin):
         "duration",
         "enable_inscription",
         "exhausted",
+        "mode",
         "cancelled",
         "is_available",
         "due_date",
         "use_in_home",
         "created_date",
         "last_modification_date",
-        
     )
     readonly_fields = ["created_date", "last_modification_date"]
     list_editable = ("is_available",)

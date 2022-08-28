@@ -1,4 +1,3 @@
-from statistics import mode
 from django.db import models
 from django_quill.fields import QuillField
 from saloon.models import Saloon
@@ -34,6 +33,17 @@ class Topic(models.Model):
         return f"{self.title}"
 
 
+
+class Mode(models.Model):
+    description = models.CharField(verbose_name="Modalidad", max_length=256)
+
+    class Meta:
+        verbose_name = "Modalidad"
+        verbose_name_plural = "Modalidades"
+
+    def __str__(self):
+        return f"{self.description}"
+
 class InformativeOffer(BaseTextModel):
     email_info = QuillField()
     saloon = models.ForeignKey(Saloon, verbose_name="Camara", on_delete=models.CASCADE)
@@ -48,6 +58,7 @@ class InformativeOffer(BaseTextModel):
     cancelled = models.BooleanField("Cancelado", default=False)
     due_date = models.DateField("Fecha cuando se cierra la inscripcion")
     use_in_home = models.BooleanField("Usar en la pagina principal", default=False)
+    mode = models.ForeignKey(Mode, verbose_name="Modalida", on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
         verbose_name = "Oferta formativa"

@@ -22,7 +22,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - web-static:/www/static
+      - ./faatra/static:/www/static
       - web-media:/www/media
     links:
       - web:web

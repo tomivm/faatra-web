@@ -1,18 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block scriptjs %}
 
-<script>
-  const servicesArrayMock = [
-  {% for service in services%}
-  {
-    id: {{ forloop.counter0 }},
-    servicio: "{{service.title}}",
-    descripcion: "{{service.content.html | safe }}",
-    encargados: [],
-  },
-  {% endfor %}
-  ]
-</script>
-
 <script type="text/javascript" src="{% static 'js/services.js' %}"></script>
 {% endblock scriptjs %} {% block content %}
 
@@ -55,23 +42,18 @@
       </button>
       <button id="slideRight" class="noselect" type="button">&#10095;</button>
     </div>
-    <div id="service-full" class="service-description-container blue-bg">
-      <h2 id="service-tittle"></h2>
-      <p id="service-description"></p>
-      <div id="service-manangers" class="service-manangers-container">
-        <!-- <div class="service-mananger">
-                        <img src="./images/mananger-pic.jpeg" class="mananger-pic"></img>
-                        <p id="mananger-position">Asesor Paritaria</p>
-                        <p id="mananger-name">DR. MARTÍN BRUNENGO</p>
-                    </div>
-                    <div class="service-mananger">
-                        <img src="./images/mananger-pic.jpeg" class="mananger-pic"></img>
-                        <p id="mananger-position">Asesor contable</p>
-                        <p id="mananger-name">BENGOECHEA BRACCO Y
-                          ASOCIADOS</p>
-                    </div> -->
-      </div>
+    <div class="services-list">
+      {% for service in services %}
+        <div class="service-item hidden">
+          <div id="service-full" class="service-description-container blue-bg">
+            <h2 id="service-tittle">{{service.title}}</h2>
+            <p id="service-description">{{service.content.html | safe }}</p>
+          </div>
+        </div>
+      {% endfor %}
     </div>
+    </div>
+    
   </div>
 </div>
 

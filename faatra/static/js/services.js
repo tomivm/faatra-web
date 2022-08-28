@@ -1,44 +1,18 @@
 window.onload = init;
 
 const renderServiceContent = (id = 0) => {
-  if (!document.getElementById("service-full")) return;
-  const tittle = document.getElementById("service-tittle");
-  const description = document.getElementById("service-description");
-  const manangersContainer = document.getElementById("service-manangers");
+  const services = document.querySelectorAll(".service-item");
 
-  const tittleTextNode = document.createTextNode(
-    servicesArrayMock[id].servicio
-  );
-  tittle.innerHTML = "";
-  tittle.appendChild(tittleTextNode);
-
-  const str = servicesArrayMock[id].descripcion;
-  description.innerHTML = "";
-  description.insertAdjacentHTML("beforeend", str);
-
-  manangersContainer.innerHTML = "";
-  servicesArrayMock[id].encargados.map((encargado) => {
-    const manangerItem = document.createElement("div");
-    manangerItem.classList.add("service-mananger");
-
-    const manangerPic = document.createElement("img");
-    manangerPic.src = encargado.fotoSrc;
-    manangerPic.classList.add("mananger-pic");
-
-    const position = document.createElement("p");
-    const positionTextNode = document.createTextNode(encargado.cargo);
-    position.appendChild(positionTextNode);
-
-    const name = document.createElement("p");
-    const nameTextNode = document.createTextNode(encargado.nombre);
-    name.appendChild(nameTextNode);
-
-    manangerItem.appendChild(manangerPic);
-    manangerItem.appendChild(position);
-    manangerItem.appendChild(name);
-
-    manangersContainer.appendChild(manangerItem);
+  console.log(services);
+  services.forEach((element, index) => {
+    if (index === id) {
+      element.classList.remove("hidden");
+      return;
+     };
+    element.classList.add("hidden");
+    console.log(element)
   });
+
 };
 
 // const scrollToContent = () => {

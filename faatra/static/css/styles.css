@@ -1691,3 +1691,8 @@ input:focus {
     opacity: 2;
   }
 }
+
+
+.hidden {
+  display: none;
+}
