@@ -1,4 +1,5 @@
 from training.models import InformativeOffer
+from saloon.models import ImportantAgreement
 from news.models import New
 from .models import WhoWeAre
 from shared.utils import get_context
@@ -6,7 +7,6 @@ from shared.utils import get_context
 from django.shortcuts import render
 
 # Create your views here.
-from django.http import HttpResponse
 
 from django.shortcuts import render
 
@@ -21,6 +21,7 @@ def index(request):
     context["services"] = services
     context["new"] = New.objects.filter(use_in_home=True).order_by("last_modification_date").first()
     context["training"] = InformativeOffer.objects.filter(use_in_home=True).order_by("last_modification_date").first()
+    context["agreements"] = ImportantAgreement.objects.filter(is_available=True)
     return render(request, "index.html", context)
 
 

@@ -13,10 +13,10 @@
             <span>CIUDAD:</span> {{saloon.city|default_if_none:"--"  }}</br>
             <span>HORARIO:</span> {{saloon.hours|default_if_none:"--"  }}</br>
             <span>TELÉFONO:</span> {{saloon.phone|default_if_none:"--"  }}</br>
-            <span>E-MAIL:</span> {{saloon.email|default_if_none:"--"  }}</br>
-            <span>WEB:</span> {{saloon.web|default_if_none:"--"  }}</br>
-            <span>FACEBOOK:</span> {{saloon.facebook|default_if_none:"--"  }}</br>
-            <span>GOOGLE MAPS:</span> {{saloon.maps|default_if_none:"--"  }}</br>
+            <span>E-MAIL:</span> <a href="{{saloon.email|default_if_none:"--"  }}"> {{saloon.email|default_if_none:"--"  }} </a> </br>
+            <span>WEB:</span> <a href="{{saloon.web|default_if_none:"--"  }}"> {{saloon.web|default_if_none:"--"  }} </a> </br>
+            <span>FACEBOOK:</span> <a href="{{saloon.facebook|default_if_none:"--"  }}"> {{saloon.facebook|default_if_none:"--"  }} </a></br>
+            <span>GOOGLE MAPS:</span> <a href="{{saloon.maps|default_if_none:"--"  }}"> {{saloon.maps|default_if_none:"--"  }} </a> </br>
           </p>
           <div class="associate-btn">
             <button onclick="openInscriptForm()" class="primary-btn btn-lg ">Asociate</button>

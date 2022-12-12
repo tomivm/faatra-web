@@ -192,6 +192,17 @@
     <h1>Convenios</h1>
     <div class="convenants-items-container">
     <div class="convenants-item">
+        {% for agreement in agreements %}
+         <div class="circle-shape">
+        <img
+            src="{{agreement.image.url}}"
+            alt="{{agreement.title}}"
+            height="90"
+            width="90"
+        />
+        </div>
+        <h2>{{agreement.title}}</h2>
+        {% endfor %}
         <div class="circle-shape">
         <img
             src="{% static 'images/convenios/escudo-nacional.svg' %}"

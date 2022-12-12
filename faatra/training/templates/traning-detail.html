@@ -22,7 +22,7 @@
     </div>
     <div class="training-blue-info-item">
         <h2>Duración</h2>
-        <p>{{training.duration}}</p>
+        <p>{{training.duration | default_if_none:""}}</p>
     </div>
     <div class="training-blue-info-item">
         <h2>Modalidad</h2>
