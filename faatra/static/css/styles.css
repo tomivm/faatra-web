@@ -42,8 +42,7 @@ p {
   font-size: 1.2em;
 }
 
-a,
-button {
+.no-style-url {
   all: unset;
   cursor: pointer;
 }
@@ -788,7 +787,6 @@ input:focus {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  z-index: -1;
 }
 
 .media-footer-item {

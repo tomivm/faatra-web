@@ -12,12 +12,12 @@ from .models import New
 
 def index(request):
     context = get_context()
-    news = New.objects.all()
+    news = New.objects.filter(is_available=True).order_by("-created_date")
     paginator = Paginator(news, 10)
-    page_number = request.GET.get('page')
+    page_number = request.GET.get('page', 1)
     page_obj = paginator.get_page(page_number)
     context["news"] = page_obj
-    context["numbers"] = range(page_obj.paginator.num_pages)
+    context["numbers"] = [number+1 for number in range(page_obj.paginator.num_pages)]
     return render(request, "news.html", context)
 
 

@@ -8,7 +8,7 @@ from django.utils.text import slugify
 
 class BaseTextManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().filter(is_available=True).order_by("-created_date")
+        return super().get_queryset().filter().order_by("-created_date")
 
 
 class BaseTextModel(models.Model):

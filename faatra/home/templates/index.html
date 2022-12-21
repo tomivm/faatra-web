@@ -164,7 +164,7 @@
         </div>
         <div class="blue-bg-items-container padding-top-btn divider-none">
         {% for service in services %}
-        <a href="{% url 'service-detail' service.url %}" >
+        <a href="{% url 'service-detail' service.url %}" class="no-style-url" >
         <div class="blue-bg-item">
             {% if service.image %}
             <img
@@ -191,72 +191,21 @@
 <div>
     <h1>Convenios</h1>
     <div class="convenants-items-container">
-    <div class="convenants-item">
-        {% for agreement in agreements %}
-         <div class="circle-shape">
-        <img
-            src="{{agreement.image.url}}"
-            alt="{{agreement.title}}"
-            height="90"
-            width="90"
-        />
+    {% for agreement in agreements %}
+        <a href="{{agreement.url}}" target="_blank" class="no-style-url">
+        <div class="convenants-item">
+            <div class="circle-shape">
+            <img
+                src="{{agreement.image.url}}"
+                alt="{{agreement.title}}"
+                height="90"
+                width="90"
+            />
+            </div>
+            <h2>{{agreement.title}}</h2>
         </div>
-        <h2>{{agreement.title}}</h2>
-        {% endfor %}
-        <div class="circle-shape">
-        <img
-            src="{% static 'images/convenios/escudo-nacional.svg' %}"
-            alt="gremial-logo"
-            height="90"
-            width="90"
-        />
-        </div>
-        <h2>Ministerio de trabajo</h2>
-    </div>
-    <div class="convenants-item">
-        <div class="circle-shape">
-        <img
-            src="{% static 'images/convenios/formacion.svg' %}"
-            alt="gremial-logo"
-            height="90"
-            width="90"
-        />
-        </div>
-        <h2>Formación contínua</h2>
-    </div>
-    <div class="convenants-item">
-        <div class="circle-shape">
-        <img
-            src="{% static 'images/convenios/escudo-nacional.svg' %}"
-            alt="gremial-logo"
-            height="90"
-            width="90"
-        />
-        </div>
-        <h2>Formación contínua</h2>
-    </div>
-    <div class="convenants-item">
-        <div class="circle-shape">
-        <img
-            src="{% static 'images/convenios/smata.svg' %}"
-            alt="gremial-logo"
-            height="90"
-            width="90"
-        />
-        </div>
-        <h2>SMATA</h2>
-    </div>
-    <div class="convenants-item">
-        <div class="circle-shape">
-        <img
-            src="{% static 'images/convenios/inet.svg' %}"
-            alt="gremial-logo"
-            height="90"
-            width="90"
-        />
-        </div>
-        <h2>Inet</h2>
-    </div>
+        </a>
+    {% endfor %}
     </div>
 </div>
 </div>

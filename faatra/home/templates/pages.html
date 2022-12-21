@@ -3,18 +3,18 @@
 <div class="about-full-buttons-container">
   <a class="primary-btn btn-sm btn-p-right-left" href={% url "who-we-are" %}> Historia </a>
   {% for page in pages %}
-  <a class="primary-btn btn-sm btn-p-right-left" href={% url "pages-detail" page.url %}>{{page.title}}</a>
+  <button class="primary-btn btn-sm btn-p-right-left">{{page.title}}</button>
   {% endfor %}
 </div>
 <div class="item about-full">
   <div class="full-container">
     <div class="full-text-container">
-      <h1>¿Quienes somos?</h1>
-     {{who_we_are.content.html|safe}}
+      <h1>{{page.title}}</h1>
+     {{page.content.html|safe}}
     </div>
     <div class="about-full-side-container">
-      {% if who_we_are.image %}
-      <div id="about-full-first-image" class="bg-img-cover"  style="background-image: url(&quot;{{who_we_are.image.url}}&quot;);"></div>
+      {% if page.image %}
+      <div id="about-full-first-image" class="bg-img-cover"  style="background-image: url(&quot;{{page.image.url}}&quot;);"></div>
       <div id="about-full-second-image" class="bg-img-cover"></div>
       {%endif%}
     </div>

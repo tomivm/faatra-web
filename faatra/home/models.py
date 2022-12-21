@@ -43,3 +43,14 @@ class WhoWeAre(SingletonModel, BaseTextModel):
 
     def __str__(self) -> str:
         return self.title
+
+
+class Pages(BaseTextModel):
+    icon = models.ImageField(verbose_name="Icono", blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Página"
+        verbose_name_plural = "Páginas"
+
+    def __str__(self) -> str:
+        return self.title
