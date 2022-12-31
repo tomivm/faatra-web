@@ -2,15 +2,12 @@ window.onload = init;
 
 const renderServiceContent = (id = 0) => {
   const services = document.querySelectorAll(".service-item");
-
-  console.log(services);
   services.forEach((element, index) => {
     if (index === id) {
       element.classList.remove("hidden");
       return;
      };
     element.classList.add("hidden");
-    console.log(element)
   });
 
 };
@@ -29,7 +26,6 @@ function serviceClick(id) {
 
 function init() {
   prepareArrowsForScroll();
-  renderServiceContent(0);
 }
 
 // gallery

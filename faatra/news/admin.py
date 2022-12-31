@@ -18,6 +18,7 @@ class NewAdmin(ExportActionMixin, admin.ModelAdmin):
         "course",
         "is_available",
         "use_in_home",
+        "banner_background_image",
         "created_date",
         "last_modification_date",
         

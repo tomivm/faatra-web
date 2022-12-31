@@ -8,7 +8,7 @@ from .models import Saloon
 
 def saloon_home(request):
     context = get_context()
-    saloon = Saloon.objects.all()
+    saloon = Saloon.objects.filter(is_available=True)
     context["saloon"] = saloon
     return render(request, "saloon.html", context)
 

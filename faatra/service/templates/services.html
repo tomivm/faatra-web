@@ -1,7 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block scriptjs %}
-
-<script type="text/javascript" src="{% static 'js/services.js' %}"></script>
-{% endblock scriptjs %} {% block content %}
+{% extends 'base.html' %} {% load static %}{% block content %}
 
 <div class="item services">
   <div class="blue-bg-container">
@@ -16,7 +13,9 @@
         <li>
           <button
             tabindex="{{ forloop.counter0 }}"
-            autofocus
+            {% if forloop.counter0 == index %}
+              autofocus
+            {% endif %}
             class="blue-bg-item"
             onclick="serviceClick({{ forloop.counter0 }})"
           >
@@ -58,3 +57,13 @@
 </div>
 
 {% endblock content %}
+
+{% block scriptjs %}
+<script type="text/javascript" src="{% static 'js/services.js' %}"></script>
+<script type="text/javascript">
+window.onload = function () {
+  renderServiceContent({{index}});
+  prepareArrowsForScroll();
+};
+</script>
+{% endblock scriptjs %}

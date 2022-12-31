@@ -3,10 +3,16 @@
 
 <div class="item training">
     <div class="training-form-container">
-    <h1>Capacitaciones</h1>
+    <h1>Capacitaciónes</h1>
     <div class="training-form-items-container">
         {% for c in categories %}
-        <a href="{% url 'training-list' c.id %}" class="training-form-item inclusion-bg">
+        <a 
+            href="{% url 'training-list' c.id %}" 
+            class="training-form-item inclusion-bg" 
+            {% if c.image_backgroud %}
+            style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.76)),  url({{c.image_backgroud.url}}); background-size: cover;"
+            {% endif %}
+        >
         <img src="{{c.icon.url}}" alt="" height="50" width="50">
         <h2>{{c.title}}</h2>
         </a>

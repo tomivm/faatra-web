@@ -34,6 +34,10 @@ class New(BaseTextModel):
     )
     use_in_home = models.BooleanField("Usar en la pagina principal", default=False)
 
+    banner_background_image = models.ImageField(
+        upload_to="media/", verbose_name="Banner Home (1300x480px)", blank=True, null=True
+    )
+
     class Meta:
         verbose_name = "Novedades"
         verbose_name_plural = "Novedades"

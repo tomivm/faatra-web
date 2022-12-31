@@ -49,6 +49,7 @@ class InformativeOfferAdmin(ExportActionMixin, admin.ModelAdmin):
         "is_available",
         "due_date",
         "use_in_home",
+        "banner_background_image",
         "created_date",
         "last_modification_date",
     )

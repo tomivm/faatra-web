@@ -20,8 +20,8 @@
 
     {% if new %}
     <div class="Containers">
-        {% if new.image %}
-            <img src="{{new.image.url}}"  style="width:100%">
+        {% if new.banner_background_image %}
+            <img src="{{new.banner_background_image.url}}"  style="width:100%">
         {% endif %}
         <div class="Info header-container">
         <div class="header-logo-container">
@@ -39,8 +39,8 @@
     {% endif %}
    {% if training %}
     <div class="Containers">
-        {% if training.image %}
-            <img src="{{training.image.url}}"  style="width:100%">
+        {% if training.banner_background_image %}
+            <img src="{{training.banner_background_image.url}}"  style="width:100%">
         {% endif %}
         <div class="Info header-container">
         <div class="header-logo-container">
@@ -106,18 +106,7 @@
     <div class="blue-bg-title"><h1>Nuestros pilares</h1></div>
     <div class="blue-bg-items-container">
     <div class="blue-bg-item">
-        <img
-        class="svg-to-primary-color"
-        src="{% static 'images/quienes-somos/gremial.svg' %}"
-        alt="gremial-logo"
-        height="150"
-        width="150"
-        />
-        <div class="blue-bg-item-text-container">
-        <h2>Gremial</h2>
-        </div>
-    </div>
-    <div class="blue-bg-item">
+        <a class="no-style-url" href="capacitaciones">
         <img
         class="svg-to-primary-color"
         src="{% static 'images/quienes-somos/capacitación.svg' %}"
@@ -128,18 +117,26 @@
         <div class="blue-bg-item-text-container">
         <h2>Capacitación</h2>
         </div>
+        </a>
     </div>
+    {% for page in pages %}
     <div class="blue-bg-item">
-        <img
-        class="svg-to-primary-color"
-        src="{% static 'images/quienes-somos/info.svg' %}"
-        alt="gremial-logo"
-        height="150"
-        width="150"
-        />
-        <div class="blue-bg-item-text-container"></div>
-        <h2>Información técnica</h2>
+        <a class="no-style-url" href="{% url "pages-detail" page.url %}">
+        {% if page.image %}
+            <img
+                class="svg-to-primary-color"
+                src="{{page.image.url}}"
+                height="150"
+                width="150"
+            />
+        {% endif %}
+        <div class="blue-bg-item-text-container">
+        <h2>{{page.title}}</h2>
+        </div>
+        </a>
     </div>
+
+    {% endfor %}
     </div>
 </div>
 </div>
@@ -164,9 +161,9 @@
         </div>
         <div class="blue-bg-items-container padding-top-btn divider-none">
         {% for service in services %}
-        <a href="{% url 'service-detail' service.url %}" class="no-style-url" >
+        <a href="{% url 'service-index' forloop.counter0 %}" class="no-style-url" >
         <div class="blue-bg-item">
-            {% if service.image %}
+            {% if service.icon %}
             <img
             class="svg-to-primary-color"
             src="{{service.icon.url}}"

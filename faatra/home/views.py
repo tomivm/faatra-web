@@ -17,9 +17,11 @@ from django.views.generic.detail import DetailView
 
 def index(request):
     context = get_context()
-    services = Service.objects.all()
+    services = Service.objects.filter(is_available=True).order_by("-created_date")
+    pages = Pages.objects.filter(is_available=True).order_by("-created_date")
     wwa = WhoWeAre.objects.get()
     context["who_we_are"] = wwa
+    context["pages"] = pages
     context["services"] = services
     context["new"] = New.objects.filter(use_in_home=True).order_by("last_modification_date").first()
     context["training"] = InformativeOffer.objects.filter(use_in_home=True).order_by("last_modification_date").first()

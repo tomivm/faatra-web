@@ -11,6 +11,9 @@ class OfferCategory(models.Model):
     icon = models.FileField(
         upload_to="media/", verbose_name="Imagen", blank=True, null=True
     )
+    image_backgroud = models.FileField(
+        upload_to="media/", verbose_name="Imagen de fondo", blank=True, null=True
+    )
     is_available = models.BooleanField(verbose_name="Habilitado", default=False)
 
     class Meta:
@@ -59,6 +62,9 @@ class InformativeOffer(BaseTextModel):
     due_date = models.DateField("Fecha cuando se cierra la inscripcion")
     use_in_home = models.BooleanField("Usar en la pagina principal", default=False)
     mode = models.ForeignKey(Mode, verbose_name="Modalida", on_delete=models.SET_NULL, null=True, blank=True)
+    banner_background_image = models.ImageField(
+        upload_to="media/", verbose_name="Banner Home (1300x480px)", blank=True, null=True
+    )
 
     class Meta:
         verbose_name = "Oferta formativa"

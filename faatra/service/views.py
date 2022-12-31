@@ -23,8 +23,9 @@ class ServiceDetailView(DetailView):
         return context
 
 
-def service_index(request):
+def service_index(request, index=0):
     context = get_context()
-    services = Service.objects.all()
+    services = Service.objects.filter(is_available=True)
     context["services"] = services
+    context["index"] = index
     return render(request, "services.html", context)

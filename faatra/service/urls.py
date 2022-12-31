@@ -13,4 +13,9 @@ urlpatterns = [
         views.service_index,
         name="services",
     ),
+     path(
+        "/<int:index>",
+        views.service_index,
+        name="service-index",
+    ),
 ]
