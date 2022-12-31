@@ -46,7 +46,7 @@ class WhoWeAre(SingletonModel, BaseTextModel):
 
 
 class Pages(BaseTextModel):
-    icon = models.ImageField(verbose_name="Icono", blank=True, null=True)
+    icon = models.FileField(verbose_name="Icono", blank=True, null=True)
 
     class Meta:
         verbose_name = "Página"

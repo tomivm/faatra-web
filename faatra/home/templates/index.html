@@ -122,10 +122,10 @@
     {% for page in pages %}
     <div class="blue-bg-item">
         <a class="no-style-url" href="{% url "pages-detail" page.url %}">
-        {% if page.image %}
+        {% if page.icon %}
             <img
                 class="svg-to-primary-color"
-                src="{{page.image.url}}"
+                src="{{page.icon.url}}"
                 height="150"
                 width="150"
             />
