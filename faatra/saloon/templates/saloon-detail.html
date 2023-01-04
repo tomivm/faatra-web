@@ -24,16 +24,16 @@
         </div>
         <div class="chamber-full-side">
           <div class="to-chambers-btn">
-            <a href="/camaras" class="primary-btn btn-lg ">Volver a cámaras</a>
+            <a href="/camaras" class="primary-btn btn-lg no-style-url">Volver a cámaras</a>
           </div>
           {% if saloon.image %}
           <img src="{{saloon.image.url}}" width="470" height="470" class="chamber-full-img"></img>
           {% endif %}
           <div class="chambers-links">
-            <a href="/noticia"><img src="{% static 'images/corneta.svg' %}" alt="" width="100" height="100">
+            <a href="/noticia" class="no-style-url"><img src="{% static 'images/corneta.svg' %}" alt="" width="100" height="100">
               <h2>Novedades</h2>
             </a>
-            <a href="/capacitaciones"><img src="{% static 'images/corneta.svg' %}" alt="" width="100" height="100">
+            <a href="/capacitaciones" class="no-style-url"><img src="{% static 'images/corneta.svg' %}" alt="" width="100" height="100">
               <h2>Cursos</h2>
             </a>
           </div>

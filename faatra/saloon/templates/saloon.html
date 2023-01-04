@@ -8,7 +8,7 @@
     <ul id="chambers-items-container">
       {% for s in saloon %}
       <li class="chambers-list-item tooltip">
-        <a href="{% url 'saloon-detail' s.url %}">
+        <a href="{% url 'saloon-detail' s.url %}" class="no-style-url">
           {% if s.icon %}
           <img
             src="{{s.icon.url}}"

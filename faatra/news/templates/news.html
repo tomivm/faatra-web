@@ -6,7 +6,7 @@
     <div id="news-items-container" class="news-items-container">
 
     {% for new in news%}
-      <a class="new-item" href="{% url 'new-detail' new.url %}">
+      <a class="new-item no-style-url" href="{% url 'new-detail' new.url %}">
       {% if new.image %}
         <img src={{new.image.url}} />
       {% endif %}
@@ -21,7 +21,7 @@
     </div>
     <div id="pages-nav-id" class="pages-nav">
         {% for number in numbers%}
-          <a href="?page={{number}}"><div class="page-btn scale-hover page-selected">{{number}}</div></a>
+          <a href="?page={{number}}" class="no-style-url"><div class="page-btn scale-hover page-selected">{{number}}</div></a>
         {%endfor%}
       </div>
   </div>
