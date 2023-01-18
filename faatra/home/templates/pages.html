@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 
 <div class="about-full-buttons-container">
-  <a class="primary-btn btn-sm btn-p-right-left no-style-url" href={% url "who-we-are" %}> Historia </a>
+  <a class="primary-btn btn-sm btn-p-right-left no-style-url" href={% url "who-we-are" %}>¿Quienes somos?</a>
   {% for page in pages %}
   <a class="primary-btn btn-sm btn-p-right-left no-style-url" href={% url "pages-detail" page.url %}>{{page.title}}</a>
   {% endfor %}

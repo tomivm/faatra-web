@@ -1694,3 +1694,8 @@ input:focus {
 .hidden {
   display: none;
 }
+
+
+.service-item img {
+  max-width: 100%;
+}
