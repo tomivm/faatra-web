@@ -19,7 +19,7 @@ def training_index(request):
 
 def training_list(request, category_id):
     context = get_context()
-    trainings = InformativeOffer.objects.all().filter(category_id=category_id)
+    trainings = InformativeOffer.objects.all().filter(category_id=category_id, is_available=True)
     
     camara = request.GET.get('camara', '')
     especialidad = request.GET.get('especialidad', '')
