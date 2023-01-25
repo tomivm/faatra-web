@@ -44,3 +44,8 @@ class New(BaseTextModel):
 
     def __str__(self):
         return f"{self.title}"
+    
+    def save(self, *args, **kwargs):
+        if self.use_in_home:
+            New.objects.filter(use_in_home=True).exclude(id=self.id).update(use_in_home=False)
+        return super().save(*args, **kwargs)

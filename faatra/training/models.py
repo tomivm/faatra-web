@@ -72,6 +72,11 @@ class InformativeOffer(BaseTextModel):
 
     def __str__(self) -> str:
         return self.title
+    
+    def save(self, *args, **kwargs):
+        if self.use_in_home:
+            InformativeOffer.objects.filter(use_in_home=True).exclude(id=self.id).update(use_in_home=False)
+        return super().save(*args, **kwargs)
 
 
 class DateRealization(models.Model):

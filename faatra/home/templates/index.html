@@ -27,11 +27,11 @@
         <div class="header-logo-container">
             <img src="{% static 'images/Logo FAATRA color.png' %}" alt="" height="2008" width="1417">
         </div>
-        <a href="{% url 'new-detail' new.url %}">
+        <a class="no-style-url" href="{% url 'new-detail' new.url %}">
 
         <div class="header-text-container">
             <h2>{{new.title}}</h2>
-            <h3>{{new.description}}</h3>
+            <h3>{{new.description|default_if_none:""}}</h3>
         </div>
         </a>
         </div>
@@ -46,10 +46,10 @@
         <div class="header-logo-container">
             <img src="{% static 'images/Logo FAATRA color.png' %}" alt="" height="2008" width="1417">
         </div>    
-        <a href="{% url 'traning-detail' training.url %}">
+        <a class="no-style-url" href="{% url 'traning-detail' training.url %}">
             <div class="header-text-container">
                 <h2>{{training.title}}</h2>
-                <h3>{{training.description}}</h3>
+                <h3>{{training.description |default_if_none:""}}</h3>
             </div>
         </a>
         </div>
