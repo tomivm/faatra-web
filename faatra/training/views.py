@@ -20,20 +20,21 @@ def training_index(request):
 def training_list(request, category_id):
     context = get_context()
     trainings = InformativeOffer.objects.all().filter(category_id=category_id, is_available=True)
-    
     camara = request.GET.get('camara', '')
     especialidad = request.GET.get('especialidad', '')
     provincia = request.GET.get('provincia', '')
 
     if camara and camara != "null":
-        trainings.filter(saloon_id=camara)
+        trainings = trainings.filter(saloon_id=int(camara))
     
     if especialidad and especialidad != "null":
-        trainings.filter(topic=especialidad)
+        print("especialidad")
+        trainings = trainings.filter(topic_id=int(especialidad))
     
     if provincia and provincia != "null":
-        trainings.filter(city=provincia)
+        trainings = trainings.filter(city=provincia)
     
+
     training_ids = trainings.values_list('id', flat=True)
     saloon = Saloon.objects.filter(informativeoffer__in=training_ids)
     topic = Topic.objects.filter(informativeoffer__in=training_ids)
