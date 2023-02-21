@@ -24,6 +24,7 @@ class PagesAdmin(admin.ModelAdmin):
         "is_available",
         "created_date",
         "last_modification_date",
+        "use_in_home",
         
     )
     readonly_fields = ["created_date", "last_modification_date"]

@@ -81,7 +81,7 @@
                         </div>
                     </div>
                     <div class="training-list-item-description">
-                        <p>{{traning.description}}</p>
+                        <p>{{traning.description | default_if_none:"" }}</p>
                     </div>
                 </a>
             {% endfor %}

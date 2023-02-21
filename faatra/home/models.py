@@ -47,6 +47,7 @@ class WhoWeAre(SingletonModel, BaseTextModel):
 
 class Pages(BaseTextModel):
     icon = models.FileField(verbose_name="Icono", blank=True, null=True)
+    use_in_home = models.BooleanField(verbose_name="Usar en pagina princial", default=False)
 
     class Meta:
         verbose_name = "Página"

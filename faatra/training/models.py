@@ -62,6 +62,9 @@ class InformativeOffer(BaseTextModel):
     due_date = models.DateField("Fecha cuando se cierra la inscripcion")
     use_in_home = models.BooleanField("Usar en la pagina principal", default=False)
     mode = models.ForeignKey(Mode, verbose_name="Modalida", on_delete=models.SET_NULL, null=True, blank=True)
+    image = models.ImageField(
+        upload_to="media/", verbose_name="Imagen", null=False
+    )
     banner_background_image = models.ImageField(
         upload_to="media/", verbose_name="Banner Home (1300x480px)", blank=True, null=True
     )
