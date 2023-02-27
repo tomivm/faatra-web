@@ -23,7 +23,7 @@ class NewAdmin(ExportActionMixin, admin.ModelAdmin):
         "last_modification_date",
         
     )
-    readonly_fields = ["created_date", "last_modification_date"]
+    readonly_fields = ["last_modification_date"]
     list_editable = ("is_available",)
     search_fields = ("title",)
     list_filter = ("is_available", "created_date")

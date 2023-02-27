@@ -13,7 +13,7 @@
         <div class="new-text-container">
           <h1>{{new.title}}</h1>
           <p>
-            {{new.description}}
+            {{new.description | default_if_none:""}}
           </p>
         </div>
       </a>

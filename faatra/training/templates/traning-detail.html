@@ -26,11 +26,15 @@
     </div>
     <div class="training-blue-info-item">
         <h2>Modalidad</h2>
-        <p>{{tranining.mode}}</p>
+        <p>{{training.mode.description | default_if_none:""}}</p>
     </div>
     <div class="training-blue-info-item">
         <h2>Organiza</h2>
         <p>{{training.saloon}}</p>
+    </div>
+    <div class="training-blue-info-item">
+        <h2>Instructor a cargo</h2>
+        <p>{{training.in_charge | default_if_none:""}}</p>
     </div>
     </div>
     <div class="primary-btn-container register-btn-container">

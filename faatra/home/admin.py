@@ -5,18 +5,22 @@ from django.contrib import admin
 from django.contrib import admin
 from home.models import WhoWeAre
 from solo.admin import SingletonModelAdmin
-from home.models import SiteConfiguration, SocialMediaConfiguration, Pages
+from home.models import SiteConfiguration, SocialMediaConfiguration, Pages, Profiles
 
 
 admin.site.register(SiteConfiguration, SingletonModelAdmin)
 admin.site.register(SocialMediaConfiguration, SingletonModelAdmin)
 admin.site.register(WhoWeAre, SingletonModelAdmin)
 
+class ProfilesAdmin(admin.TabularInline):
+    model = Profiles
+
 @admin.register(Pages)
 class PagesAdmin(admin.ModelAdmin):
     list_display = ("title", "created_date", "last_modification_date", "is_available")
     fields = (
         "title",
+        "subtitle",
         "description",
         "content",
         "image",
@@ -31,4 +35,5 @@ class PagesAdmin(admin.ModelAdmin):
     list_editable = ("is_available",)
     search_fields = ("title",)
     list_filter = ("is_available", "created_date")
+    inlines = [ProfilesAdmin]
 

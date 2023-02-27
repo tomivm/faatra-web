@@ -1,6 +1,7 @@
 from django.db import models
 from training.models import InformativeOffer
 from saloon.models import Saloon
+import datetime
 
 from shared.models import BaseTextModel
 
@@ -36,6 +37,11 @@ class New(BaseTextModel):
 
     banner_background_image = models.ImageField(
         upload_to="media/", verbose_name="Banner Home (1300x480px)", blank=True, null=True
+    )
+
+    created_date = models.DateTimeField(
+        verbose_name="Fecha de creación",
+        auto_created=False,
     )
 
     class Meta:

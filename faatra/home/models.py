@@ -46,6 +46,7 @@ class WhoWeAre(SingletonModel, BaseTextModel):
 
 
 class Pages(BaseTextModel):
+    subtitle = models.CharField(verbose_name="Sub titulo", max_length=256, blank=True, null=True)
     icon = models.FileField(verbose_name="Icono", blank=True, null=True)
     use_in_home = models.BooleanField(verbose_name="Usar en pagina princial", default=False)
 
@@ -53,5 +54,19 @@ class Pages(BaseTextModel):
         verbose_name = "Página"
         verbose_name_plural = "Páginas"
 
+    def __str__(self) -> str:
+        return self.title
+
+
+class Profiles(models.Model):
+    title = models.CharField(verbose_name="Titulo", max_length=256)
+    description = models.CharField(verbose_name="Nombre", max_length=256)
+    image = models.ImageField(verbose_name="Imagen")
+    page = models.ForeignKey(Pages, verbose_name="Página", on_delete=models.CASCADE, related_name="profiles")
+
+    class Meta:
+        verbose_name = "Perfil"
+        verbose_name_plural = "Perfiles"
+    
     def __str__(self) -> str:
         return self.title

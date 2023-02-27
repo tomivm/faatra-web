@@ -45,7 +45,7 @@ class Mode(models.Model):
         verbose_name_plural = "Modalidades"
 
     def __str__(self):
-        return f"{self.description}"
+        return self.description
 
 class InformativeOffer(BaseTextModel):
     email_info = QuillField()
@@ -61,13 +61,14 @@ class InformativeOffer(BaseTextModel):
     cancelled = models.BooleanField("Cancelado", default=False)
     due_date = models.DateField("Fecha cuando se cierra la inscripcion")
     use_in_home = models.BooleanField("Usar en la pagina principal", default=False)
-    mode = models.ForeignKey(Mode, verbose_name="Modalida", on_delete=models.SET_NULL, null=True, blank=True)
+    mode = models.ForeignKey(Mode, verbose_name="Modalidad", on_delete=models.SET_NULL, null=True, blank=True)
     image = models.ImageField(
         upload_to="media/", verbose_name="Imagen", null=False
     )
     banner_background_image = models.ImageField(
         upload_to="media/", verbose_name="Banner Home (1300x480px)", blank=True, null=True
     )
+    in_charge = models.CharField("Instructor a cargo", max_length=256, blank=True, null=True)
 
     class Meta:
         verbose_name = "Oferta formativa"

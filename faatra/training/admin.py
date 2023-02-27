@@ -45,6 +45,7 @@ class InformativeOfferAdmin(ExportActionMixin, admin.ModelAdmin):
         "enable_inscription",
         "exhausted",
         "mode",
+        "in_charge",
         "cancelled",
         "is_available",
         "due_date",

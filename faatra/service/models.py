@@ -21,7 +21,7 @@ class Service(BaseTextModel):
 
 class Files(models.Model):
     document = models.FileField(upload_to='doc/')
-    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='files')
 
     class Meta:
         verbose_name = "Archivo"

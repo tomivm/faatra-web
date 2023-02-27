@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 
 <div class="about-full-buttons-container">
-  <a class="primary-btn btn-sm btn-p-right-left no-style-url" href={% url "who-we-are" %}>¿Quienes somos?</a>
+  <a class="primary-btn btn-sm btn-p-right-left no-style-url" href={% url "who-we-are" %}>¿Quiénes somos?</a>
   {% for page in pages %}
   <a class="primary-btn btn-sm btn-p-right-left no-style-url" href={% url "pages-detail" page.url %}>{{page.title}}</a>
   {% endfor %}
@@ -9,7 +9,7 @@
 <div class="item about-full">
   <div class="full-container">
     <div class="full-text-container">
-      <h1>¿Quienes somos?</h1>
+      <h1>¿Quiénes somos?</h1>
      {{who_we_are.content.html|safe}}
     </div>
     <div class="about-full-side-container">

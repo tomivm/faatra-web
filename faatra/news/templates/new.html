@@ -1,17 +1,11 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 
 <div class="item about-full">
+  <!-- tomi: fijarse que el contenido ocupe todo lo ancho pero la imagen quede contenida en el container -->
   <div class="full-container">
     <div class="">
-     <h1>{{new.title}}</h1>
-    
-    <div>{{new.content.html|safe}}</div>
-    </div>
-    <div class="about-full-side-container">
-      {% if new.image %}
-      <div id="about-full-first-image" class="bg-img-cover"  style="background-image: url(&quot;{{new.image.url}}&quot;);"></div>
-      <div id="about-full-second-image" class="bg-img-cover"></div>
-      {%endif%}
+      <h1>{{new.title}}</h1>
+      <div>{{new.content.html|safe}}</div>
     </div>
   </div>
 </div>
