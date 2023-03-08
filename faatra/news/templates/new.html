@@ -1,8 +1,7 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 
 <div class="item about-full">
-  <!-- tomi: fijarse que el contenido ocupe todo lo ancho pero la imagen quede contenida en el container -->
-  <div class="full-container">
+  <div class="full-container use-all-container">
     <div class="">
       <h1>{{new.title}}</h1>
       <div>{{new.content.html|safe}}</div>

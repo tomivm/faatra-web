@@ -196,6 +196,18 @@ input:focus {
   text-transform: capitalize;
 }
 
+.full-text-container img {
+  max-width: 100%;
+}
+
+.full-container img {
+  max-width: 100%;
+}
+
+.use-all-container {
+  display: flex;
+}
+
 @media (max-width: 890px) {
   .full-container {
     display: grid;
@@ -1277,9 +1289,14 @@ input:focus {
   margin-top: 0;
   margin-bottom: 0;
 }
+
 .service-description-container p {
   padding: 0 1em 1em 1em;
   margin: 0 auto 0;
+}
+
+.service-description-container div {
+  padding: 0 1em 1em 1em;
 }
 
 .service-manangers-container {
@@ -1339,7 +1356,7 @@ input:focus {
   display: flex;
   justify-content: center;
   border-radius: 3px;
-  height: max-content;
+  max-height: 100%;
   max-width: max-content;
 }
 
@@ -1698,4 +1715,15 @@ input:focus {
 
 .service-item img {
   max-width: 100%;
+}
+
+.service-file-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.service-file-container a{
+  margin-right: 10px;
+  margin-left: 5px;
 }

@@ -10,16 +10,29 @@
   <div class="full-container">
     <div class="full-text-container">
       <h1>{{page.subtitle | default_if_none:page.title}}</h1>
-     {{page.content.html|safe}}
-     {% for profile in page.profiles.all %}
+      {{page.content.html|safe}}
+    <div class="item services home-services">
+      <div class="container">
 
-    <!-- tomi dale amor a esto-->
-    <div> 
-      <h1>{{profile.title}}</h1>
-      <p> {{profile.description}}</p>
-      <img src="{{profile.image.url}}" alt="">
+        <div class="blue-bg-items-container padding-top-btn divider-none">
+        {% for profile in page.profiles.all %}
+        <div>
+            <img
+            src="{{profile.image.url}}"
+            alt="gremial-logo"
+            height="100"
+            width="100"
+            />
+            <div class="blue-bg-item-text-container">
+            <h2>{{profile.title}}</h2>
+            <p>{{profile.description}}</p>
+            </div>
+        </div>
+        {% endfor %}
+        
+        </div>
+      </div>
     </div>
-    {% endfor %}
     </div>
     <div class="about-full-side-container">
       {% if page.image %}

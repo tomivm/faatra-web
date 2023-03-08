@@ -47,9 +47,9 @@
           <div id="service-full" class="service-description-container blue-bg">
             <h2 id="service-tittle">{{service.title}}</h2>
             <p id="service-description">{{service.content.html | safe }}</p>
+            <div class="service-file-container">
+            <h3>Archivos:</h3>
             {% for file in service.files.all %}
-              <!-- esto hay que hacerlo mas bonito tomi -->
-              <div class="service-file-container">
                 <a href="{{file.document.url}}" target="_blank">
                   <img
                     class="svg-to-primary-color"
@@ -58,12 +58,9 @@
                     height="100"
                     width="100"
                   />
-                  <div class="blue-bg-item-text-container">
-                  
-                  </div>
                 </a>
-              </div>
             {% endfor %}
+            </div>
           </div>
         </div>
       {% endfor %}
