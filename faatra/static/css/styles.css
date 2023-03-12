@@ -1358,6 +1358,7 @@ input:focus {
   border-radius: 3px;
   max-height: 100%;
   max-width: max-content;
+  background-color: white;
 }
 
 #slideLeft {
@@ -1726,4 +1727,17 @@ input:focus {
 .service-file-container a{
   margin-right: 10px;
   margin-left: 5px;
+}
+
+.profiles {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.services-buttom {
+  background-color: white;
+  border: none;
 }

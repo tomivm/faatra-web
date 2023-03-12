@@ -16,14 +16,15 @@
 
         <div class="blue-bg-items-container padding-top-btn divider-none">
         {% for profile in page.profiles.all %}
-        <div>
+        <div class="blue-bg profiles">
             <img
             src="{{profile.image.url}}"
             alt="gremial-logo"
             height="100"
             width="100"
+            class="circle-shape"
             />
-            <div class="blue-bg-item-text-container">
+            <div class="blue-b profilesg-item-text-container">
             <h2>{{profile.title}}</h2>
             <p>{{profile.description}}</p>
             </div>
