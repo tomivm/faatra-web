@@ -12,7 +12,12 @@ from .models import New
 
 def index(request):
     context = get_context()
+    camara = request.GET.get('camara', '')
     news = New.objects.filter(is_available=True).order_by("-created_date")
+
+    if camara and camara != "null":
+        news = news.filter(saloon_id=int(camara))
+
     paginator = Paginator(news, 10)
     page_number = request.GET.get('page', 1)
     page_obj = paginator.get_page(page_number)

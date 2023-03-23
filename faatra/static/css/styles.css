@@ -1097,7 +1097,7 @@ input:focus {
 }
 /* CAPACITACION FULL */
 .training-full-side-container {
-  display: grid;
+  display: inline;
   grid-template-columns: 1fr;
 }
 

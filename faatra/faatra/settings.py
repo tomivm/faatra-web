@@ -25,7 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-z(-d3=b_2g6ap2i&mmxrwb6p#&f7$o67_e(886t2z$4n+wuf38"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'NO').lower() in ('on', 'true', 'y', 'yes')
+# DEBUG = os.getenv('DEBUG', 'NO').lower() in ('on', 'true', 'y', 'yes')
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -41,7 +42,6 @@ INSTALLED_APPS = [
     "news",
     "incriptions",
     "links",
-    "partnership",
     "admin_ordering",
     "jazzmin",
     "django.contrib.admin",
@@ -87,14 +87,14 @@ WSGI_APPLICATION = "faatra.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
-
 DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
+
+""" DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.environ['DB_NAME'],
@@ -103,7 +103,7 @@ DATABASES = {
         'HOST': os.environ['DB_SERVICE'],
         'PORT': os.environ['DB_PORT']
     }
-}
+} """
 
 
 # Password validation

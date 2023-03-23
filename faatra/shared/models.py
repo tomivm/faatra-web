@@ -1,4 +1,5 @@
 import datetime
+import uuid
 from django.db import models
 from django_quill.fields import QuillField
 from django.utils.text import slugify
@@ -39,5 +40,5 @@ class BaseTextModel(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.url:
-            self.url = slugify(self.title)
+            self.url = f"{slugify(self.title)}-{str(uuid.uuid4())}"
         super().save()

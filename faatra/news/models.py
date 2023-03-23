@@ -39,7 +39,7 @@ class New(BaseTextModel):
         upload_to="media/", verbose_name="Banner Home (1300x480px)", blank=True, null=True
     )
 
-    created_date = models.DateTimeField(
+    created_date = models.DateField(
         verbose_name="Fecha de creación",
         auto_created=False,
     )

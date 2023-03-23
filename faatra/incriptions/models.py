@@ -1,11 +1,8 @@
 from django.db import models
 import datetime
 from training.models import InformativeOffer
-
-from saloon.models import Saloon
+from faatra.settings import EMAIL_HOST_USER
 from django.core.mail import send_mail
-
-# Create your models here.
 
 
 class EmployeeCondition(models.Model):
@@ -60,15 +57,24 @@ class Incription(models.Model):
 
     def save(self) -> None:
         if not self._is_confirmed and self.is_confirmed:
+            body = (f"Hola {self.fullname}, se confirmo la inscripcion al curso {self.course.title}"
+                    f"{self.course.email_info}")
 
             send_mail(
                 "Incripciones",
-                f"Hola {self.fullname}, se confirmo la inscripcion al curso {self.course.title}",
-                "lm.bringas98@gmail.com",
+                body,
+                EMAIL_HOST_USER,
                 [self.email],
                 fail_silently=False,
             )
 
-            print("pase por aca")
+            body = f"Hola se inscribio {self.fullname}, al curso {self.course.title}"
+            send_mail(
+                "Incripciones",
+                body,
+                EMAIL_HOST_USER,
+                [EMAIL_HOST_USER],
+                fail_silently=False,
+            )
 
         super().save()

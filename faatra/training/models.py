@@ -70,6 +70,10 @@ class InformativeOffer(BaseTextModel):
     )
     in_charge = models.CharField("Instructor a cargo", max_length=256, blank=True, null=True)
 
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self._cancelled = self.cancelled
+
     class Meta:
         verbose_name = "Oferta formativa"
         verbose_name_plural = "Oferta formativa"
@@ -80,6 +84,10 @@ class InformativeOffer(BaseTextModel):
     def save(self, *args, **kwargs):
         if self.use_in_home:
             InformativeOffer.objects.filter(use_in_home=True).exclude(id=self.id).update(use_in_home=False)
+
+        if self.cancelled and not self._cancelled:
+            # aca mandar el mail csv 
+            pass
         return super().save(*args, **kwargs)
 
 
