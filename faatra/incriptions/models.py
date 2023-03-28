@@ -68,6 +68,7 @@ class Incription(models.Model):
                 fail_silently=False,
             )
 
+        if not self.pk:
             body = f"Hola se inscribio {self.fullname}, al curso {self.course.title}"
             send_mail(
                 "Incripciones",

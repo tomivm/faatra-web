@@ -37,3 +37,5 @@ class IncriptionAdmin(ExportActionMixin, admin.ModelAdmin):
     )
 
     readonly_fields = ["created_date"]
+    search_fields = ("fullname", "email", "dni")
+    list_filter = ("is_confirmed", "created_date", "course")
