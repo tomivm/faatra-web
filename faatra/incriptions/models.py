@@ -3,6 +3,7 @@ import datetime
 from training.models import InformativeOffer
 from faatra.settings import EMAIL_HOST_USER
 from django.core.mail import send_mail
+from django.utils.html import strip_tags
 
 
 class EmployeeCondition(models.Model):
@@ -58,7 +59,7 @@ class Incription(models.Model):
     def save(self) -> None:
         if not self._is_confirmed and self.is_confirmed:
             body = (f"Hola {self.fullname}, se confirmo la inscripcion al curso {self.course.title}"
-                    f"{self.course.email_info.html}")
+                    f"{strip_tags(self.course.email_info.html)}")
 
             send_mail(
                 "Incripciones",
@@ -66,6 +67,7 @@ class Incription(models.Model):
                 EMAIL_HOST_USER,
                 [self.email],
                 fail_silently=False,
+                html_message=self.course.email_info.html
             )
 
         if not self.pk:
