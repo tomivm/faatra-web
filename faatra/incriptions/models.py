@@ -58,7 +58,7 @@ class Incription(models.Model):
     def save(self) -> None:
         if not self._is_confirmed and self.is_confirmed:
             body = (f"Hola {self.fullname}, se confirmo la inscripcion al curso {self.course.title}"
-                    f"{self.course.email_info}")
+                    f"{self.course.email_info.html}")
 
             send_mail(
                 "Incripciones",
