@@ -67,7 +67,7 @@ class Incription(models.Model):
                 EMAIL_HOST_USER,
                 [self.email],
                 fail_silently=False,
-                html_message=self.course.email_info.html
+                html_message=body
             )
 
         if not self.pk:
