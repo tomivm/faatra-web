@@ -25,7 +25,7 @@ def training_list(request, category_id):
     trainings = InformativeOffer.objects.all().filter(
         category_id=category_id, 
         is_available=True, 
-        #due_date__gte=datetime.now()
+        due_date__gte=datetime.now()
     )
     camara = request.GET.get('camara', '')
     especialidad = request.GET.get('especialidad', '')
