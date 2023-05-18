@@ -48,7 +48,7 @@
 onclick="openInscriptForm()">
 <div id="inscription-form" class="" onclick="event.stopPropagation()">
 <h1>Formulario de inscripcion</h1>
-<div class="incription-form-container">
+<div class="">
     <form class="incription-form-container" action="/capacitaciones/process-inscription" method="post">
         {% csrf_token %}
         {% for field in form %}

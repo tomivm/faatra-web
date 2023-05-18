@@ -47,6 +47,10 @@ p {
   cursor: pointer;
 }
 
+.no-style-url:focus {
+  background-color: transparent !important;
+}
+
 input,
 textarea,
 select {
@@ -133,7 +137,6 @@ input:focus {
 
 .btn-sm {
   width: auto;
-  height: 2em;
   font-size: 1.7em;
   font-weight: 700;
   padding: 0 0.2em 0 0.2em;
@@ -1203,6 +1206,7 @@ input:focus {
   grid-template-columns: 1fr 1fr;
   column-gap: var(--column-gap);
   margin: 0 20px 20px 20px;
+
 }
 
 .modal-form .inscript-btn {
@@ -1735,9 +1739,19 @@ input:focus {
   flex-direction: column;
   padding: 5px;
   margin-bottom: 10px;
+  background-color: white;
 }
 
 .services-buttom {
   background-color: white;
   border: none;
+}
+
+.profiles p{
+  color: var(--primary-color);
+}
+
+
+.profiles h2{
+  color: var(--primary-color);
 }

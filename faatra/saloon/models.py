@@ -47,7 +47,7 @@ class ImportantAgreement(models.Model):
     title = models.CharField(verbose_name="Titulo", max_length=256)
     url = models.CharField(verbose_name="URL", max_length=256)
     image = models.ImageField(
-        upload_to="media/", verbose_name="Imagen", blank=True, null=True
+        upload_to="media/", verbose_name="Imagen", blank=False, null=False
     )
     is_available = models.BooleanField(verbose_name="Habilitado", default=False)
 

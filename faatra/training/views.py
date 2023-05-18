@@ -1,10 +1,13 @@
 
+from typing import Any
+from django.db import models
 from saloon.models import Saloon
 from shared.utils import get_context
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.views.generic.detail import DetailView
 from incriptions.forms import IncriptionForm
+from datetime import datetime
 
 from .models import InformativeOffer, OfferCategory, Topic
 
@@ -19,7 +22,11 @@ def training_index(request):
 
 def training_list(request, category_id):
     context = get_context()
-    trainings = InformativeOffer.objects.all().filter(category_id=category_id, is_available=True)
+    trainings = InformativeOffer.objects.all().filter(
+        category_id=category_id, 
+        is_available=True, 
+        #due_date__gte=datetime.now()
+    )
     camara = request.GET.get('camara', '')
     especialidad = request.GET.get('especialidad', '')
     provincia = request.GET.get('provincia', '')
@@ -36,9 +43,9 @@ def training_list(request, category_id):
     
 
     training_ids = trainings.values_list('id', flat=True)
-    saloon = Saloon.objects.filter(informativeoffer__in=training_ids)
-    topic = Topic.objects.filter(informativeoffer__in=training_ids)
-    cities = trainings.values_list("city", flat=True)
+    saloon = Saloon.objects.filter(informativeoffer__in=training_ids).distinct()
+    topic = Topic.objects.filter(informativeoffer__in=training_ids).distinct()
+    cities = trainings.exclude(city=None).values_list("city", flat=True).distinct()
     context["tranings"] = trainings
     context["saloon"] = saloon
     context["topic"] = topic
@@ -61,7 +68,6 @@ class TrainingDetailView(DetailView):
         context.update(extra_context)
         context["form"] = IncriptionForm()
         return context
-
 
 def process_inscription(request):
     form = IncriptionForm(request.POST)

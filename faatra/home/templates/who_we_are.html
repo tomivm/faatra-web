@@ -7,16 +7,10 @@
   {% endfor %}
 </div>
 <div class="item about-full">
-  <div class="full-container">
+  <div class="full-container use-all-container">
     <div class="full-text-container">
       <h1>¿Quiénes somos?</h1>
      {{who_we_are.content.html|safe}}
-    </div>
-    <div class="about-full-side-container">
-      {% if who_we_are.image %}
-      <div id="about-full-first-image" class="bg-img-cover"  style="background-image: url(&quot;{{who_we_are.image.url}}&quot;);"></div>
-      <div id="about-full-second-image" class="bg-img-cover"></div>
-      {%endif%}
     </div>
   </div>
 </div>

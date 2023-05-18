@@ -76,7 +76,7 @@ class Incription(models.Model):
                 "Incripciones",
                 body,
                 EMAIL_HOST_USER,
-                [EMAIL_HOST_USER],
+                [self.course.saloon.email],
                 fail_silently=False,
             )
 

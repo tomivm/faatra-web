@@ -7,7 +7,7 @@
   {% endfor %}
 </div>
 <div class="item about-full">
-  <div class="full-container">
+  <div class="full-container use-all-container">
     <div class="full-text-container">
       <h1>{{page.subtitle | default_if_none:page.title}}</h1>
       {{page.content.html|safe}}
@@ -16,7 +16,7 @@
 
         <div class="blue-bg-items-container padding-top-btn divider-none">
         {% for profile in page.profiles.all %}
-        <div class="blue-bg profiles">
+        <div class="profiles">
             <img
             src="{{profile.image.url}}"
             alt="gremial-logo"
@@ -24,7 +24,7 @@
             width="100"
             class="circle-shape"
             />
-            <div class="blue-b profilesg-item-text-container">
+            <div class="blue-b profiles g-item-text-container">
             <h2>{{profile.title}}</h2>
             <p>{{profile.description}}</p>
             </div>
@@ -34,12 +34,6 @@
         </div>
       </div>
     </div>
-    </div>
-    <div class="about-full-side-container">
-      {% if page.image %}
-      <div id="about-full-first-image" class="bg-img-cover"  style="background-image: url(&quot;{{page.image.url}}&quot;);"></div>
-      <div id="about-full-second-image" class="bg-img-cover"></div>
-      {%endif%}
     </div>
   </div>
 </div>

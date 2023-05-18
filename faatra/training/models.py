@@ -2,6 +2,7 @@ from django.db import models
 from django_quill.fields import QuillField
 from saloon.models import Saloon
 from shared.models import BaseTextModel
+from datetime import datetime
 
 # Create your models here.
 
@@ -81,6 +82,10 @@ class InformativeOffer(BaseTextModel):
     def __str__(self) -> str:
         return self.title
     
+    @property
+    def is_closed(self):
+        return self.due_date < datetime.date.today()
+
     def save(self, *args, **kwargs):
         if self.use_in_home:
             InformativeOffer.objects.filter(use_in_home=True).exclude(id=self.id).update(use_in_home=False)
