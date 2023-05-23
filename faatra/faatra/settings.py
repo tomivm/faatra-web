@@ -163,6 +163,7 @@ QUILL_CONFIGS = {
             "syntax": True,
             "toolbar": [
                 [
+                    {'font': []},
                     "bold",
                     "italic",
                     "underline",
@@ -171,6 +172,7 @@ QUILL_CONFIGS = {
                 ],
                 ["code-block", "link", "image"],
                 ["clean"],
+                [{ 'header': []}],
             ],
         },
     }
