@@ -31,5 +31,5 @@ def close_informative_offer():
     from datetime import datetime
 
     now = datetime.now()
-    InformativeOffer.objects.filter(due_date=now).update(is_cancelled=True)
+    InformativeOffer.objects.filter(due_date__lte=now).update(cancelled=True)
     print("me ejecute")
