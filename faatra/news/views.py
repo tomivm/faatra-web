@@ -13,10 +13,10 @@ from .models import New
 def index(request):
     context = get_context()
     camara = request.GET.get('camara', '')
-    news = New.objects.filter(is_available=True).order_by("-created_date")
-
+    news = New.objects.filter(is_available=True, saloon_id__isnull=True).order_by("-created_date")
+    
     if camara and camara != "null":
-        news = news.filter(saloon_id=int(camara))
+        news = New.objects.filter(is_available=True, saloon_id=int(camara)).order_by("-created_date")
 
     paginator = Paginator(news, 10)
     page_number = request.GET.get('page', 1)

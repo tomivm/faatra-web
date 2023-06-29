@@ -14,9 +14,11 @@ from .models import InformativeOffer, OfferCategory, Topic
 # Create your views here.
 
 def training_index(request):
+    camara = request.GET.get('camara', '')
     context = get_context()
     categories = OfferCategory.objects.all()
     context["categories"] = categories
+    context["camara"] = camara
     return render(request, "training_categories.html", context)
 
 
@@ -30,12 +32,11 @@ def training_list(request, category_id):
     camara = request.GET.get('camara', '')
     especialidad = request.GET.get('especialidad', '')
     provincia = request.GET.get('provincia', '')
-
+    #import ipdb ; ipdb.set_trace()
     if camara and camara != "null":
         trainings = trainings.filter(saloon_id=int(camara))
     
     if especialidad and especialidad != "null":
-        print("especialidad")
         trainings = trainings.filter(topic_id=int(especialidad))
     
     if provincia and provincia != "null":

@@ -19,12 +19,15 @@
       </a>
       {% endfor %}
     </div>
-    <div id="pages-nav-id" class="pages-nav">
-        {% for number in numbers%}
-          <a href="?page={{number}}" class="no-style-url"><div class="page-btn scale-hover page-selected">{{number}}</div></a>
-        {%endfor%}
-      </div>
-  </div>
+    {% if news%}
+      <div id="pages-nav-id" class="pages-nav">
+            {% for number in numbers%}
+              <a href="?page={{number}}" class="no-style-url"><div class="page-btn scale-hover page-selected">{{number}}</div></a>
+            {%endfor%}
+          </div>
+      
+    {%endif%}
+    </div>
 </div>
 
 {% endblock content %}
