@@ -1,4 +1,35 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
-<div class="">
+<div class="item training">
+    <div class="training-form-container">
+        <h1>Oferta Formativa</h1>
+        <!-- This is the same than training categories -->
+        <!-- Each open his own list in view 2 -->
+        <div class="training-form-items-container">
+            <a href="http://127.0.0.1:5500/src/offers/offers_list.html"
+                class="training-form-item inclusion-bg  no-style-url"
+                style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.76)),  url({{c.image_backgroud.url}}); background-size: cover;">
+                <img src="../images/capacitacion/inclusion.svg" height="50" width="50">
+                <h2>titulo</h2>
+            </a>
+            <a href="http://127.0.0.1:5500/src/offers/offers_list.html"
+                class="training-form-item inclusion-bg  no-style-url"
+                style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.76)),  url({{c.image_backgroud.url}}); background-size: cover;">
+                <img src="../images/capacitacion/inclusion.svg" height="50" width="50">
+                <h2>titulo</h2>
+            </a>
+            <a href="http://127.0.0.1:5500/src/offers/offers_list.html"
+                class="training-form-item inclusion-bg  no-style-url"
+                style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.76)),  url({{c.image_backgroud.url}}); background-size: cover;">
+                <img src="../images/capacitacion/inclusion.svg" height="50" width="50">
+                <h2>titulo</h2>
+            </a>
+            <a href="http://127.0.0.1:5500/src/offers/offers_list.html"
+                class="training-form-item inclusion-bg  no-style-url"
+                style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.76)),  url({{c.image_backgroud.url}}); background-size: cover;">
+                <img src="../images/capacitacion/inclusion.svg" height="50" width="50">
+                <h2>titulo</h2>
+            </a>
+        </div>
+    </div>
 </div>
 {% endblock content %}
