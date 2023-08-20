@@ -75,3 +75,11 @@ def process_inscription(request):
     form.is_valid()
     form.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+def view_1(request):
+    context = get_context()
+    return render(request, "view1.html", context)
+
+def view_2(request):
+    context = get_context()
+    return render(request, "view2.html", context)

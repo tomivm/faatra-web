@@ -14,6 +14,16 @@ urlpatterns = [
         name="training-list",
     ),
     path(
+        "/view1",
+        views.view_1,
+        name="view1-list",
+    ),
+     path(
+        "/view2",
+        views.view_2,
+        name="view2-list",
+    ),
+    path(
         "/process-inscription",
         views.process_inscription,
         name="process-inscription",
