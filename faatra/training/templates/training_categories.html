@@ -3,21 +3,30 @@
 
 <div class="item training">
     <div class="training-form-container">
-    <h1>Capacitaciones</h1>
-    <div class="training-form-items-container">
-        {% for c in categories %}
-        <a 
-            href="{% url 'training-list' c.id %}?camara={{camara}}" 
-            class="training-form-item inclusion-bg  no-style-url" 
-            {% if c.image_backgroud %}
-            style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.76)),  url({{c.image_backgroud.url}}); background-size: cover;"
-            {% endif %}
-        >
-        <img src="{{c.icon.url}}" alt="" height="50" width="50">
-        <h2>{{c.title}}</h2>
-        </a>
-        {% endfor %}
-    </div>
+        <div class="item snit">
+            <div>
+                <h1>Oferta formativa</h1>
+                <h2>
+                    Aqui podes encontrar la info de toda la oferta formativa
+                </h2>
+                <div class="primary-btn-container read-more-btn-container">
+                    <!-- this open view 1 -->
+                    <a href="#" target="_blank" class="primary-btn btn-lg no-style-url">Ingresar</a>
+                </div>
+            </div>
+        </div>
+        <h1>Capacitaciones</h1>
+        <div class="training-form-items-container">
+            {% for c in categories %}
+            <a href="{% url 'training-list' c.id %}?camara={{camara}}"
+                class="training-form-item inclusion-bg  no-style-url" {% if c.image_backgroud %}
+                style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.76)),  url({{c.image_backgroud.url}}); background-size: cover;"
+                {% endif %}>
+                <img src="{{c.icon.url}}" alt="" height="50" width="50">
+                <h2>{{c.title}}</h2>
+            </a>
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock content %}
