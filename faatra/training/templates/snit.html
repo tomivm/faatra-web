@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<div class="item training">
+    <div class="training-form-container">
+        <h1>Oferta Formativa</h1>
+        <!-- This is the same than training categories -->
+        <!-- Each open his own list in view 2 -->
+        <div class="training-form-items-container">
+            {% for snit in snits %}
+                <a href="{% url 'snit-detail' snit.id %}"
+                    class="training-form-item inclusion-bg  no-style-url"
+                    style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.76)),  url({{c.image_backgroud.url}}); background-size: cover;">
+                    <img src="{{snit.image.url}}" height="50" width="50">
+                    <h2>titulo</h2>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

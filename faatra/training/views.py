@@ -9,7 +9,7 @@ from django.views.generic.detail import DetailView
 from incriptions.forms import IncriptionForm
 from datetime import datetime
 
-from .models import InformativeOffer, OfferCategory, Topic
+from .models import InformativeOffer, OfferCategory, Topic, SNITCategory, SNITFile
 
 # Create your views here.
 
@@ -76,10 +76,12 @@ def process_inscription(request):
     form.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
-def view_1(request):
+def snit(request):
     context = get_context()
-    return render(request, "view1.html", context)
+    context["snits"] = SNITCategory.objects.all()
+    return render(request, "snit.html", context)
 
-def view_2(request):
+def snit_detail(request, snit_id):
     context = get_context()
-    return render(request, "view2.html", context)
+    context["files"] = SNITFile.objects.filter(snit_id=snit_id)
+    return render(request, "snit_detail.html", context)

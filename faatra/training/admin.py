@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from django.contrib import admin
 
-from .models import DateRealization, InformativeOffer, Topic, OfferCategory, Mode
+from .models import DateRealization, InformativeOffer, Topic, OfferCategory, Mode, SNITCategory, SNITFile
 
 from import_export.admin import ExportActionMixin
 
@@ -58,3 +58,12 @@ class InformativeOfferAdmin(ExportActionMixin, admin.ModelAdmin):
     list_editable = ("is_available",)
     search_fields = ("title",)
     list_filter = ("is_available", "created_date")
+
+
+class SNITFileInline(admin.TabularInline):
+    model = SNITFile
+
+
+@admin.register(SNITCategory)
+class ModeAdmin(admin.ModelAdmin):
+    inlines = [SNITFileInline]

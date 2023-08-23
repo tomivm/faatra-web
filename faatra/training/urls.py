@@ -14,14 +14,14 @@ urlpatterns = [
         name="training-list",
     ),
     path(
-        "/view1",
-        views.view_1,
-        name="view1-list",
+        "/snit",
+        views.snit,
+        name="snit-list",
     ),
      path(
-        "/view2",
-        views.view_2,
-        name="view2-list",
+        "/snit/<int:snit_id>",
+        views.snit_detail,
+        name="snit-detail",
     ),
     path(
         "/process-inscription",

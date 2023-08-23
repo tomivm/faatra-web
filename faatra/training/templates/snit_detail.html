@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<div class="item training">
+    <div class="training-form-container">
+        <h1>Oferta Formativa</h1>
+        <div class="offer-btn-container">
+            {% for file in files %}
+                <div onclick="" class="offer-btn">
+                    <a  href="{{file.file.url}}">
+                        {{ file.title }}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

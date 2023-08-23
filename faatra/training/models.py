@@ -108,3 +108,25 @@ class DateRealization(models.Model):
     class Meta:
         verbose_name = "Fecha de realizacion"
         verbose_name_plural = "Fechas de realizacion"
+
+
+class SNITCategory(models.Model):
+    name = models.CharField(verbose_name="Nombre", max_length=256)
+    image = models.ImageField(upload_to="media/", verbose_name="Imagen")
+    class Meta:
+        verbose_name = "SNIT"
+        verbose_name_plural = "SNIT"
+
+    def __str__(self):
+        return self.name
+
+class SNITFile(models.Model):
+    snit = models.ForeignKey(SNITCategory, verbose_name="SNIT", on_delete=models.CASCADE, related_name="files")
+    file = models.FileField(verbose_name="Archivo")
+    title = models.CharField(verbose_name="Titulo", max_length=256)
+    class Meta:
+        verbose_name = "Archivo SNIT"
+        verbose_name_plural = "Archivos SNIT"
+
+    def __str__(self):
+        return self.title
