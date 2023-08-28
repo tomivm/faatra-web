@@ -1056,6 +1056,7 @@ input:focus {
 
 .training-list-item.scale-hover:hover {
   transform: scale(1.05);
+  background-size: cover;
 }
 
 .training-list-item-tittle-container {
