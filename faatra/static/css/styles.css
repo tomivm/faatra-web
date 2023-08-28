@@ -1785,6 +1785,16 @@ input:focus {
   transition: margin-left 0.5s ease;
   border-radius: 0.1em;
 }
+
+.offer-btn>a{
+  text-decoration: none;
+  color: var(--white-color);
+}
+
+.offer-btn>a:visited{
+  color: var(--white-color);
+}
+
 .offer-btn:nth-child(2n) {
   background-color: #002b37e6;
 }
