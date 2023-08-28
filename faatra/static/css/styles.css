@@ -1011,25 +1011,33 @@ input:focus {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  flex-direction: column;
   margin-top: 1.5em;
 }
 
 .trainings-select-container > * {
   display: flex;
   column-gap: 1em;
-  padding-right: 2em;
   align-items: center;
-  width: auto;
+  flex-wrap: wrap;
 }
 
 .trainings-select-container select {
-  background-color: var(--primary-color);
-  color: var(--white-color);
+  border: solid 2px var(--secondary-color);
+  background-color: var(--white-color);
+  color: var(--black-color);
   height: 2.5em;
-  width: min-content;
+  width: 100%;
+  padding-left: 1em;
   font-size: medium;
   font-weight: var(--font-weight-semibold);
-  margin-left: auto;
+  align-self: start;
+  text-overflow: ellipsis; 
+  text-transform: capitalize
+}
+
+.trainings-select-container h2{
+  margin-bottom: 0.3em;
 }
 
 .training-list-item {
