@@ -1,92 +1,95 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 
 <div class="item training-full">
-<div class="full-container">
-<div class="full-text-container">
-    {{ training.content.html|safe}}
-</div>
-<div class="training-full-side-container">
-    <div id="training-image"  style="background-image: url(&quot;{{training.image.url}}&quot;);" class="bg-img-cover"></div>
-    <div class="training-full-blue-info">
-    <div class="training-dates-container">
-        <div>
-        <h2>Fechas</h2>
-        <p>
-            {% for date in training.dates.all%}
-                {{date.created_date|date:"d/m/Y"}} - {{date.hours}}hs</br>
-            {% endfor %}</p>
+    <div class="full-container">
+        <div class="full-text-container">
+            {{ training.content.html|safe}}
         </div>
-        <div class="training-until-date">
-        <p>Inscripcion hasta el {{training.due_date}}</p>
+        <div class="training-full-side-container">
+            <div id="training-image" style="background-image: url(&quot;{{training.image.url}}&quot;);"
+                class="bg-img-cover"></div>
+            <div class="training-full-blue-info">
+                <div class="training-dates-container">
+                    <div>
+                        <h2>Fechas</h2>
+                        <p>
+                            {% for date in training.dates.all%}
+                            {{date.created_date|date:"d/m/Y"}} - {{date.hours}}hs</br>
+                            {% endfor %}</p>
+                    </div>
+                    <div class="training-until-date">
+                        <p>Inscripcion hasta el {{training.due_date}}</p>
+                    </div>
+                </div>
+                <div class="training-blue-info-item">
+                    <h2>Duración</h2>
+                    <p>{{training.duration | default_if_none:""}}</p>
+                </div>
+                <div class="training-blue-info-item">
+                    <h2>Modalidad</h2>
+                    <p>{{training.mode.description | default_if_none:""}}</p>
+                </div>
+                <div class="training-blue-info-item">
+                    <h2>Organiza</h2>
+                    <p>{{training.saloon}}</p>
+                </div>
+                <div class="training-blue-info-item">
+                    <h2>Instructor a cargo</h2>
+                    <p>{{training.in_charge | default_if_none:""}}</p>
+                </div>
+            </div>
+            <div class="primary-btn-container register-btn-container">
+                <button onclick="openInscriptForm()" class="primary-btn btn-lg btn-full-width">Inscribirme</button>
+            </div>
         </div>
     </div>
-    <div class="training-blue-info-item">
-        <h2>Duración</h2>
-        <p>{{training.duration | default_if_none:""}}</p>
-    </div>
-    <div class="training-blue-info-item">
-        <h2>Modalidad</h2>
-        <p>{{training.mode.description | default_if_none:""}}</p>
-    </div>
-    <div class="training-blue-info-item">
-        <h2>Organiza</h2>
-        <p>{{training.saloon}}</p>
-    </div>
-    <div class="training-blue-info-item">
-        <h2>Instructor a cargo</h2>
-        <p>{{training.in_charge | default_if_none:""}}</p>
-    </div>
-    </div>
-    <div class="primary-btn-container register-btn-container">
-    <button onclick="openInscriptForm()" class="primary-btn btn-lg btn-full-width">Inscribirme</button>
-    </div>
-</div>
-</div>
 </div>
 
-<div id="inscription-form-bg" class="full-bleed modal-bg container" style="display: none;"
-onclick="openInscriptForm()">
-<div id="inscription-form" class="" onclick="event.stopPropagation()">
-<h1>Formulario de inscripcion</h1>
-<div class="">
-    <form class="incription-form-container" action="/capacitaciones/process-inscription" method="post">
-        {% csrf_token %}
-        {% for field in form %}
+<!-- <div id="inscription-form-bg" class="full-bleed modal-bg container" style="display: none;" onclick="openInscriptForm()"> -->
+<dialog id="inscription-form" class="" onclick="event.target==this && openInscriptForm(true)">
+    <h1>Formulario de inscripcion</h1>
+    <form class="">
+        <div class="incription-form-container" action="/capacitaciones/process-inscription" method="post">
+            {% csrf_token %}
+            {% for field in form %}
             <div class="form-item">
                 {{ field.errors }}
                 {{ field.label_tag }} {{ field }}
             </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
         <input class="primary-btn-container primary-btn btn-lg inscript-btn" type="submit" value="Inscribirme">
     </form>
-</div>
-</div>
-</div>
+</dialog>
+<!-- </div> -->
 
 <script>
-function openInscriptForm() {
-  const isOpenClass = () => {
-    const open = () => {
-      body.classList.add("disable-scroll");
-      modalForm.classList.add("modal-form");
-      modalBackground.style.display = "grid";
-    };
+    function openInscriptForm(clickBackdrop) {
+        const isOpenClass = () => {
+            const open = () => {
+                body.classList.add("disable-scroll");
+                modalForm.showModal()
+                modalForm.classList.add("modal-form");
+                // modalBackground.style.display = "grid";
+            };
 
-    const close = () => {
-      modalForm.classList.remove("modal-form");
-      modalBackground.style.display = "none";
-      body.classList.remove("disable-scroll");
-    };
+            const close = () => {
+                modalForm.classList.remove("modal-form");
+                body.classList.remove("disable-scroll");
+                modalForm.close();
+                // modalBackground.style.display = "none";
+            };
 
-    const body = document.body;
-    const modalForm = document.getElementById("inscription-form");
-    const modalBackground = document.getElementById("inscription-form-bg");
+            const body = document.body;
+            const modalForm = document.getElementById("inscription-form");
+            // const modalBackground = document.getElementById("inscription-form-bg");
+            console.log('click')
+            if (clickBackdrop) return close();
+            if (modalForm.classList.contains("modal-form")) return close();
+            return open();
+        };
 
-    if (modalForm.classList.contains("modal-form")) return close();
-    return open();
-  };
-
-  isOpenClass();
-}
+        isOpenClass();
+    }
 </script>
 {% endblock content %}
