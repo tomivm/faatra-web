@@ -24,6 +24,8 @@ services:
     volumes:
       - ./faatra/static:/www/static
       - web-media:/www/media
+      - $PWD/faatra.key:/etc/nginx/certs/faatra.key
+      - $PWD/faatra.crt:/etc/nginx/certs/faatra.crt
     links:
       - web:web
 
