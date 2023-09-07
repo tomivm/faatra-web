@@ -1797,6 +1797,7 @@ dialog::backdrop {
 .services-buttom {
   background-color: white;
   border: none;
+  outline: none;
 }
 
 .profiles p {
