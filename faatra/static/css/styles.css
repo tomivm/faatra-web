@@ -1323,11 +1323,11 @@ dialog::backdrop {
 }
 
 .selectable .blue-bg-item:focus .services-arrow {
-  display: block;
+  opacity: 1;
 }
 
 .services-arrow {
-  display: none;
+  opacity: 0;
   width: 0;
   height: 0;
   border-left: 2em solid transparent;
@@ -1381,6 +1381,15 @@ dialog::backdrop {
   padding-bottom: 0;
 }
 
+.download-file-btn {
+  transform: rotate(0);
+  transition: transform 0.4s;
+}
+
+.download-file-btn:hover {
+  transform: rotate(20deg);
+}
+
 /* gallery https://codepen.io/fredericrous/pen/xxVXJYX */
 
 #gallery-container {
@@ -1400,7 +1409,7 @@ dialog::backdrop {
   scroll-behavior: smooth;
   scroll-padding: 1rem;
   justify-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .gallery .active {
