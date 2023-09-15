@@ -25,8 +25,8 @@ CSRF_TRUSTED_ORIGINS = ["https://www.faatra.org.ar", "http://www.faatra.org.ar",
 SECRET_KEY = "django-insecure-z(-d3=b_2g6ap2i&mmxrwb6p#&f7$o67_e(886t2z$4n+wuf38"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.getenv('DEBUG', 'NO').lower() in ('on', 'true', 'y', 'yes')
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'NO').lower() in ('on', 'true', 'y', 'yes')
+# DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
