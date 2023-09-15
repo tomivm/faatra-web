@@ -186,7 +186,7 @@ MEDIA_URL = "/media/"
 DEFAULT_FROM_EMAIL = "inscripciones@faatra.org.ar"
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST = "smtp.gestiondecorreo.com"
 EMAIL_HOST_USER = "inscripciones@faatra.org.ar"
 
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASS', "")
