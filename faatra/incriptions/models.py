@@ -57,6 +57,7 @@ class Incription(models.Model):
         return self.fullname
 
     def save(self) -> None:
+        print("por acs")
         if not self._is_confirmed and self.is_confirmed:
             body = (f"Se inscribio {self.fullname}, se confirmo la inscripcion al curso {self.course.title} "
                     f"{strip_tags(self.course.email_info.html)}")
