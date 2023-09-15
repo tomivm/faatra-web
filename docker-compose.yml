@@ -14,7 +14,7 @@ services:
       - web-static:/static
       - web-media:/media
     env_file: .env
-    command: /usr/local/bin/gunicorn faatra.wsgi:application -w 2 -b :8000
+    command: /usr/local/bin/gunicorn faatra.wsgi:application -w 2 -b :8000 --log-level error
 
   nginx:
     restart: always
