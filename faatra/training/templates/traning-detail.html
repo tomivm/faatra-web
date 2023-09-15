@@ -48,8 +48,8 @@
 <!-- <div id="inscription-form-bg" class="full-bleed modal-bg container" style="display: none;" onclick="openInscriptForm()"> -->
 <dialog id="inscription-form" class="" onclick="event.target==this && openInscriptForm(true)">
     <h1>Formulario de inscripción</h1>
-    <form class="">
-        <div class="incription-form-container" action="/capacitaciones/process-inscription" method="post">
+    <form class="" action="/capacitaciones/process-inscription" method="post">
+        <div class="incription-form-container" >
             {% csrf_token %}
             {% for field in form %}
             <div class="form-item">

@@ -16,7 +16,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-CSRF_TRUSTED_ORIGINS = ["*", "https://www.faatra.org.ar", "http://www.faatra.org.ar", "https://168.197.50.30", "https://faatra.org.ar", "http://faatra.org.ar"]
+CSRF_TRUSTED_ORIGINS = ["https://www.faatra.org.ar", "http://www.faatra.org.ar", "https://168.197.50.30", "https://faatra.org.ar", "http://faatra.org.ar"]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
