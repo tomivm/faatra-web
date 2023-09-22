@@ -67,7 +67,7 @@ class TrainingDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         extra_context = get_context()
         context.update(extra_context)
-        context["form"] = IncriptionForm()
+        context["form"] = IncriptionForm(initial={"course": self.object})
         return context
 
 def process_inscription(request):
