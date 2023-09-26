@@ -57,22 +57,10 @@ class Incription(models.Model):
         return self.fullname
 
     def save(self) -> None:
-        print("por acs")
-        if not self._is_confirmed and self.is_confirmed:
-            body = (f"Se inscribio {self.fullname}, se confirmo la inscripcion al curso {self.course.title} "
-                    f"{strip_tags(self.course.email_info.html)}")
-
-            send_mail(
-                "Incripciones",
-                body,
-                EMAIL_HOST_USER,
-                [self.email],
-                fail_silently=False,
-                html_message=body
-            )
+        # if not self._is_confirmed and self.is_confirmed:
 
         if not self.pk:
-            body = f"""De inscribio {self.fullname}, al curso {self.course.title}.
+            body = f"""Se inscribio {self.fullname}, al curso {self.course.title}.
             Sus datos son:
             Mail: {self.email}
             Telefono: {self.telefono}
@@ -88,6 +76,18 @@ class Incription(models.Model):
                 EMAIL_HOST_USER,
                 [self.course.saloon.email],
                 fail_silently=False,
+            )
+
+            body = (f"Se inscribio {self.fullname}, se confirmo la inscripcion al curso {self.course.title} "
+                    f"{strip_tags(self.course.email_info.html)}")
+
+            send_mail(
+                "Incripciones",
+                body,
+                EMAIL_HOST_USER,
+                [self.email],
+                fail_silently=False,
+                html_message=body
             )
 
         super().save()
