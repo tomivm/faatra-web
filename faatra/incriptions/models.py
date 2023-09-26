@@ -78,7 +78,7 @@ class Incription(models.Model):
                 fail_silently=False,
             )
 
-            body = (f"Se inscribio {self.fullname}, se confirmo la inscripcion al curso {self.course.title} "
+            body = (f"Hola {self.fullname}!"
                     f"{strip_tags(self.course.email_info.html)}")
 
             send_mail(
