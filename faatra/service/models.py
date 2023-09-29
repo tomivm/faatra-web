@@ -22,7 +22,7 @@ class Service(BaseTextModel):
 class Files(models.Model):
     document = models.FileField(upload_to='doc/')
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='files')
-
+    name = models.CharField(verbose_name="Nombre del archivo", max_length=255, default="  ")
     class Meta:
         verbose_name = "Archivo"
         verbose_name_plural = "Archivos"

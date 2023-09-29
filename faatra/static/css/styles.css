@@ -1857,3 +1857,8 @@ dialog::backdrop {
   margin-left: 0.7em;
   transition: margin-left 0.5s ease;
 }
+
+.svg-to-white-color {
+  fill: #ffffff;
+  color: #ffffff ;
+}

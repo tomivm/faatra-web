@@ -52,7 +52,7 @@
             {% if service.files.all %}
             <h3>Archivos:</h3>
             {% for file in service.files.all %}
-                <a href="{{file.document.url}}" target="_blank">
+                <a href="{{file.document.url}}" target="_blank" class="svg-to-white-color">
                   <img
                     class="svg-to-white-color download-file-btn"
                     src="{% static 'images/icons/file.svg' %}"
@@ -60,6 +60,7 @@
                     height="30"
                     width="30"
                   />
+                  {{file.name}}
                 </a>
             {% endfor %}
             {% endif %}
