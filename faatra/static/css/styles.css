@@ -738,6 +738,39 @@ input:focus {
   filter: invert(37%) sepia(84%) saturate(4280%) hue-rotate(200deg) brightness(102%) contrast(106%);
 }
 
+.files-container{
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .files-container{
+    display: grid;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.service-file-link{
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+}
+
+.svg-to-white-color {
+  -webkit-filter: invert(100%); /* Safari/Chrome */
+  filter: invert(100%);
+}
+
+.service-file-link > .service-file-name{
+  color: var(--white-color);
+  padding: 0;
+  padding-left: 0.6em;
+  margin: 0;
+}
+
 /* CONVENIOS */
 
 .covenants {
@@ -1785,7 +1818,7 @@ dialog::backdrop {
 
 .service-file-container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -1856,9 +1889,4 @@ dialog::backdrop {
 .offer-btn:hover {
   margin-left: 0.7em;
   transition: margin-left 0.5s ease;
-}
-
-.svg-to-white-color {
-  fill: #ffffff;
-  color: #ffffff ;
 }
