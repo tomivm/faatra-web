@@ -62,20 +62,25 @@ prepareArrowsForScroll = () => {
   const buttonRight = document.getElementById("slideRight");
   const buttonLeft = document.getElementById("slideLeft");
   const galleryContainer = document.getElementById("gallery");
-  const galleryItemDefault = document.getElementsByClassName("blue-bg-item")[0];
+  const liGalleryItems = document.getElementsByClassName("gallery-item")
 
   const galleryItemDefaultPadding = window
-    .getComputedStyle(galleryItemDefault, null)
-    .getPropertyValue("padding");
+    .getComputedStyle(buttonRight, null)
+    .getPropertyValue("width");
 
-  const galleryItemDefaultWidth =
-    galleryItemDefault.clientWidth + parseInt(galleryItemDefaultPadding, 10);
-  console.log("galleryItemDefaultWidth", galleryItemDefaultPadding);
+  const arrowsWidth =parseInt(galleryItemDefaultPadding, 10) * 2;
+
+  
+  const galleryItemDefaultWidth = galleryContainer.clientWidth - arrowsWidth;
 
   const isScrolleable =
     galleryContainer.scrollWidth - galleryContainer.clientWidth <= 0
       ? false
       : true;
+
+  if(isScrolleable){
+    Array.prototype.map.call(liGalleryItems, (item)=>{item.style.width=`${galleryItemDefaultWidth}px`});
+  }
 
   if (!isScrolleable) {
     buttonRight.classList.add("disabled");

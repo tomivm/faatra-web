@@ -742,6 +742,8 @@ input:focus {
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: 1fr;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 @media (min-width: 600px) {
@@ -1385,7 +1387,7 @@ dialog::backdrop {
 }
 
 .service-description-container div {
-  padding: 0 1em 1em 1em;
+  padding-bottom: 1em;
 }
 
 .service-manangers-container {
@@ -1427,6 +1429,8 @@ dialog::backdrop {
 
 #gallery-container {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .gallery {
@@ -1441,8 +1445,9 @@ dialog::backdrop {
   scroll-snap-type: both;
   scroll-behavior: smooth;
   scroll-padding: 1rem;
-  justify-items: center;
-  justify-content: center;
+  justify-items: center;  
+  justify-content: space-between;
+  width: fit-content;
 }
 
 .gallery .active {
@@ -1450,12 +1455,12 @@ dialog::backdrop {
 }
 
 .gallery li {
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   display: flex;
   justify-content: center;
   border-radius: 3px;
   max-height: 100%;
-  max-width: max-content;
+  /* max-width: max-content; */
   background-color: white;
 }
 
@@ -1482,7 +1487,7 @@ dialog::backdrop {
 
 #slideLeft.disabled,
 #slideRight.disabled {
-  display: none;
+  opacity: 0;
 }
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */

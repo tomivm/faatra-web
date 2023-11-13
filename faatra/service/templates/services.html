@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% load static %}{% block content %}
 
-<div class="item services">
+<div class="item services full-background ">
   <div class="blue-bg-container">
     <div class="blue-bg-title">
       <h1>Nuestros servicios</h1>
@@ -10,7 +10,7 @@
     <div id="gallery-container">
       <ul id="gallery" class="gallery divider-none selectable">
         {% for service in services %}
-        <li>
+        <li class="gallery-item">
           <button
             tabindex="{{ forloop.counter0 }}"
             {% if forloop.counter0 == index %}
@@ -50,7 +50,7 @@
             <div class="service-file-container">
 
             {% if service.files.all %}
-            <h3>Archivos:</h3>
+            <h3 style="padding-left: 1em;">Archivos:</h3>
             <div class="files-container">
             {% for file in service.files.all %}
                 <a href="{{file.document.url}}" target="_blank" class="service-file-link">
