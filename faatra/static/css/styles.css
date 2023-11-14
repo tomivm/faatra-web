@@ -1431,6 +1431,7 @@ dialog::backdrop {
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .gallery {
@@ -1464,19 +1465,29 @@ dialog::backdrop {
   background-color: white;
 }
 
+#slideLeft,
+#slideRight {
+  color: var(--primary-color);
+  height: 60%;
+  background-color: var(--white-color);
+  border-radius: 0.5em;
+  border: none;
+  border-style: solid;
+  border-color: var(--secondary-color);
+  border-width: 3px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 #slideLeft {
   position: absolute;
   left: 0;
-  top: 0;
-  height: 100%;
   font-size: 2.5em;
 }
 
 #slideRight {
   position: absolute;
   right: 0;
-  top: 0;
-  height: 100%;
   font-size: 2.5em;
 }
 
