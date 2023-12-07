@@ -22,7 +22,11 @@
     {% if news%}
       <div id="pages-nav-id" class="pages-nav">
             {% for number in numbers%}
-              <a href="?page={{number}}" class="no-style-url"><div class="page-btn scale-hover page-selected">{{number}}</div></a>
+              {% if camara %}
+                <a href="?page={{number}}&camara={{camara}}" class="no-style-url"><div class="page-btn scale-hover page-selected">{{number}}</div></a>
+              {% else %}
+                <a href="?page={{number}}" class="no-style-url"><div class="page-btn scale-hover">{{number}}</div></a>
+              {% endif %}
             {%endfor%}
           </div>
       

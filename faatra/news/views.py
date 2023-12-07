@@ -22,6 +22,7 @@ def index(request):
     page_number = request.GET.get('page', 1)
     page_obj = paginator.get_page(page_number)
     context["news"] = page_obj
+    context["camara"] = camara
     context["numbers"] = [number+1 for number in range(page_obj.paginator.num_pages)]
     return render(request, "news.html", context)
 
