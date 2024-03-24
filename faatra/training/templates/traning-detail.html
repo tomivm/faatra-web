@@ -49,7 +49,7 @@
 <!-- <div id="inscription-form-bg" class="full-bleed modal-bg container" style="display: none;" onclick="openInscriptForm()"> -->
 <dialog id="inscription-form" class="" onclick="event.target==this && openInscriptForm(true)">
     <h1>Formulario de inscripción</h1>
-    <form class="" action="/capacitaciones/process-inscription" method="post">
+    <form  id="incription-form-html" class="" action="/capacitaciones/process-inscription" method="post">
         <div class="incription-form-container" >
             {% csrf_token %}
             {% for field in form %}
@@ -59,12 +59,39 @@
             </div>
             {% endfor %}
         </div>
-        <input class="primary-btn-container primary-btn btn-lg inscript-btn" type="submit" value="Inscribirme">
+        <input class="primary-btn-container primary-btn btn-lg inscript-btn" value="Inscribirme" id="submitButton">
     </form>
 </dialog>
 <!-- </div> -->
 
+<dialog class="inscription-greeting">
+    <h1>Te inscribiste correctamente al curso ! Muchas gracias</h1>
+</dialog>
+
 <script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+        function handleSubmit(event) {
+            console.log("submit");
+            event.preventDefault();
+            const form = document.getElementById("incription-form-html");
+            const formData = new FormData(form);
+            fetch(form.action, {
+                method: "POST",
+                body: formData,
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        document.querySelector(".inscription-greeting").showModal();
+                        setTimeout(() => {
+                            document.querySelector(".inscription-greeting").close();
+                            openInscriptForm(true);
+                        }, 4000);
+                    }
+                });
+        }
+        document.getElementById("submitButton").addEventListener("click", handleSubmit);
+    });
     function openInscriptForm(clickBackdrop) {
         const isOpenClass = () => {
             const open = () => {
@@ -84,7 +111,6 @@
             const body = document.body;
             const modalForm = document.getElementById("inscription-form");
             // const modalBackground = document.getElementById("inscription-form-bg");
-            console.log('click')
             if (clickBackdrop) return close();
             if (modalForm.classList.contains("modal-form")) return close();
             return open();
