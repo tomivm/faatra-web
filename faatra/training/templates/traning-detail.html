@@ -59,7 +59,8 @@
             </div>
             {% endfor %}
         </div>
-        <input class="primary-btn-container primary-btn btn-lg inscript-btn" value="Inscribirme" id="submitButton">
+        <input style="cursor:pointer" class="primary-btn-container primary-btn btn-lg inscript-btn" value="Inscribirme" id="submitButton">
+        <span id="loader" class="loader disable"></span>
     </form>
 </dialog>
 <!-- </div> -->
@@ -72,10 +73,14 @@
 
     document.addEventListener("DOMContentLoaded", function() {
         function handleSubmit(event) {
-            console.log("submit");
             event.preventDefault();
+            const loader = document.getElementById("loader");
+            const btn = document.getElementById("submitButton");
             const form = document.getElementById("incription-form-html");
             const formData = new FormData(form);
+            loader.classList.remove("disable");
+            btn.classList.add("disable");
+
             fetch(form.action, {
                 method: "POST",
                 body: formData,
@@ -83,6 +88,8 @@
                 .then((response) => {
                     if (response.ok) {
                         document.querySelector(".inscription-greeting").showModal();
+                        loader.classList.add("disable");
+                        btn.classList.remove("disable");
                         setTimeout(() => {
                             document.querySelector(".inscription-greeting").close();
                             openInscriptForm(true);
@@ -119,4 +126,32 @@
         isOpenClass();
     }
 </script>
+<style>
+
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 50%;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.disable {
+    display: none;
+}
+</style>
 {% endblock content %}
