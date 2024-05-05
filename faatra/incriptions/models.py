@@ -5,6 +5,7 @@ from faatra.settings import EMAIL_HOST_USER
 from django.core.mail import send_mail
 from django.utils.html import strip_tags
 from django.template import Context, Template
+from django.core.mail import EmailMultiAlternatives, get_connection
 
 
 
@@ -88,10 +89,9 @@ class Incription(models.Model):
             # Render the template with the context
             rendered_html = html_template.render(context)
 
-            body = f"Hola {self.fullname}! {rendered_html}"
+            body = f"Hola {self.fullname}!"
 
-
-            send_mail(
+            email = EmailMultiAlternatives(
                 "Incripciones",
                 body,
                 EMAIL_HOST_USER,
@@ -99,5 +99,8 @@ class Incription(models.Model):
                 fail_silently=False,
                 html_message=body
             )
+
+            email.attach_alternative(rendered_html, "text/html")
+            email.send(fail_silently=False)
 
         super().save()
