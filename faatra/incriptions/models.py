@@ -4,6 +4,8 @@ from training.models import InformativeOffer
 from faatra.settings import EMAIL_HOST_USER
 from django.core.mail import send_mail
 from django.utils.html import strip_tags
+from django.template import Context, Template
+
 
 
 class EmployeeCondition(models.Model):
@@ -78,8 +80,16 @@ class Incription(models.Model):
                 fail_silently=False,
             )
 
-            body = (f"Hola {self.fullname}!"
-                    f"{strip_tags(self.course.email_info.html)}")
+            html_template = Template(self.course.email_info.html)
+
+            # Create your context (variables that will be replaced in the template)
+            context = Context({'fullname': self.fullname})
+
+            # Render the template with the context
+            rendered_html = html_template.render(context)
+
+            body = f"Hola {self.fullname}! {rendered_html}"
+
 
             send_mail(
                 "Incripciones",

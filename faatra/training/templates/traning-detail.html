@@ -39,9 +39,11 @@
                     <p>{{training.in_charge | default_if_none:""}}</p>
                 </div>
             </div>
+            {% if traning.is_inscription_enable%}
             <div class="primary-btn-container register-btn-container">
                 <button onclick="openInscriptForm()" class="primary-btn btn-lg btn-full-width">Inscribirme</button>
             </div>
+            {% endif %}
         </div>
     </div>
 </div>

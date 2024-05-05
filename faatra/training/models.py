@@ -86,6 +86,11 @@ class InformativeOffer(BaseTextModel):
     def is_closed(self):
         return self.due_date < datetime.date.today()
 
+    @property
+    def is_inscription_enable(self):
+        return self.enable_inscription and not self.exhausted and not self.cancelled and not self.is_closed
+
+
     def save(self, *args, **kwargs):
         if self.use_in_home:
             InformativeOffer.objects.filter(use_in_home=True).exclude(id=self.id).update(use_in_home=False)
