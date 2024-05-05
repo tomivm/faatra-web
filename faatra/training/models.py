@@ -88,7 +88,7 @@ class InformativeOffer(BaseTextModel):
 
     @property
     def is_inscription_enable(self):
-        return self.enable_inscription and not self.exhausted and not self.cancelled and not self.is_closed
+        return self.enable_inscription and not self.exhausted and not self.cancelled
 
 
     def save(self, *args, **kwargs):
