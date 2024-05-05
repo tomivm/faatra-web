@@ -89,7 +89,7 @@ class Incription(models.Model):
             # Render the template with the context
             rendered_html = html_template.render(context)
 
-            body = f"Hola {self.fullname}! {rendered_html}"
+            body = f"Hola {self.fullname}!"
 
 
             send_mail(
@@ -98,7 +98,7 @@ class Incription(models.Model):
                 EMAIL_HOST_USER,
                 [self.email],
                 fail_silently=False,
-                html_message=body
+                html_message=rendered_html
             )
 
         super().save()
