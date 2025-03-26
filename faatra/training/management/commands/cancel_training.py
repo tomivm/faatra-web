@@ -6,7 +6,7 @@ class Command(BaseCommand):
     help = 'Cancel informative offer'
 
     def handle(self, *args, **kwargs):
-        from datetime import datetime
-        now = datetime.now()
-        query = InformativeOffer.objects.filter(due_date__lte=now)
+        from datetime import date
+        today = date.today()
+        query = InformativeOffer.objects.filter(due_date__lt=today)
         query.update(cancelled=True)

@@ -56,6 +56,6 @@ class IncriptionAdmin(ExportActionModelAdmin):
 
     readonly_fields = ["created_date"]
     search_fields = ("fullname", "email", "dni")
-    list_filter = ("is_confirmed", "created_date", "course", "course__saloon__title")
+    list_filter = ("is_confirmed", "created_date", "course", ("course__saloon__title", "Cámara"))
 
 admin.site.register(Incription, IncriptionAdmin)
