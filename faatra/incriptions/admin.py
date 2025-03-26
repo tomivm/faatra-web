@@ -35,8 +35,13 @@ class InscriptionResource(ModelResource):
 #@admin.register(Incription)
 class IncriptionAdmin(ExportActionModelAdmin):
     resource_class = InscriptionResource
-    list_display = ("fullname", "email", "created_date", "course", "is_confirmed", "course__saloon")
+    list_display = ("fullname", "email", "created_date", "course", "is_confirmed", "get_saloon")
     list_editable = ("is_confirmed",)
+
+    def get_saloon(self, obj):
+        return obj.course.saloon.title if obj.course and obj.course.saloon else "-"
+    get_saloon.short_description = "Cámara"
+
     fields = (
         "fullname",
         "email",
@@ -57,8 +62,5 @@ class IncriptionAdmin(ExportActionModelAdmin):
     readonly_fields = ["created_date"]
     search_fields = ("fullname", "email", "dni")
     list_filter = ("is_confirmed", "created_date", "course", "course__saloon__title")
-
-    def get_queryset(self, request):
-        return super().get_queryset(request).prefetch_related('course', 'course__saloon')
 
 admin.site.register(Incription, IncriptionAdmin)
