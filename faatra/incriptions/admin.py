@@ -35,7 +35,7 @@ class InscriptionResource(ModelResource):
 #@admin.register(Incription)
 class IncriptionAdmin(ExportActionModelAdmin):
     resource_class = InscriptionResource
-    list_display = ("fullname", "email", "created_date", "course", "is_confirmed", "course__saloon__title")
+    list_display = ("fullname", "email", "created_date", "course", "is_confirmed", "course__saloon")
     list_editable = ("is_confirmed",)
     fields = (
         "fullname",
