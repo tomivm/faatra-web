@@ -35,7 +35,7 @@ class InscriptionResource(ModelResource):
 #@admin.register(Incription)
 class IncriptionAdmin(ExportActionModelAdmin):
     resource_class = InscriptionResource
-    list_display = ("fullname", "email", "created_date", "course", "is_confirmed")
+    list_display = ("fullname", "email", "created_date", "course", "is_confirmed", "course__saloon__title")
     list_editable = ("is_confirmed",)
     fields = (
         "fullname",
@@ -57,5 +57,8 @@ class IncriptionAdmin(ExportActionModelAdmin):
     readonly_fields = ["created_date"]
     search_fields = ("fullname", "email", "dni")
     list_filter = ("is_confirmed", "created_date", "course", "course__saloon__title")
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).prefetch_related('course', 'course__saloon')
 
 admin.site.register(Incription, IncriptionAdmin)
