@@ -82,6 +82,28 @@ services:
       - web-media:/media
     env_file: .env
     command: celery -A faatra worker -l INFO   
+  
+  healthwatcher:
+    image: bash
+    container_name: healthwatcher
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: >
+      bash -c "
+        while true; do
+          for container in $(docker ps --format '{{.Names}}'); do
+            if [ \"$container\" != \"healthwatcher\" ]; then
+              status=$(docker inspect --format='{{.State.Health.Status}}' $container 2>/dev/null)
+              if [ \"$status\" == \"unhealthy\" ]; then
+                echo \"[watcher] Restarting $container (unhealthy)\"
+                docker restart $container
+              fi
+            fi
+          done
+          sleep 30
+        done
+      "
 
 volumes:
   web-django:
