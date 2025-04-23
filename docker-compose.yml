@@ -4,6 +4,7 @@ services:
   web:
     restart: always
     build: .
+    mem_limit: 4096m
     expose:
       - "8000"
     links:
