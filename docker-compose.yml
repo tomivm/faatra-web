@@ -92,12 +92,12 @@ services:
     command: >
       bash -c "
         while true; do
-          for container in $(docker ps --format '{{.Names}}'); do
-            if [ \"$container\" != \"healthwatcher\" ]; then
-              status=$(docker inspect --format='{{.State.Health.Status}}' $container 2>/dev/null)
-              if [ \"$status\" == \"unhealthy\" ]; then
-                echo \"[watcher] Restarting $container (unhealthy)\"
-                docker restart $container
+          for container in $$(docker ps --format '{{.Names}}'); do
+            if [ \"$$container\" != \"healthwatcher\" ]; then
+              status=$$(docker inspect --format='{{.State.Health.Status}}' $$container 2>/dev/null)
+              if [ \"$$status\" == \"unhealthy\" ]; then
+                echo \"[watcher] Restarting $$container (unhealthy)\"
+                docker restart $$container
               fi
             fi
           done
