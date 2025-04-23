@@ -4,10 +4,7 @@ services:
   web:
     restart: always
     build: .
-    deploy:
-      resources:
-        limits:
-          memory: 4096M
+    mem_limit: 4096M
     expose:
       - "8000"
     links:
