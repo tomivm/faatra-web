@@ -2,7 +2,7 @@ from django.db import models
 from django_quill.fields import QuillField
 from saloon.models import Saloon
 from shared.models import BaseTextModel
-from datetime import datetime
+from datetime import datetime, date
 
 # Create your models here.
 
@@ -84,11 +84,11 @@ class InformativeOffer(BaseTextModel):
     
     @property
     def is_closed(self):
-        return self.due_date < datetime.date.today()
+        return self.due_date < date.today()
 
     @property
     def is_inscription_enable(self):
-        return self.enable_inscription and not self.exhausted and not self.cancelled
+        return self.enable_inscription and not self.exhausted and not self.cancelled and not self.is_closed
 
 
     def save(self, *args, **kwargs):

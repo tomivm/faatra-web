@@ -8,5 +8,5 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         from datetime import date
         today = date.today()
-        query = InformativeOffer.objects.filter(due_date__lt=today)
+        query = InformativeOffer.objects.filter(due_date__lte=today)
         query.update(cancelled=True)
