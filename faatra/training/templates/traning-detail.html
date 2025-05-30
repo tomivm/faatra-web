@@ -48,6 +48,7 @@
     </div>
 </div>
 
+{% if form %}
 <!-- <div id="inscription-form-bg" class="full-bleed modal-bg container" style="display: none;" onclick="openInscriptForm()"> -->
 <dialog id="inscription-form" class="" onclick="event.target==this && openInscriptForm(true)">
     <h1>Formulario de inscripción</h1>
@@ -99,8 +100,13 @@
                     }
                 });
         }
-        document.getElementById("submitButton").addEventListener("click", handleSubmit);
+        
+        const submitButton = document.getElementById("submitButton");
+        if (submitButton) {
+            submitButton.addEventListener("click", handleSubmit);
+        }
     });
+    
     function openInscriptForm(clickBackdrop) {
         const isOpenClass = () => {
             const open = () => {
@@ -128,6 +134,8 @@
         isOpenClass();
     }
 </script>
+{% endif %}
+
 <style>
 
 

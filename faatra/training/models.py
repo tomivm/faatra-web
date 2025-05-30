@@ -37,7 +37,6 @@ class Topic(models.Model):
         return f"{self.title}"
 
 
-
 class Mode(models.Model):
     description = models.CharField(verbose_name="Modalidad", max_length=256)
 
@@ -46,7 +45,8 @@ class Mode(models.Model):
         verbose_name_plural = "Modalidades"
 
     def __str__(self):
-        return self.description
+        return f"{self.description}"
+
 
 class InformativeOffer(BaseTextModel):
     email_info = QuillField()
@@ -134,4 +134,4 @@ class SNITFile(models.Model):
         verbose_name_plural = "Archivos SNIT"
 
     def __str__(self):
-        return self.title
+        return f"{self.title}"

@@ -1,6 +1,6 @@
-
 from typing import Any
 from django.db import models
+from django.core.cache import cache
 from saloon.models import Saloon
 from shared.utils import get_context
 from django.shortcuts import render
@@ -24,7 +24,7 @@ def training_index(request):
 
 def training_list(request, category_id):
     context = get_context()
-    trainings = InformativeOffer.objects.all().filter(
+    trainings = InformativeOffer.objects.select_related('saloon', 'topic', 'category').filter(
         category_id=category_id, 
         is_available=True, 
         due_date__gte=datetime.now()
@@ -63,11 +63,30 @@ class TrainingDetailView(DetailView):
     slug_field = "url"
     slug_url_kwarg = "url"
 
+    def get_queryset(self):
+        # Optimize the query with select_related to avoid N+1 queries
+        return InformativeOffer.objects.select_related(
+            'saloon', 'category', 'topic', 'mode'
+        ).prefetch_related('dates')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        extra_context = get_context()
+        
+        # Cache the shared context for 5 minutes to avoid repeated queries
+        cache_key = 'shared_context'
+        extra_context = cache.get(cache_key)
+        if extra_context is None:
+            extra_context = get_context()
+            cache.set(cache_key, extra_context, 300)  # Cache for 5 minutes
+        
         context.update(extra_context)
-        context["form"] = IncriptionForm(initial={"course": self.object})
+        
+        # Only create form if inscription is enabled to avoid unnecessary processing
+        if self.object.enable_inscription and not self.object.exhausted and not self.object.cancelled:
+            context["form"] = IncriptionForm(initial={"course": self.object})
+        else:
+            context["form"] = None
+            
         return context
 
 def process_inscription(request):
