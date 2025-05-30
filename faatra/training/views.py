@@ -1,6 +1,9 @@
 from typing import Any
 from django.db import models
 from django.core.cache import cache
+from django.views.decorators.cache import cache_page
+from django.views.decorators.vary import vary_on_headers
+from django.utils.decorators import method_decorator
 from saloon.models import Saloon
 from shared.utils import get_context
 from django.shortcuts import render
@@ -54,6 +57,8 @@ def training_list(request, category_id):
     return render(request, "training_categories_filter.html", context)
 
 
+@method_decorator(cache_page(60 * 10), name='dispatch')  # Cache for 10 minutes
+@method_decorator(vary_on_headers('User-Agent'), name='dispatch')  # Vary cache by User-Agent if needed
 class TrainingDetailView(DetailView):
     """Detail training."""
 
