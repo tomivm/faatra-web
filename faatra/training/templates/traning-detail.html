@@ -51,10 +51,11 @@
 {% if form %}
 <!-- <div id="inscription-form-bg" class="full-bleed modal-bg container" style="display: none;" onclick="openInscriptForm()"> -->
 <dialog id="inscription-form" class="" onclick="event.target==this && openInscriptForm(true)">
-    <h1>Formulario de inscripción</h1>
+    <h1>Formulario de inscripción a {{ training.title }}</h1>
     <form  id="incription-form-html" class="" action="/capacitaciones/process-inscription" method="post">
         <div class="incription-form-container" >
             {% csrf_token %}
+            <input type="hidden" name="course_id" value="{{ course_id }}">
             {% for field in form %}
             <div class="form-item">
                 {{ field.errors }}

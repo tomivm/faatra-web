@@ -15,7 +15,6 @@ class IncriptionForm(ModelForm):
             "zip_code",
             "city",
             "county",
-            "course",
             "employee_condition",
             "comment"
         ]

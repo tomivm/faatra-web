@@ -6,7 +6,7 @@ from django.views.decorators.vary import vary_on_headers
 from django.utils.decorators import method_decorator
 from saloon.models import Saloon
 from shared.utils import get_context
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.views.generic.detail import DetailView
 from incriptions.forms import IncriptionForm
@@ -27,7 +27,7 @@ def training_index(request):
 
 def training_list(request, category_id):
     context = get_context()
-    trainings = InformativeOffer.objects.select_related('saloon', 'topic', 'category').filter(
+    trainings = InformativeOffer.objects.filter(
         category_id=category_id, 
         is_available=True, 
         due_date__gte=datetime.now()
@@ -35,7 +35,7 @@ def training_list(request, category_id):
     camara = request.GET.get('camara', '')
     especialidad = request.GET.get('especialidad', '')
     provincia = request.GET.get('provincia', '')
-    #import ipdb ; ipdb.set_trace()
+
     if camara and camara != "null":
         trainings = trainings.filter(saloon_id=int(camara))
     
@@ -68,12 +68,6 @@ class TrainingDetailView(DetailView):
     slug_field = "url"
     slug_url_kwarg = "url"
 
-    def get_queryset(self):
-        # Optimize the query with select_related to avoid N+1 queries
-        return InformativeOffer.objects.select_related(
-            'saloon', 'category', 'topic', 'mode'
-        ).prefetch_related('dates')
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         
@@ -88,7 +82,8 @@ class TrainingDetailView(DetailView):
         
         # Only create form if inscription is enabled to avoid unnecessary processing
         if self.object.enable_inscription and not self.object.exhausted and not self.object.cancelled:
-            context["form"] = IncriptionForm(initial={"course": self.object})
+            context["form"] = IncriptionForm()
+            context["course_id"] = self.object.id  # Pass course ID to template
         else:
             context["form"] = None
             
@@ -96,8 +91,13 @@ class TrainingDetailView(DetailView):
 
 def process_inscription(request):
     form = IncriptionForm(request.POST)
-    form.is_valid()
-    form.save()
+    if form.is_valid():
+        inscription = form.save(commit=False)
+        # Get course from POST data or URL parameter
+        course_id = request.POST.get('course_id')
+        if course_id:
+            inscription.course = get_object_or_404(InformativeOffer, id=course_id)
+            inscription.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 def snit(request):
