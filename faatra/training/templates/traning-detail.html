@@ -13,7 +13,7 @@
                 <div class="training-dates-container">
                     <div>
                         <h2>
-                            {% if training.dates.count == 1 %}
+                            {% if training.dates.all|length == 1 %}
                                 Fecha
                             {% else %}
                                 Fechas
