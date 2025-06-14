@@ -82,11 +82,17 @@ class Incription(models.Model):
             )
 
             template = get_template('email.html')
+            # Create absolute URL for the course image for email display
+            if self.course.image:
+                course_image_url = f"https://www.faatra.org.ar{self.course.image.url}"
+            else:
+                course_image_url = ""
+            
             context = {
                 'fullname': self.fullname,
                 'course_title': self.course.title,
-                'course_image_url': self.course.image.url,
-                'course_email_info': self.course.email_info,
+                'course_image_url': course_image_url,
+                'course_email_info': self.course.email_info.html,
                 'course_url': self.course.url,
             }
             rendered_html = template.render(context)
