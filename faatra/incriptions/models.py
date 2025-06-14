@@ -81,7 +81,7 @@ class Incription(models.Model):
                 fail_silently=False,
             )
 
-            template = get_template('training/email.html')
+            template = get_template('email.html')
             context = {
                 'fullname': self.fullname,
                 'course_title': self.course.title,
