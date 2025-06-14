@@ -12,14 +12,20 @@
             <div class="training-full-blue-info">
                 <div class="training-dates-container">
                     <div>
-                        <h2>Fechas</h2>
+                        <h2>
+                            {% if training.dates.count == 1 %}
+                                Fecha
+                            {% else %}
+                                Fechas
+                            {% endif %}
+                        </h2>
                         <p>
                             {% for date in training.dates.all%}
                             {{date.created_date|date:"d/m/Y"}} - {{date.hours}}hs</br>
                             {% endfor %}</p>
                     </div>
                     <div class="training-until-date">
-                        <p>Inscripcion hasta el {{training.due_date}}</p>
+                        <p>{{training.due_date}}</p>
                     </div>
                 </div>
                 <div class="training-blue-info-item">
