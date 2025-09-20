@@ -50,6 +50,12 @@
                 <button onclick="openInscriptForm()" class="primary-btn btn-lg btn-full-width">Inscribirme</button>
             </div>
             {% endif %}
+
+            {% if training.is_exhausted%}
+            <div class="primary-btn-container register-btn-container">
+                <button disabled class="primary-btn btn-lg btn-full-width">Agotado</button>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
