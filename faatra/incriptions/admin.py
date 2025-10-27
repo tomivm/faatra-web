@@ -17,6 +17,16 @@ class EmployeeConditionAdmin(admin.ModelAdmin):
     pass
 
 class InscriptionResource(ModelResource):
+    course_title = fields.Field(attribute='course__title', column_name='Curso')
+    course_saloon = fields.Field(attribute='course__saloon__title', column_name='Cámara')
+    employee_condition_name = fields.Field(attribute='employee_condition__name', column_name='Condición Laboral')
+    course_category = fields.Field(attribute='course__category__title', column_name='Categoría')
+    course_topic = fields.Field(attribute='course__topic__title', column_name='Tema')
+    course_mode = fields.Field(attribute='course__mode__description', column_name='Modalidad')
+    course_duration = fields.Field(attribute='course__duration', column_name='Duración')
+    course_city = fields.Field(attribute='course__city', column_name='Ciudad del Curso')
+    course_instructor = fields.Field(attribute='course__in_charge', column_name='Instructor')
+
     @classmethod
     def field_from_django_field(self, field_name, django_field, readonly):
         """
@@ -30,13 +40,66 @@ class InscriptionResource(ModelResource):
 
     def get_queryset(self):
         """
-        Optimize queries by prefetching related objects to avoid N+1 queries
+        Ultra-optimized queryset with all related objects loaded in one query
         """
-        return super().get_queryset().select_related('employee_condition', 'course', 'course__saloon')
+        return super().get_queryset().select_related(
+            'employee_condition',
+            'course',
+            'course__saloon',
+            'course__category',
+            'course__topic',
+            'course__mode'
+        ).order_by('-created_date')
+
+    def filter_export(self, queryset, **kwargs):
+        """
+        Optional filtering to reduce export size - can be customized based on needs
+        """
+        # Example: Only export confirmed inscriptions
+        # return queryset.filter(is_confirmed=True)
+        return queryset
+
+    def get_export_data(self, file_format, queryset=None, **kwargs):
+        """
+        Override to handle large datasets efficiently
+        """
+        if queryset is None:
+            queryset = self.get_queryset()
+
+        # Use iterator for large datasets to avoid loading all objects into memory
+        if queryset.count() > 1000:
+            return super().get_export_data(file_format, queryset.iterator(chunk_size=1000), **kwargs)
+
+        return super().get_export_data(file_format, queryset, **kwargs)
+
+    def dehydrate_fullname(self, inscription):
+        """Ensure fullname is properly formatted"""
+        return inscription.fullname.strip() if inscription.fullname else ""
+
+    def dehydrate_email(self, inscription):
+        """Ensure email is lowercase and stripped"""
+        return inscription.email.lower().strip() if inscription.email else ""
+
+    def dehydrate_created_date(self, inscription):
+        """Format date consistently"""
+        return inscription.created_date.strftime('%d/%m/%Y %H:%M') if inscription.created_date else ""
 
     class Meta:
         model = Incription
-        fields = ("fullname", "email", "telefono", "dni", "birth_date", "address", "zip_code", "city", "county", "comment", "is_confirmed", "created_date", "employee_condition__name", "course__title")
+        fields = (
+            "fullname", "email", "telefono", "dni", "birth_date", "address",
+            "zip_code", "city", "county", "comment", "is_confirmed", "created_date",
+            "employee_condition_name", "course_title", "course_saloon",
+            "course_category", "course_topic", "course_mode", "course_duration",
+            "course_city", "course_instructor"
+        )
+        export_order = (
+            "created_date", "fullname", "email", "telefono", "dni", "birth_date",
+            "address", "zip_code", "city", "county", "course_title", "course_saloon",
+            "course_category", "course_topic", "course_mode", "course_duration",
+            "course_city", "course_instructor", "employee_condition_name",
+            "comment", "is_confirmed"
+        )
 
 class SaloonTitleFilter(admin.SimpleListFilter):
     title = "Cámara"  # Nombre del filtro en el admin
