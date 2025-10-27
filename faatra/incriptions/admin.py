@@ -28,6 +28,12 @@ class InscriptionResource(ModelResource):
                 widget=FieldWidget(**widget_kwargs), readonly=readonly)
         return field
 
+    def get_queryset(self):
+        """
+        Optimize queries by prefetching related objects to avoid N+1 queries
+        """
+        return super().get_queryset().select_related('employee_condition', 'course', 'course__saloon')
+
     class Meta:
         model = Incription
         fields = ("fullname", "email", "telefono", "dni", "birth_date", "address", "zip_code", "city", "county", "comment", "is_confirmed", "created_date", "employee_condition__name", "course__title")
@@ -52,6 +58,13 @@ class IncriptionAdmin(ExportActionModelAdmin):
     resource_class = InscriptionResource
     list_display = ("fullname", "email", "created_date", "course", "is_confirmed", "get_saloon")
     list_editable = ("is_confirmed",)
+
+    def get_queryset(self, request):
+        """
+        Optimize list view queries with select_related
+        """
+        qs = super().get_queryset(request)
+        return qs.select_related('employee_condition', 'course', 'course__saloon')
 
     def get_saloon(self, obj):
         return obj.course.saloon.title if obj.course and obj.course.saloon else "-"
