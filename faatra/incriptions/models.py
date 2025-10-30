@@ -77,7 +77,7 @@ class Incription(models.Model):
                 "Incripciones",
                 body,
                 EMAIL_HOST_USER,
-                [self.course.saloon.email],
+                [self.course.saloon.email, "contacto@faatra.org.ar"],
                 fail_silently=False,
             )
 
