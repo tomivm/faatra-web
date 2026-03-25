@@ -183,7 +183,6 @@ QUILL_CONFIGS = {
                 "debug": False,
                 "suppressErrorLogging": True,
             },
-            "imageResize": {},
         },
     }
 }
