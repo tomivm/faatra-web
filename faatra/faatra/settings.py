@@ -175,6 +175,15 @@ QUILL_CONFIGS = {
                 ["clean"],
                 [{ 'header': []}],
             ],
+            "imageCompressor": {
+                "quality": 0.6,
+                "maxWidth": 1200,
+                "maxHeight": 1200,
+                "imageType": "image/webp",
+                "debug": False,
+                "suppressErrorLogging": True,
+            },
+            "imageResize": {},
         },
     }
 }
