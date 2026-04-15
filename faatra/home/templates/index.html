@@ -22,6 +22,8 @@
     <div class="Containers">
         {% if new.banner_background_image %}
             <img src="{{new.banner_background_image.url}}"  style="width:100%">
+        {% else %}
+            <img src="{% static 'images/tallerHeader.jpg' %}"  style="width:100%">
         {% endif %}
         <div class="Info header-container">
         <div class="header-logo-container">
@@ -41,6 +43,8 @@
     <div class="Containers">
         {% if training.banner_background_image %}
             <img src="{{training.banner_background_image.url}}"  style="width:100%">
+        {% else %}
+            <img src="{% static 'images/tallerHeader.jpg' %}"  style="width:100%">
         {% endif %}
         <div class="Info header-container">
         <div class="header-logo-container">
