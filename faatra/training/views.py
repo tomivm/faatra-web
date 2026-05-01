@@ -49,7 +49,14 @@ def training_list(request, category_id):
     training_ids = trainings.values_list('id', flat=True)
     saloon = Saloon.objects.filter(informativeoffer__in=training_ids).distinct()
     topic = Topic.objects.filter(informativeoffer__in=training_ids).distinct()
-    cities = trainings.exclude(city=None).values_list("city", flat=True).distinct()
+    cities = (
+        trainings
+        .exclude(city__isnull=True)
+        .exclude(city="")
+        .order_by()
+        .values_list("city", flat=True)
+        .distinct()
+    )
     context["tranings"] = trainings
     context["saloon"] = saloon
     context["topic"] = topic

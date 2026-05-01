@@ -64,7 +64,7 @@ class InformativeOffer(BaseTextModel):
     use_in_home = models.BooleanField("Usar en la pagina principal", default=False)
     mode = models.ForeignKey(Mode, verbose_name="Modalidad", on_delete=models.SET_NULL, null=True, blank=True)
     image = models.ImageField(
-        upload_to="media/", verbose_name="Imagen", null=False
+        upload_to="media/", verbose_name="Imagen (1300x835px)", null=False
     )
     banner_background_image = models.ImageField(
         upload_to="media/", verbose_name="Banner Home (1300x480px)", blank=True, null=True
@@ -92,11 +92,14 @@ class InformativeOffer(BaseTextModel):
 
 
     def save(self, *args, **kwargs):
+        if self.city:
+            self.city = self.city.strip()
+
         if self.use_in_home:
             InformativeOffer.objects.filter(use_in_home=True).exclude(id=self.id).update(use_in_home=False)
 
         if self.cancelled and not self._cancelled:
-            # aca mandar el mail csv 
+            # aca mandar el mail csv
             pass
         return super().save(*args, **kwargs)
 
