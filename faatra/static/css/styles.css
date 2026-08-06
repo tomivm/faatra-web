@@ -476,8 +476,11 @@ input:focus {
   }
 
   .header-container > a {
-    flex: 0 1 auto;
-    width: 90%;
+    display: contents;
+  }
+
+  .header-container > a .header-text-container {
+    width: max-content;
     max-width: 90%;
   }
 
