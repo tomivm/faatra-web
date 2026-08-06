@@ -420,6 +420,28 @@ input:focus {
   width: max-content;
 }
 
+.header-container > a {
+  flex: 1 1 0;
+  max-width: min(55%, 720px);
+}
+
+.header-container > a .header-text-container {
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+}
+
+.header-container > a .header-text-container > h2,
+.header-container > a .header-text-container > h3 {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.header-container > a .header-text-container > h3 {
+  margin-top: 0.75em;
+  line-height: 1.4;
+}
+
 .header-text-container > h1 {
   font-size: 6em;
 }
@@ -450,6 +472,12 @@ input:focus {
   }
 
   .header-text-container {
+    max-width: 90%;
+  }
+
+  .header-container > a {
+    flex: 0 1 auto;
+    width: 90%;
     max-width: 90%;
   }
 
