@@ -14,7 +14,13 @@ class Saloon(BaseTextModel):
     hours = models.CharField("Horario", max_length=512, blank=True, null=True)
     phone = models.CharField("Telefono", max_length=512, blank=True, null=True)
     web = models.CharField("Web", max_length=512, blank=True, null=True)
-    email = models.CharField("E-mail", max_length=512, blank=True, null=True)
+    email = models.CharField(
+        "E-mail",
+        max_length=512,
+        blank=True,
+        null=True,
+        help_text="Varios emails separados por coma",
+    )
     facebook = models.CharField("Facebook", max_length=512, blank=True, null=True)
     reference = models.BooleanField("Referente", default=False)
     maps = models.CharField("Link a google maps", max_length=512, blank=True, null=True)
@@ -25,6 +31,12 @@ class Saloon(BaseTextModel):
 
     def __str__(self) -> str:
         return self.title
+
+    @property
+    def email_list(self):
+        if not self.email:
+            return []
+        return [e.strip() for e in self.email.split(",") if e.strip()]
 
 
 class Link(models.Model):
