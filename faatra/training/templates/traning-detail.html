@@ -71,11 +71,11 @@
             {% for field in form %}
             <div class="form-item" data-field="{{ field.name }}">
                 {{ field.label_tag }} {{ field }}
-                <span class="field-error" style="color:#c0392b" hidden></span>
+                <span class="field-error" style="color:#ff9e9e; font-size:15px; font-weight:600" hidden></span>
             </div>
             {% endfor %}
         </div>
-        <p id="form-error" style="color:#c0392b" hidden>Revisá los campos marcados y volvé a enviar.</p>
+        <p id="form-error" style="color:#ff9e9e; font-size:15px; font-weight:600" hidden>Revisá los campos marcados y volvé a enviar.</p>
         <button type="submit" style="cursor:pointer" class="primary-btn-container primary-btn btn-lg inscript-btn" id="submitButton">Inscribirme</button>
         <span id="loader" class="loader disable"></span>
     </form>
