@@ -69,13 +69,14 @@
             {% csrf_token %}
             <input type="hidden" name="course_id" value="{{ course_id }}">
             {% for field in form %}
-            <div class="form-item">
-                {{ field.errors }}
+            <div class="form-item" data-field="{{ field.name }}">
                 {{ field.label_tag }} {{ field }}
+                <span class="field-error" style="color:#c0392b" hidden></span>
             </div>
             {% endfor %}
         </div>
-        <input style="cursor:pointer" class="primary-btn-container primary-btn btn-lg inscript-btn" value="Inscribirme" id="submitButton">
+        <p id="form-error" style="color:#c0392b" hidden>Revisá los campos marcados y volvé a enviar.</p>
+        <button type="submit" style="cursor:pointer" class="primary-btn-container primary-btn btn-lg inscript-btn" id="submitButton">Inscribirme</button>
         <span id="loader" class="loader disable"></span>
     </form>
 </dialog>
@@ -88,38 +89,70 @@
 <script>
 
     document.addEventListener("DOMContentLoaded", function() {
-        function handleSubmit(event) {
+        const form = document.getElementById("incription-form-html");
+        if (!form) return;
+
+        const showErrors = (errors) => {
+            form.querySelectorAll(".form-item").forEach((item) => {
+                const messages = errors[item.dataset.field];
+                const slot = item.querySelector(".field-error");
+                slot.hidden = !messages;
+                slot.textContent = messages ? messages.join(" ") : "";
+            });
+            const error = document.getElementById("form-error");
+            error.textContent = "Revisá los campos marcados y volvé a enviar.";
+            error.hidden = Object.keys(errors).length === 0;
+        };
+
+        // The submit event only fires once the browser's own validation (required, email) passes.
+        form.addEventListener("submit", function(event) {
             event.preventDefault();
             const loader = document.getElementById("loader");
             const btn = document.getElementById("submitButton");
-            const form = document.getElementById("incription-form-html");
-            const formData = new FormData(form);
             loader.classList.remove("disable");
-            btn.classList.add("disable");
+            btn.disabled = true;
+
+            // The page is cached, so the token in the HTML may belong to another visitor: use the cookie's.
+            const data = new FormData(form);
+            data.delete("csrfmiddlewaretoken");
+            const csrfCookie = document.cookie.split("; ").find((c) => c.startsWith("csrftoken="));
 
             fetch(form.action, {
                 method: "POST",
-                body: formData,
+                body: data,
+                headers: {
+                    "X-Requested-With": "fetch",
+                    "X-CSRFToken": csrfCookie ? csrfCookie.split("=")[1] : "",
+                },
             })
                 .then((response) => {
                     if (response.ok) {
+                        showErrors({});
+                        form.reset();
                         document.querySelector(".inscription-greeting").showModal();
-                        loader.classList.add("disable");
-                        btn.classList.remove("disable");
                         setTimeout(() => {
                             document.querySelector(".inscription-greeting").close();
                             openInscriptForm(true);
                         }, 4000);
+                        return;
                     }
+                    if (response.status === 400) {
+                        return response.json().then((data) => showErrors(data.errors || {}));
+                    }
+                    throw new Error(response.status);
+                })
+                .catch(() => {
+                    const error = document.getElementById("form-error");
+                    error.textContent = "No pudimos enviar la inscripción. Recargá la página e intentá de nuevo.";
+                    error.hidden = false;
+                })
+                .finally(() => {
+                    loader.classList.add("disable");
+                    btn.disabled = false;
                 });
-        }
-        
-        const submitButton = document.getElementById("submitButton");
-        if (submitButton) {
-            submitButton.addEventListener("click", handleSubmit);
-        }
+        });
     });
-    
+
     function openInscriptForm(clickBackdrop) {
         const isOpenClass = () => {
             const open = () => {

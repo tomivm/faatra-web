@@ -1,18 +1,22 @@
+import logging
 from typing import Any
 from django.db import models
 from django.core.cache import cache
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_headers
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.utils.decorators import method_decorator
 from saloon.models import Saloon
 from shared.utils import get_context
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.views.generic.detail import DetailView
 from incriptions.forms import IncriptionForm
 from datetime import datetime
 
 from .models import InformativeOffer, OfferCategory, Topic, SNITCategory, SNITFile
+
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 
@@ -64,6 +68,8 @@ def training_list(request, category_id):
     return render(request, "training_categories_filter.html", context)
 
 
+# Outermost so cached responses also set the visitor's CSRF cookie; the form sends it as a header.
+@method_decorator(ensure_csrf_cookie, name='dispatch')
 @method_decorator(cache_page(60 * 10), name='dispatch')  # Cache for 10 minutes
 @method_decorator(vary_on_headers('User-Agent'), name='dispatch')  # Vary cache by User-Agent if needed
 class TrainingDetailView(DetailView):
@@ -98,6 +104,10 @@ class TrainingDetailView(DetailView):
 
 def process_inscription(request):
     form = IncriptionForm(request.POST)
+    if not form.is_valid():
+        logger.warning("Invalid inscription for course %s: %s", request.POST.get('course_id'), form.errors.as_json())
+        if request.headers.get("X-Requested-With") == "fetch":
+            return JsonResponse({"errors": form.errors}, status=400)
     if form.is_valid():
         inscription = form.save(commit=False)
         # Get course from POST data or URL parameter
